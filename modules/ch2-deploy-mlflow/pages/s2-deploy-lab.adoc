@@ -6,7 +6,7 @@ _Estimated reading time: *{time_estimate} minutes*._
 
 Objective::
 
-Deploy and verify a development MLFlow instance in Red Hat OpenShift AI.
+Deploy and verify a development instance of MLFlow in Red Hat OpenShift AI.
 
 WARNING: Not started yet.
 
