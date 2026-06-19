@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Lab Environment :: Agent Traces with MLFLow and Red Hat OpenShift AI</title>
-    <link rel="prev" href="../index.html">
-    <link rel="next" href="../ch1-mlflow-rhoai/index.html">
+    <title>MLFlow Architecture and RHOAI Integration :: Agent Traces with MLFLow and Red Hat OpenShift AI</title>
+    <link rel="prev" href="index.html">
+    <link rel="next" href="s2-deploy-lab.html">
     <meta name="generator" content="Antora 3.2.0-alpha.12">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <link rel="stylesheet" href="../../../_/css/vendor/tabs.css">
@@ -50,8 +50,8 @@
   </li>
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
-  <li class="nav-item is-current-page" data-depth="1">
-    <a class="nav-link" href="index.html">Lab Environment</a>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../LABENV/index.html">Lab Environment</a>
   </li>
 </ul>
   </li>
@@ -75,13 +75,13 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../ch2-deploy-mlflow/index.html">Deploying MLFlow for Development</a>
+    <a class="nav-link" href="index.html">Deploying MLFlow for Development</a>
 <ul class="nav-list">
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../ch2-deploy-mlflow/s1-architecture.html">MLFlow Architecture and RHOAI Integration</a>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="s1-architecture.html">MLFlow Architecture and RHOAI Integration</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../ch2-deploy-mlflow/s2-deploy-lab.html">Lab: Deploy MLFlow on Red Hat OpenShift AI</a>
+    <a class="nav-link" href="s2-deploy-lab.html">Lab: Deploy MLFlow on Red Hat OpenShift AI</a>
   </li>
 </ul>
   </li>
@@ -135,7 +135,8 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">Agent Traces with MLFLow and Red Hat OpenShift AI</a></li>
-    <li><a href="index.html">Lab Environment</a></li>
+    <li><a href="index.html">Deploying MLFlow for Development</a></li>
+    <li><a href="s1-architecture.html">MLFlow Architecture and RHOAI Integration</a></li>
   </ul>
 </nav>
 </div>
@@ -144,83 +145,69 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Lab Environment</h1>
-<div class="sect1">
-<h2 id="_instructions_to_launch_your_lab_on_the_red_hat_demo_platform_rhdp"><a class="anchor" href="#_instructions_to_launch_your_lab_on_the_red_hat_demo_platform_rhdp"></a>Instructions to Launch Your Lab on the Red Hat Demo Platform (RHDP)</h2>
+<h1 class="page">MLFlow Architecture and RHOAI Integration</h1>
+<div id="preamble">
 <div class="sectionbody">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><strong>Log in</strong> to the <a href="#RHDP-Portal-Links">RHDP portal</a></p>
-</li>
-<li>
-<p><strong>Search</strong> for the catalog entry: <strong>FIXME Lab Catalog Name</strong>.</p>
-</li>
-<li>
-<p><strong>Click</strong> on the catalog entry in the search results.</p>
-</li>
-<li>
-<p>On the catalog page, <strong>click</strong> the <strong>Order</strong> button.</p>
-</li>
-<li>
-<p><strong>Fill out</strong> the required details in the order form.</p>
-</li>
-<li>
-<p><strong>Review the warning</strong> at the bottom of the form and <strong>check the box</strong> labeled:<br>
-<strong>“I confirm that I understand the above warnings.”</strong></p>
-</li>
-<li>
-<p><strong>Click</strong> the <strong>Order</strong> button to place your lab order.</p>
-</li>
-</ol>
+<div class="paragraph">
+<p><em>Estimated reading time: <strong>5 minutes</strong>.</em></p>
 </div>
-<div class="sect2">
-<h3 id="_important_notes"><a class="anchor" href="#_important_notes"></a>Important Notes:</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>This lab may take approximately <strong>FIXME minutes</strong> to become ready.</p>
-</li>
-<li>
-<p>You will receive an <strong>email with access details</strong> once your lab environment is ready.</p>
-</li>
-<li>
-<p>You can also <strong>retrieve lab access</strong> directly from the RHDP portal.</p>
-</li>
-</ul>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Objective</dt>
+<dd>
+<p>Understand MLFlow&#8217;s architecture and how it integrates with Red Hat OpenShift AI.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Not started yet.
+</td>
+</tr>
+</table>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_how_to_access_your_lab_via_the_rhdp_portal"><a class="anchor" href="#_how_to_access_your_lab_via_the_rhdp_portal"></a>How to Access Your Lab via the RHDP Portal:</h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>On the RHDP portal, <strong>click</strong> on the <strong>Services</strong> option in the left-hand menu.</p>
-</li>
-<li>
-<p><strong>Select your lab</strong> from the listings on the right-hand side of the page to view access details.</p>
-</li>
-</ol>
+</div>
+<div class="sect1">
+<h2 id="_mlflow_components"><a class="anchor" href="#_mlflow_components"></a>MLFlow Components</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Lorem ipsum</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="RHDP-Portal-Links"><a class="anchor" href="#RHDP-Portal-Links"></a>RHDP Portal Links</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>RedHat associates: <a href="https://demo.redhat.com/" target="_blank" rel="noopener">https://demo.redhat.com/</a></p>
-</li>
-<li>
-<p>RedHat partners: <a href="https://partner.demo.redhat.com/" target="_blank" rel="noopener">https://partner.demo.redhat.com/</a></p>
-</li>
-</ul>
 </div>
+<div class="sect1">
+<h2 id="_rhoai_integration"><a class="anchor" href="#_rhoai_integration"></a>RHOAI Integration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Lorem ipsum</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_development_vs_production_deployments"><a class="anchor" href="#_development_vs_production_deployments"></a>Development vs Production Deployments</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Lorem ipsum</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_whats_next"><a class="anchor" href="#_whats_next"></a>What&#8217;s Next</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now that you understand MLFlow&#8217;s architecture and integration with RHOAI, the next section provides hands-on experience deploying MLFlow in a development environment.</p>
 </div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="../index.html">Home</a></span>
-  <span class="next"><a href="../ch1-mlflow-rhoai/index.html">Understanding MLFlow and Red Hat OpenShift AI</a></span>
+  <span class="prev"><a href="index.html">Deploying MLFlow for Development</a></span>
+  <span class="next"><a href="s2-deploy-lab.html">Lab: Deploy MLFlow on Red Hat OpenShift AI</a></span>
 </nav>
 </article>
   </div>
