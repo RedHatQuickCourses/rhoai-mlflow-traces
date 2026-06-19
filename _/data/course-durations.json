@@ -1,6 +1,6 @@
 {
-  "totalSeconds": 500,
-  "pageCount": 12,
+  "totalSeconds": 619,
+  "pageCount": 13,
   "pages": [
     {
       "module": "ROOT",
@@ -10,7 +10,7 @@
     {
       "module": "LABENV",
       "page": "index.adoc",
-      "seconds": 16
+      "seconds": 33
     },
     {
       "module": "ch1-mlflow-rhoai",
@@ -26,6 +26,11 @@
       "module": "ch1-mlflow-rhoai",
       "page": "s2-concepts-quiz.adoc",
       "seconds": 26
+    },
+    {
+      "module": "ch1-mlflow-rhoai",
+      "page": "s3-explore-rhoai-lab.adoc",
+      "seconds": 102
     },
     {
       "module": "ch2-deploy-mlflow",
