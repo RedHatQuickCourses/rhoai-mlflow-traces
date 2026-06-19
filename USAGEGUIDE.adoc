@@ -1,0 +1,145 @@
+= USAGE GUIDE
+
+Above is example of top level heading. This is referenced for navigation (previous/next) of the pages in rendered training content.
+
+Use this page (USAGEGUIDE.adoc source file) as reference of the syntax for content drafting.
+
+On published HTML pages, an *estimated time* appears below the lesson title automatically.
+It combines reading time for the page text (at 200 words per minute) with the duration of any embedded audio and video.
+No author markup is required for local media in `modules/chapterN/images/`.
+
+If the page includes any `audio::` macro, estimated time uses *whichever is longer*: full reading time for the page text, or the *combined* duration of all audio clips—not both. Video time is always added on top.
+
+For external audio, video files, or YouTube/Vimeo embeds where duration cannot be detected automatically, set the length in seconds:
+
+[source,asciidoc]
+----
+audio::https://example.com/lecture.mp3[role=media-seconds-120]
+video::VIDEO_ID[youtube,role=media-seconds-600]
+----
+
+You can also use the `end` attribute when you know the clip length: `audio::url[end=90]`.
+
+See link:./modules/chapter1/pages/images.adoc[Chapter 1 — Images demo] for examples.
+
+The home page (*modules/ROOT/pages/index.adoc*) shows the *total estimated duration* for the course (sum of all pages listed in navigation).
+Run `npm run build` to refresh that total after you add or change content.
+
+== Second level heading
+
+Example use of hyperlink to external website with https://docs.asciidoctor.org/asciidoc/latest/[click here,window=_blank] option.
+
+=== Third level heading
+
+Normal text.
+Write the text with *Bold* or _Italic_, font.
+You may also use `commands in back ticks` as per requirement.
+
+Add the text with gap of a line for new paragraph.
+
+You may also use hard line breaks  +
+for new line in single paragraph.
+
+To render an image on the page, copy required image in `modules/chapterN/images` directory and reference it as below
+----
+image::sample-image.png[]
+----
+
+Example:
+
+image::sample-image.png[]
+
+. Numbered Step 1 
+. Numbered Step 2
++
+Code block for command with copy button
++
+[source,console,subs="verbatim,quotes"]
+----
+$ *command 1*
+command 1 output for user reference
+$ *command 2*
+command 2 output
+$ *command 3*
+----
++
+Only commands are picked in the copy buffer without any formating string or output. Multiple commands are combined with ampersand (&&)
++
+. Numbered Step 3
+  .. Sub Numbered Step 1
+  .. Sub Numbered Step 2
+
+
+* Bullet list item 1
+* Bullet list item 2
+  ** Sub Bullet list item 1
+  ** Sub Bullet list item 2
+* Bullet list item 3
+
+NOTE: Highlighted text for note Callout
+
+WARNING: Highlighted text for warning Callout
+
+=== Collapsible blocks (Deep dive / Hint)
+
+Use `[%collapsible]` on an *example* block so optional detail stays collapsed until the learner expands it. A title line starting with a dot (`.Title`) sets the clickable label (summary).
+
+[source,asciidoc]
+----
+.Hint
+[%collapsible]
+====
+Optional extra detail for curious readers.
+====
+
+.Deep dive: why this works
+[%collapsible]
+====
+Longer explanation, lists, or source blocks go here.
+====
+----
+
+To start expanded instead of collapsed, use `[%collapsible%open]` on the example block.
+
+Use *NOTE* and *WARNING* for short callouts everyone should read. Use collapsible blocks for longer hints or deep dives that would clutter the main lesson path.
+
+Collapsible behavior applies to the **HTML site** from Antora. PDF output from `asciidoctor-pdf` is not interactive; readers typically see all block content without expand/collapse.
+
+Live examples: link:./modules/chapter1/pages/collapsible-demo.adoc[Collapsible blocks demo].
+
+Table without header row:
+
+[cols="1,1"]
+|===
+|Cell in column 1, row 1
+|Cell in column 2, row 1
+
+|Cell in column 1, row 2
+|Cell in column 2, row 2
+
+|Cell in column 1, row 3
+|Cell in column 2, row 3
+|===
+
+Table with header row:
+
+[cols="2*",options="header"]
+|===
+|Column 1, header row
+|Column 2, header row
+
+|Cell in column 1, row 2
+|Cell in column 2, row 2
+
+|Cell in column 1, row 3
+|Cell in column 2, row 3
+|===
+
+**SEE ALSO**
+
+- link:./README.md[Getting started with a new training content repository]
+- link:./DEVSPACE.md[Development using devspace]
+- link:./modules/chapter1/pages/tabs-demo.adoc[Tabbed code blocks (Asciidoctor Tabs demo)]
+- link:./modules/chapter1/pages/collapsible-demo.adoc[Collapsible blocks (Deep dive / Hint demo)]
+- link:./modules/chapter1/pages/images.adoc[Images, audio, and video (estimated time demo)]
+

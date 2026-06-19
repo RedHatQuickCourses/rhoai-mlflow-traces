@@ -1,0 +1,18 @@
+site:
+  title: FIXME Course Title
+  start_page: REPLACEREPONAME::index.adoc
+
+content:
+  sources:
+  - url: ./
+
+asciidoc:
+  extensions:
+  - '@asciidoctor/tabs'
+  attributes:
+    page-pagination: true
+
+ui:
+  bundle:
+    url: ./ui-bundle/ui-bundle.zip
+  supplemental_files: ./supplemental-ui
