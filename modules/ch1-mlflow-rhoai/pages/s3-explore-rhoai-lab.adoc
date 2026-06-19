@@ -1,0 +1,74 @@
+= Lab: Explore the RHOAI Instance
+
+Objective::
+
+Explore the predeployed Red Hat OpenShift AI instance to familiarize yourself with its configuration and with the new Gen AI Studio feature from 3.x releases.
+
+== Before you begin
+
+You need access to the predeployed Red Hat OpenShift AI (RHOAI) instance provided in your lab environment. Ensure you have:
+
+* Access credentials for the RHOAI dashboard
+* A web browser to access the RHOAI web console
+
+== Instructions
+
+In this lab, you will log in to the RHOAI dashboard and explore its main features and components to understand the platform's capabilities.
+
+1. Access the RHOAI Dashboard.
+
+.. Navigate to the RHOAI dashboard URL of your demo environment.
+
+.. Log in using the credentials provided for your demo environment.
+
+2. Explore the precreated project.
++
+Your RHOAI instance contains a model which is already deployed in a regular project named `my-first-model` -- which is *not* an AI project.
++
+That model takes up all GPU capacity available to your RHOAI instance, so any change to the model deployment requires that you stop it and restart after making changes.
+
+.. On the left pane, click menu:AI hub[Models] and select the menu:Deployments[] tab.
+
+.. On the *Project* combo box, type `my` and select `my-first-model`.
++
+WARNING: Depending on the current page of the RHOAI daskboard, it may be necessary to first select `All projects` before you can search and select the `my-first-model` project.
+
+.. Verify that there is a model deployment named `llama-32-3b-instruct` and its status is *Ready*. 
+
+3. Try the model with an Gen AI Studio Playground.
+
+.. On the left pane, click menu:Gen AI studio[Playground]. 
+
+.. On the *Project* combo box, type `my` and select `my-first-model`.
++
+WARNING: The project previously selected in one page of the RHOAI dashboard may not be the current selection in another page of the RHOAI dashboard.
+
+.. If you do not see a *Configure* pane, click menu:Settings.
+On the *Configure* pane, select the *Model* tab and verify that the selected model is named `llama-32-3b-instruct`.
+Ignore any prefix to the model name.
+
+.. On the right pane, click the *Send a message...* text and type a prompt, for example `What is RHEL?`
+
+.. You may get different answers, if you attempt the same prompt again, but they should be all correct and reasonable.
+
+4. Verify that there are no RHOAI dasbboard pages related to MLFlow.
+
+.. On the left pane, expand the menu:Gen AI studio[] cathegory, which contains entries named menu:Playground[] and menu:AI asset endpoints[]. 
++
+After you enable MLFlow, there will be additional entries here.
+
+.. Click menu:Gen AI studio[AI asset endpoints] and select the menu:MCP servers[] tab.
++
+Verify that there are no MCP servers configured for use by Gen AI studio playgrounds.
+
+.. On the left pane, expand the menu:Develop & train[] cathegory, which contains entries named menu:Feture store[], menu:Pipelines[], menu:Jobs[], and menu:Evaluations[].
+
+.. On the top right, click the menu:Applications[] icon, which is close to the menu:Info[] (?) icon, and verify that there is *not* an entry named menu:MLFlow[].
+
+After completing these steps, you have verified that you have a functional RHOAI instance with a pre-deployed model and that you can submit prompts to the model using an RHOAI playground. 
+
+In addition, you have also verified that MLflow is not installed on your RHOAI instance.
+
+== What's next
+
+In the next chapter, you will learn how to deploy MLflow on Red Hat OpenShift AI to enable experiment tracking and model management capabilities.
