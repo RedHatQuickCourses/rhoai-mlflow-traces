@@ -1,5 +1,5 @@
 {
-  "totalSeconds": 505,
+  "totalSeconds": 517,
   "pageCount": 12,
   "pages": [
     {
@@ -10,7 +10,7 @@
     {
       "module": "LABENV",
       "page": "index.adoc",
-      "seconds": 21
+      "seconds": 33
     },
     {
       "module": "ch1-mlflow-rhoai",

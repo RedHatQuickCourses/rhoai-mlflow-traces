@@ -6,7 +6,7 @@
 . Search for the catalog entry: `Red Hat Openshift AI 3`
 . Click the catalog entry in the search results.
 . On the catalog page, click menu:Order[].
-. Fill out the required details in the order form.
+. Fill out the required details in the order form and accept the defaults for other fields.
 You can use the smaller AWS instance type.
 . Review the warning at the bottom of the form and check: +
 menu:I confirm that I understand the above warnings[].
@@ -17,6 +17,14 @@ menu:I confirm that I understand the above warnings[].
 - You can also retrieve access information directly from the RHDP portal.
 - This lab uses GPU-enabled instances on AWS, which are in short supply.
 It require multiple attempts to provision or restart. 
+
+[WARNING]
+====
+Do *not* follow the instructions/showroom from the demo catalog entry.
+This course reuses that demo but does not require that you perform any of its activities.
+
+You will use the preprovisioned instance of Red Hat OpenShift AI as-is, and deploy MLFlow and sample agentic applications as part of this course activities.
+====
 
 === How to Access Your Lab via the RHDP Portal:
 . On the RHDP portal, click menu:Services[] option in the left-hand menu.
