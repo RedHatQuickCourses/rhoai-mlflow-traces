@@ -1,0 +1,7 @@
+= Collecting Traces from Agentic Applications
+
+Goal::
+
+Collect traces from an agentic application using MLFlow
+
+This chapter teaches you how to use the MLFlow SDK to collect traces from agentic applications. You'll learn why tracing is essential for troubleshooting agents, how to organize traces in experiments and runs, and gain hands-on experience adding MLFlow tracing to your code.

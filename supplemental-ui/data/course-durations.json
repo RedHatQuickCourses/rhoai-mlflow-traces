@@ -1,81 +1,66 @@
 {
-  "totalSeconds": 422,
-  "pageCount": 15,
+  "totalSeconds": 500,
+  "pageCount": 12,
   "pages": [
     {
       "module": "ROOT",
       "page": "index.adoc",
-      "seconds": 15
+      "seconds": 100
     },
     {
       "module": "LABENV",
       "page": "index.adoc",
-      "seconds": 4
+      "seconds": 16
     },
     {
-      "module": "chapter1",
+      "module": "ch1-mlflow-rhoai",
       "page": "index.adoc",
-      "seconds": 9
+      "seconds": 15
     },
     {
-      "module": "chapter1",
-      "page": "section1.adoc",
-      "seconds": 9
+      "module": "ch1-mlflow-rhoai",
+      "page": "s1-introduction.adoc",
+      "seconds": 45
     },
     {
-      "module": "chapter1",
-      "page": "section2.adoc",
-      "seconds": 9
+      "module": "ch1-mlflow-rhoai",
+      "page": "s2-concepts-quiz.adoc",
+      "seconds": 26
     },
     {
-      "module": "chapter1",
-      "page": "section3.adoc",
-      "seconds": 9
-    },
-    {
-      "module": "chapter1",
-      "page": "tabs-demo.adoc",
-      "seconds": 20
-    },
-    {
-      "module": "chapter1",
-      "page": "collapsible-demo.adoc",
-      "seconds": 36
-    },
-    {
-      "module": "chapter1",
-      "page": "images.adoc",
-      "seconds": 265
-    },
-    {
-      "module": "chapter2",
+      "module": "ch2-deploy-mlflow",
       "page": "index.adoc",
-      "seconds": 9
+      "seconds": 13
     },
     {
-      "module": "chapter2",
-      "page": "section1.adoc",
-      "seconds": 9
+      "module": "ch2-deploy-mlflow",
+      "page": "s1-architecture.adoc",
+      "seconds": 38
     },
     {
-      "module": "chapter3",
+      "module": "ch2-deploy-mlflow",
+      "page": "s2-deploy-lab.adoc",
+      "seconds": 65
+    },
+    {
+      "module": "ch3-collect-traces",
       "page": "index.adoc",
-      "seconds": 9
+      "seconds": 16
     },
     {
-      "module": "chapter3",
-      "page": "section1.adoc",
-      "seconds": 9
+      "module": "ch3-collect-traces",
+      "page": "s1-tracing-concepts.adoc",
+      "seconds": 29
     },
     {
-      "module": "chapter3",
-      "page": "section2.adoc",
-      "seconds": 9
+      "module": "ch3-collect-traces",
+      "page": "s2-agent-traces-lab.adoc",
+      "seconds": 71
     },
     {
-      "module": "appendix",
-      "page": "appendix.adoc",
-      "seconds": 1
+      "module": "ch3-collect-traces",
+      "page": "s3-mcp-tools-lab.adoc",
+      "seconds": 66
     }
   ]
 }

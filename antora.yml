@@ -1,10 +1,9 @@
 name: rhoai-mlflow-traces
-title: FIXME Course Title
+title: Agent Traces with MLFLow and Red Hat OpenShift AI
 version: 1
 nav:
 - modules/ROOT/nav.adoc
 - modules/LABENV/nav.adoc
-- modules/chapter1/nav.adoc
-- modules/chapter2/nav.adoc
-- modules/chapter3/nav.adoc
-- modules/appendix/nav.adoc
+- modules/ch1-mlflow-rhoai/nav.adoc
+- modules/ch2-deploy-mlflow/nav.adoc
+- modules/ch3-collect-traces/nav.adoc

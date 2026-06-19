@@ -1,0 +1,31 @@
+:time_estimate: 5
+
+= Quiz: MLFlow Concepts Review
+
+_Estimated reading time: *{time_estimate} minutes*._
+
+Objective::
+
+Verify your understanding of MLFlow concepts and terminology.
+
+== Interactive Assessment
+
+////
+
+Use this to refers to an single-page HTML application 's2-assessment.html' stored in the 'attachments' directory of the same chapter
+
+++++
+<iframe type="text/javascript" src='_attachments/s2-assessment.html' style="width: 768px; height: 732px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe>
+++++
+
+Else write questions and answers as nested lists.
+
+////
+
+== What's next
+
+Now that you've verified your understanding of MLFlow concepts, the next chapter explores how to deploy MLFlow in your RHOAI environment for development purposes.
+
+////
+MLFlow concepts review
+////

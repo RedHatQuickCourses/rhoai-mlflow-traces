@@ -1,0 +1,57 @@
+:time_estimate: 5
+
+= Lab: Deploy MLFlow on Red Hat OpenShift AI
+
+_Estimated reading time: *{time_estimate} minutes*._
+
+Objective::
+
+Deploy and verify a development MLFlow instance in Red Hat OpenShift AI.
+
+WARNING: Not started yet.
+
+== Before you begin
+
+Describe requirements, such as customer portal accounts, Red Hat Developer free sub, already configured machines, access to container registries, etc.
+
+== Instructions
+
+High-level summary of what you will perform in this lab, but more detailed than the objective.
+
+1. Explore the demo environment and verify RHOAI features.
+
+.. Something to do, using a graphical or web UI.
+Click menu:Save As[] to save your work.
+
+.. More things to do
+
+2. Enable MLFlow by editing the DSC custom resource.
+
+.. Something to do, using a shell.
++
+[source,console,subs="verbatim,quotes"]
+--
+$ *command --options fixed-arguments _variable-arguments_*
+output of the command
+highlight *something* in the output
+--
+
+
+.. More things to do.
+Press kbd:[Ctrl+C] to interrupt.
+
+Summary of what you accomplished.
+
+== What's next
+
+Now that you have a working MLFlow deployment, the next chapter explores how to collect traces from agentic applications using the MLFlow SDK.
+
+////
+Deploy MLFlow on Red Hat OpenShift AI for development
+Quick exploration of the provided demo environment: enabled RHOAI features and predeployed projects and models
+Sanity check using either a playground or a workbench
+Edit the DSC resource to enable MLFlow
+Configure MLFlow with a local SQL lite database and  file-based storage using a PVC and the default storage class.
+Verify the healthy of the MLFlow server deployment
+Create an experiment using the RHOAI web UI to prove that the MLFlow server is functional
+////

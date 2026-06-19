@@ -1,5 +1,5 @@
 site:
-  title: FIXME Course Title
+  title: Agent Traces with MLFLow and Red Hat OpenShift AI
   start_page: rhoai-mlflow-traces::index.adoc
 
 content:

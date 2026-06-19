@@ -1,0 +1,39 @@
+:time_estimate: 5
+
+= Tracing Agentic Applications
+
+_Estimated reading time: *{time_estimate} minutes*._
+
+Objective::
+
+Understand why tracing is essential for agentic applications and how MLFlow organizes trace data.
+
+WARNING: Not started yet.
+
+== Why Developers Need Traces
+
+Lorem ipsum
+
+== MLFlow SDK and Trace Calls
+
+Lorem ipsum
+
+== Experiments and Runs
+
+Lorem ipsum
+
+== Significant Events in Traces
+
+Lorem ipsum
+
+== What's Next
+
+Now that you understand tracing concepts, the next section provides hands-on experience modifying an agent to record traces using the MLFlow SDK.
+
+////
+Tracing agentic applications
+Why developers need traces to troubleshoot the behavior and failure modes of their agents
+The MLFlow SDK and its trace calls
+Organization of traces in experiments and runs
+Significant events in traces, such as tool invocations.
+////

@@ -1,0 +1,56 @@
+:time_estimate: 5
+
+= Lab: Modify an Agent to Record Traces
+
+_Estimated reading time: *{time_estimate} minutes*._
+
+Objective::
+
+Add MLFlow tracing to an agentic application and visualize the generated traces.
+
+WARNING: Not started yet.
+
+== Before you begin
+
+Describe requirements, such as customer portal accounts, Red Hat Developer free sub, already configured machines, access to container registries, etc.
+
+== Instructions
+
+High-level summary of what you will perform in this lab, but more detailed than the objective.
+
+1. Prototype an agent using the GenAI playground.
+
+.. Something to do, using a graphical or web UI.
+Click menu:Save As[] to save your work.
+
+.. More things to do
+
+2. Generate code and add MLFlow tracing calls.
+
+.. Something to do, using a shell.
++
+[source,console,subs="verbatim,quotes"]
+--
+$ *command --options fixed-arguments _variable-arguments_*
+output of the command
+highlight *something* in the output
+--
+
+
+.. More things to do.
+Press kbd:[Ctrl+C] to interrupt.
+
+Summary of what you accomplished.
+
+== What's next
+
+Now that you've added basic tracing to an agent, the next section explores how to trace MCP tool calls to capture more detailed information about agent behavior.
+
+////
+Modify an agent to record traces
+Prototype a minimal agentic application using the GenAI playground. Experiment with parameters such as temperature
+Generate code from the playground and paste into a workbench, make required changes so it works using the predeployed model
+Add MLFlow calls to the agent and visualize its generated experiments, runs, and traces
+Show how MLFlow records prompts and parameters, enabling reproduction of good and bad runs.
+Tentative: add RAG functionality to the agent, so the traces have something else. Should we also teach the MLFlow prompt repositories, and make our agent retrieve system and user prompts from it?
+////

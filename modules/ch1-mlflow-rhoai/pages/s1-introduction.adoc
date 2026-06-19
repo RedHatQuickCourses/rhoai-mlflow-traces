@@ -1,0 +1,34 @@
+:time_estimate: 5
+
+= Introduction to MLFlow in Red Hat OpenShift AI
+
+_Estimated reading time: *{time_estimate} minutes*._
+
+Objective::
+
+Understand MLFlow's features for agentic applications and how it integrates with Red Hat OpenShift AI.
+
+WARNING: Not started yet.
+
+== MLFlow Features in RHOAI
+
+Lorem ipsum
+
+== Focus on Generative AI Applications
+
+Lorem ipsum
+
+== MLFlow Experiments
+
+Lorem ipsum
+
+== What's Next
+
+Now that you understand MLFlow's role in RHOAI and agentic applications, the next section provides a quiz to verify your understanding of key MLFlow concepts.
+
+////
+Introduction to MLFlow in Red Hat OpenShift AI
+Summary of MLFlow features supported or recommended in an RHOAI instance. Not all of it MLFlow is supported by Red Hat, and some of its functionality is better provided by components of RHOAI other than MLFlow
+Focus on MLFlow features for generative AI applications. Mention that MLFlow also offers features for predictive AI and generic machine learning but they are out of scope for this course.
+Quick introduction to the concept of experiments in MLFlow and how it applies to agentic application development.
+////

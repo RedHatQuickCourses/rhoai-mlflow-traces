@@ -1,0 +1,56 @@
+:time_estimate: 5
+
+= Lab: Trace MCP Tool Calls from an Agent
+
+_Estimated reading time: *{time_estimate} minutes*._
+
+Objective::
+
+Deploy an MCP server and capture its tool invocations in MLFlow traces.
+
+WARNING: Not started yet.
+
+== Before you begin
+
+Describe requirements, such as customer portal accounts, Red Hat Developer free sub, already configured machines, access to container registries, etc.
+
+== Instructions
+
+High-level summary of what you will perform in this lab, but more detailed than the objective.
+
+1. Deploy an MCP server.
+
+.. Something to do, using a graphical or web UI.
+Click menu:Save As[] to save your work.
+
+.. More things to do
+
+2. Add the MCP server to your agentic application.
+
+.. Something to do, using a shell.
++
+[source,console,subs="verbatim,quotes"]
+--
+$ *command --options fixed-arguments _variable-arguments_*
+output of the command
+highlight *something* in the output
+--
+
+
+.. More things to do.
+Press kbd:[Ctrl+C] to interrupt.
+
+Summary of what you accomplished.
+
+== What's next
+
+Congratulations! You've completed this course and learned how to deploy MLFlow, collect traces from agentic applications, and visualize trace data. You can now apply these skills to troubleshoot and improve your own agentic applications.
+
+////
+Trace MCP tool calls from an agent
+Deploy an MCP server, such as the OpenShift MCP or the Red Hat Search MCP. Any other MCP would do, but let's take the opportunity to feature MCP servers from Red Hat.
+Validate the MCP server deployment using the playground.
+Add the MCP server to the agentic application.
+Inspect runs and traces which include good and bad MCP tool invocations
+Maybe move RAG into this lab, or make RAG its own stand-alone lab?
+////

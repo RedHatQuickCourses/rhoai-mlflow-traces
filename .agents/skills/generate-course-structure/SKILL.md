@@ -15,7 +15,7 @@ Generate a structured Antora course from the course design document by following
 1. **Verify course design document exists**
    - Check that `prompts/course-design.md` exists
    - If missing, inform the user and stop
-   - If watch mode is active, stop its background tasks.
+   - Inform the user to stop watch mode, if it is active, and restart it afterwards.
 
 2. **Parse the course design table**
    - Locate the "COURSE DESIGN" heading
@@ -183,10 +183,9 @@ For each section under a learning objective:
       * `section2*.adoc`
       * `section3*.adoc`
 
-14. **Offer to start watch mode**
-   - Ask the user if they want to start watch mode
-   - If yes, start both `npm run watch:adoc` and `npm run serve` as background tasks
-   - Inform the user that watch mode is active and the course can be previewed in a browser
+14. **Suggest watch mode**
+   - Suggest starting watch mode by running `npm run watch:adoc` and `npm run serve` on their own terminals.
+   - Inform the user that Claude cannot reliabily manager watch mode processes as background tasks.
 
 ## Edge Cases
 

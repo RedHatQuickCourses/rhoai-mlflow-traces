@@ -1,27 +1,56 @@
-= An Example Quick Course
+= Agent Traces with MLFlow and Red Hat OpenShift AI
 :navtitle: Home
 
-== Introduction
+== Goal
 
-Course Title: Course title FIXME
+This course teaches how to deploy MLFlow, as included with Red Hat OpenShift AI 3.4; How to collect traces of an agentic application, using the MLFlow SDK with Python; and how to visualize those traces using the Red Hat OpenShift AI web interface.
 
-Description:
-Course description FIXME
+This course is intended to require learners between 4 hours to one working day to complete.
 
-Duration: pass:[<span class="course-total-duration" aria-live="polite">…</span>]
+WARNING: Work In Progress
 
 == Objectives
 
 On completing this course, you should be able to:
 
-* Observable, measurable objective...
-* Observable, measurable objective...
-* Observable, measurable objective...
+* Understand how MLFlow relates to agentic applications and to Red Hat OpenShift AI.
+
+* Deploy a development environment with MLFlow
+
+* Collect traces from an agentic application using MLFlow
+
+== Audience
+
+* Software developers working on agentic applications and agentic harnesses.
+
+* Red Hat and Partner roles that perform demonstrations, PoC and PoV of MLFlow with Red Hat OpenShift AI, such as Solutions Architects.
+
+* Red Hat and Partner roles that implement and support MLFlow with Red Hat OpenShift AI, such as Services Consultants, Technical Account Managers, and Customer Support Engineers.
 
 == Prerequisites
 
-This course assumes that you have the following prior experience:
+This course assumes that you have the following experience:
 
-* Course or experience...
-* Course or experience...
-* Course or experience...
+* Familiarity with generative AI and agentic application concepts.
+
+* Familiarity with the basic operation of Red Hat OpenShift AI.
+
+* Python programming skills are recommended but not required, because this training provides sample code which is ready to run.
+
+== Classroom environment
+
+The demo catalog entry https://catalog.demo.redhat.com/catalog/babylon-catalog-prod?item=babylon-catalog-prod/published.openshift-ai-v3.prod[Red Hat OpenShift AI 3.4^] provides an SNO OpenShift cluster, backed by an AWS instance with a single GPU, with a predeployed llama-32-3b-instruct model which is capable of making tool calls.
+
+This course uses that demo entry as-is, and any additional components which are required by either MLFlow itself or any of the course activities will be configured by learners, as part of course activities, by using sample Python code and Kubernetes manifests provided in a public Git repository.
+
+== Other sources of information
+
+For documentation about MLFlow with Red Hat OpenShift AI, see the https://docs.redhat.com/en/documentation/red_hat_openshift_ai_self-managed/3.4[Red Hat OpenShift AI product documentation^].
+
+For upstream MLFlow documentation, see the https://mlflow.org/docs/latest/index.html[MLFlow project documentation^].
+
+== Author
+
+*Fernando Lozano* +
+Training Content Architect +
+Red Hat - Product Portfolio Marketing & Learning

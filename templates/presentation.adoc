@@ -1,0 +1,23 @@
+:time_estimate: 5
+
+= Section Title
+
+_Estimated reading time: *{time_estimate} minutes*._
+
+Objective::
+
+Section objective.
+
+WARNING: Not started  yet.
+
+== Heading
+
+Lorem ipsum
+
+== Another heading
+
+Lorem ipsum
+
+== What's Next
+
+In the next section/chapter, you will... Summary of next section or chapter, and how it connects to what you just learned.

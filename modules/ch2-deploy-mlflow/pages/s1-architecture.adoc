@@ -1,0 +1,36 @@
+:time_estimate: 5
+
+= MLFlow Architecture and RHOAI Integration
+
+_Estimated reading time: *{time_estimate} minutes*._
+
+Objective::
+
+Understand MLFlow's architecture and how it integrates with Red Hat OpenShift AI.
+
+WARNING: Not started yet.
+
+== MLFlow Components
+
+Lorem ipsum
+
+== RHOAI Integration
+
+Lorem ipsum
+
+== Development vs Production Deployments
+
+Lorem ipsum
+
+== What's Next
+
+Now that you understand MLFlow's architecture and integration with RHOAI, the next section provides hands-on experience deploying MLFlow in a development environment.
+
+////
+How to deploy MLFlow in RHOAI and how to access it from code and web UIs.
+Architecture of MLFlow: server, web UI, and SDK.
+MLFlow integration with RHOAI, highlighting RHOAI resources, authentication, RBAC, and web UI.
+How to enable MLFlow using the DSC custom resource
+How to access an MLFlow server from inside and from outside an RHOAI instance and its OpenShift cluster
+Overview of how a production-level deployment of MLFlow differs from a development deployment.
+////
