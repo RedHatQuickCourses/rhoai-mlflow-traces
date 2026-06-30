@@ -169,7 +169,7 @@
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-Not started yet.
+Work In Progress
 </td>
 </tr>
 </table>
@@ -180,7 +180,20 @@ Not started yet.
 <h2 id="_before_you_begin"><a class="anchor" href="#_before_you_begin"></a>Before you begin</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Describe requirements, such as customer portal accounts, Red Hat Developer free sub, already configured machines, access to container registries, etc.</p>
+<p>You need access to the predeployed Red Hat OpenShift AI (RHOAI) instance provided in your lab environment. Ensure you have:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Access credentials for the RHOAI dashboard</p>
+</li>
+<li>
+<p>A web browser to access the RHOAI dashboard</p>
+</li>
+<li>
+<p>Access credentials for the OpenShift web console</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -188,41 +201,207 @@ Not started yet.
 <h2 id="_instructions"><a class="anchor" href="#_instructions"></a>Instructions</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>High-level summary of what you will perform in this lab, but more detailed than the objective.</p>
+<p>You will enable MLFlow on your Data Science Cluster singleton resource and deploy a development instance of the MLFlow server.
+Then you will create a simple Jupyter notebook to test connectivity to the MLFlow server by means of the MLFlow SDK for Python.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Explore the demo environment and verify RHOAI features.</p>
+<p>Enable MLFlow on RHOAI.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Something to do, using a graphical or web UI.
-Click <b class="menuref">Save As</b> to save your work.</p>
+<p>Open the OpenShift web console and log in as a user with <code>cluster-admin</code> rigts.</p>
 </li>
 <li>
-<p>More things to do</p>
+<p>In the left navigation pane, select <span class="menuseq"><b class="menu">Ecossystem</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Installed Operators</b></span>.
+Then click <b class="menuref">Red Hat OpenShift AI</b>.</p>
+</li>
+<li>
+<p>In the Red Hat OpenShift AI operator page, click the <b class="menuref">Data Science Cluster</b> tab.
+Then click the <b class="menuref">default-dsc</b> resource.</p>
+</li>
+<li>
+<p>In the <code>default-dsc</code> resource page, select the <b class="menuref">YAML</b> tab.
+In the text editor, search for the <code>spec.components</code> field, and set its <code>mlflowoperator.managementState</code> field to <code>true</code>.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">...
+spec:
+  components:
+    <strong>mlflowoperator:</strong>
+      <strong>managementState: Managed</strong>
+    kserve:
+      managementState: Managed
+      rawDeploymentServiceConfig: Headless
+...</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Click <b class="menuref">Save</b> and wait until you see a confirmation message similar to:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">alert:default-dsc has been updated to version 1186240</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>If you get an error message, fix the errors on your YAML and try saving again.</p>
+</li>
+<li>
+<p>Alternatively, you could run the following <code>oc patch</code> command, which is provided by the <a href="https://docs.redhat.com/en/documentation/red_hat_openshift_ai_self-managed/3.4/html/working_with_mlflow/installing-mlflow_mlflow#mlflow-configuration-parameters_mlflow" target="_blank" rel="noopener">RHOAI product docs</a>:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ <strong>oc patch datasciencecluster default-dsc --type=merge \
+-p '{"spec":{"components":{"mlflowoperator":{"managementState":"Managed"}}}}'</strong>
+datasciencecluster.datasciencecluster.opendatahub.io/default-dsc patched</code></pre>
+</div>
+</div>
 </li>
 </ol>
 </div>
 </li>
 <li>
-<p>Enable MLFlow by editing the DSC custom resource.</p>
+<p>Configure your MLFlow instance.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Something to do, using a shell.</p>
+<p>In the left navigation pane, select <span class="menuseq"><b class="menu">Home</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">API Explorer</b></span>.
+Then type <code>MLflow</code> in the search field.
+You will see three resource types, click on <b class="menuref">MLflow</b>.</p>
+</li>
+<li>
+<p>In the MLflow Resource details page, select the <b class="menuref">Instances</b> tab and click <b class="menuref">Create MLflow</b>.</p>
+</li>
+<li>
+<p>In the YAML text editor, delete all of its sample contents and type the following, which corresponds to the example from <a href="https://docs.redhat.com/en/documentation/red_hat_openshift_ai_self-managed/3.4/html/working_with_mlflow/installing-mlflow_mlflow#mlflow-configuration-parameters_mlflow:" target="_blank" rel="noopener">Minimal development or test deployment</a> in product docs.</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ <strong>command --options fixed-arguments <em>variable-arguments</em></strong>
-output of the command
-highlight <strong>something</strong> in the output</code></pre>
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: mlflow.opendatahub.io/v1
+kind: MLflow
+metadata:
+  name: mlflow
+  namespace: redhat-ods-applications
+spec:
+  storage:
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 10Gi
+  backendStoreUri: "sqlite:////mlflow/mlflow.db"
+  artifactsDestination: "file:///mlflow/artifacts"
+  serveArtifacts: true</code></pre>
 </div>
 </div>
 </li>
 <li>
-<p>More things to do.
-Press <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>C</kbd></span> to interrupt.</p>
+<p>Click <b class="menuref">Create</b> and, in the MLflow details page, wait until the <code>Available</code> condition is <code>True</code> and the <code>Progressing</code> condition is <code>False</code>.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Verify MLFlow is available from RHOAI</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Open your RHOAI dash board.
+If it is already open, refresh your browser window.</p>
+</li>
+<li>
+<p>In the left navigation pane, expand <b class="menuref">Develop &amp; train</b>.
+Notice the new item named <b class="menuref">Experiments (mlflow)</b> and click it.</p>
+</li>
+<li>
+<p>In the Project combo box, type <code>my</code> and select the <code>my-first</code> model project.</p>
+</li>
+<li>
+<p>Click <b class="menuref">Create Experiment</b> and type <code>dummy experiment</code> as its name.</p>
+</li>
+<li>
+<p>Verify that you see the Experiments page for <code>dummy experiment</code> but there is no data on any of its pages, such as <b class="menuref">Traces</b>, <b class="menuref">Sessions</b>, or <b class="menuref">Prompts</b>.</p>
+</li>
+<li>
+<p>Creating an empty experiment is sufficient to prove that your MLflow instance can connect to its database and artifacts storage.</p>
+</li>
+<li>
+<p>You can, alternatively, open the upstream MLFlow web interface by clicking the applications menu, in the top navigation bar, close to the help icon, and selecting <b class="menuref">MLflow</b>.
+You should not need it: all funcionality you need for this course is available from the RHOAI dashboard.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Test connectivity to MLFlow from a workbench.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>In the left navigation pane, click <b class="menuref">Projects</b> and select <b class="menuref">All projects</b> in the projects combo box.
+Then type <code>my</code> in the filter by name field and click <code>my-first-project</code> in the list of projects.</p>
+</li>
+<li>
+<p>In the Projects page for <code>my-first-model</code>, select the <b class="menuref">Workbenches</b> tab and click menu:Create workbench.</p>
+</li>
+<li>
+<p>In the Create workbench page, type <code>test-mlflow</code> for the <strong>Name</strong> field and, in the Workbench image field, select the <code>Jupyter | Minimal | CPU</code> image.</p>
+</li>
+<li>
+<p>Leave all other fields with their default values and click <b class="menuref">Create workbench</b>.</p>
+</li>
+<li>
+<p>In the Workbenches list, wait until the row for the <code>test-mlflow</code> workench displays a <code>Ready</code> state and then click <b class="menuref">test-mlflow</b> to open its Jupyter Lab in a new browser tab.</p>
+</li>
+<li>
+<p>Click the <b class="menuref">Python 3.12</b> Notebook icon to create an empty notebook.</p>
+</li>
+<li>
+<p>In the first cell, type:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">! pip install mlflow[kubernetes]</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>In the top toolbar from the notebook, click the play icon, with the tooltip <b class="menuref">Run this cell and advance</b>.</p>
+</li>
+<li>
+<p>Wait until the MLFlow SDK and all its dependencies are loaded from the RHOAI index into the workbench.</p>
+</li>
+<li>
+<p>After the <code>pip</code> command finishes, type the following on the second cell of your notebook:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">import os
+import mlflow
+
+os.environ["MLFLOW_TRACKING_AUTH"]="kubernetes-namespaced"
+mlflow.set_tracking_uri("CHANGE_ME")
+
+print(mlflow.list_workspaces())</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Switch to your RHOAI dasbhoard page, which should still be in the Experiments page.
+Notice, close to the top left, the <b class="menuref">Launch MLflow</b> link.
+Right-click it and copy its URL to the clipboard.</p>
+</li>
+<li>
+<p>Switch to your jupyter lab browser tab and replace, in the second notebook cell, the <code>CHANGE_ME</code> text with the URL on your clipboard.</p>
+</li>
+<li>
+<p>In the top toolbar from the notebook, click the play icon.
+The results should an array containing a single <code>Workspace</code> object named <code>my-first-model</code>.</p>
+<div class="paragraph">
+<p>This notebook takes advantage of the integration between the RHOAI dashboard and its managed instance of the MLFlow server.
+It connects using the service account of the <code>test-mlflow</code> workbench, which is authorized to access the MLFlow workspace corresponding to its <code>my-first-model</code> project.</p>
+</div>
+</li>
+<li>
+<p>If you wish, you can remove the unnamed notebook, or if you prefer you can save itm, rename and reuse for the next activity.</p>
 </li>
 </ol>
 </div>
@@ -230,7 +409,7 @@ Press <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>C</kbd></span> to interrupt.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>Summary of what you accomplished.</p>
+<p>In this activity, you deployed a minimal MLFlow server, managed by RHOAI, and verified its accessible by both the RHOAI dashboard and Python code in a workbench.</p>
 </div>
 </div>
 </div>

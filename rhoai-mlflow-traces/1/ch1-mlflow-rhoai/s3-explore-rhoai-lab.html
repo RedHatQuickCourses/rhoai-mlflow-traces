@@ -159,6 +159,18 @@
 </dd>
 </dl>
 </div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Work In Progress
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -173,7 +185,7 @@
 <p>Access credentials for the RHOAI dashboard</p>
 </li>
 <li>
-<p>A web browser to access the RHOAI web console</p>
+<p>A web browser to access the RHOAI dashboard</p>
 </li>
 </ul>
 </div>
@@ -231,6 +243,10 @@ Depending on the current page of the RHOAI daskboard, it may be necessary to fir
 <li>
 <p>Verify that there is a model deployment named <code>llama-32-3b-instruct</code> and its status is <strong>Ready</strong>.</p>
 </li>
+<li>
+<p>Click <b class="menuref">View</b>, under the Endpoints column for the model row, and verify that it provides only an internal endpoint.
+This means the model cannot be accessed from outside of its OpenShift cluster, unless you change its model deployment.</p>
+</li>
 </ol>
 </div>
 </li>
@@ -265,7 +281,7 @@ Ignore any prefix to the model name.</p>
 <p>On the right pane, click the <strong>Send a message&#8230;&#8203;</strong> text and type a prompt, for example <code>What is RHEL?</code></p>
 </li>
 <li>
-<p>You may get different answers, if you attempt the same prompt again, but they should be all correct and reasonable.</p>
+<p>You may get different answers, if you attempt the same prompt again, but they would all be correct and reasonable, hopefully.</p>
 </li>
 </ol>
 </div>
@@ -298,10 +314,10 @@ Ignore any prefix to the model name.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>After completing these steps, you have verified that you have a functional RHOAI instance with a pre-deployed model and that you can submit prompts to the model using an RHOAI playground.</p>
+<p>After completing these steps, you have verified that you have a functional RHOAI instance with a pre-deployed model, which is available only for internal access, and that you can submit prompts to the model using an RHOAI playground.</p>
 </div>
 <div class="paragraph">
-<p>In addition, you have also verified that MLflow is not installed on your RHOAI instance.</p>
+<p>In addition, you have also verified that MLFlow is not installed on your RHOAI instance.</p>
 </div>
 </div>
 </div>
@@ -309,7 +325,7 @@ Ignore any prefix to the model name.</p>
 <h2 id="_whats_next"><a class="anchor" href="#_whats_next"></a>What&#8217;s next</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In the next chapter, you will learn how to deploy MLflow on Red Hat OpenShift AI to enable experiment tracking and model management capabilities.</p>
+<p>In the next chapter, you will learn how to deploy MLFlow on Red Hat OpenShift AI to enable experiment tracking and model management capabilities.</p>
 </div>
 </div>
 </div>

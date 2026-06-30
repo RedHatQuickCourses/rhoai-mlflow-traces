@@ -1,5 +1,5 @@
 {
-  "totalSeconds": 619,
+  "totalSeconds": 696,
   "pageCount": 13,
   "pages": [
     {
@@ -30,7 +30,7 @@
     {
       "module": "ch1-mlflow-rhoai",
       "page": "s3-explore-rhoai-lab.adoc",
-      "seconds": 102
+      "seconds": 111
     },
     {
       "module": "ch2-deploy-mlflow",
@@ -45,7 +45,7 @@
     {
       "module": "ch2-deploy-mlflow",
       "page": "s2-deploy-lab.adoc",
-      "seconds": 65
+      "seconds": 133
     },
     {
       "module": "ch3-collect-traces",
