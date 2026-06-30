@@ -170,7 +170,7 @@ It connects using the service account of the `test-mlflow` workbench, which is a
 
 .. If you wish, you can remove the unnamed notebook, or if you prefer you can save itm, rename and reuse for the next activity.
 
-In this activity, you deployed a minimal MLFlow server, managed by RHOAI, and verified its accessible by both the RHOAI dashboard and Python code in a workbench.
+After completing these steps, you have verified that you have a minmal but funcional MLFLow instance, to which you can connect from applications running inside your RHOAI cluster and store data from your experiments.
 
 == What's next
 
