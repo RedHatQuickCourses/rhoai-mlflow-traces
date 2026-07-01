@@ -1,14 +1,10 @@
-:time_estimate: 5
-
 = Lab: Modify an Agent to Record Traces
-
-_Estimated reading time: *{time_estimate} minutes*._
 
 Objective::
 
 Add MLFlow tracing to an agentic application and visualize the generated traces.
 
-WARNING: Work In Progress
+WARNING: Pending review
 
 == Before you begin
 

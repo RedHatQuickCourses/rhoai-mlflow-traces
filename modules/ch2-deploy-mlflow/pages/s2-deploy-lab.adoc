@@ -1,8 +1,4 @@
-:time_estimate: 5
-
 = Lab: Deploy MLFlow on Red Hat OpenShift AI
-
-_Estimated reading time: *{time_estimate} minutes*._
 
 Objective::
 
