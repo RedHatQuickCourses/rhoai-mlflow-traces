@@ -4,7 +4,7 @@ Objective::
 
 Explore the predeployed Red Hat OpenShift AI instance to familiarize yourself with its configuration and with the new Gen AI Studio feature from 3.x releases.
 
-WARNING: Work In Progress
+WARNING: Pending review
 
 == Before you begin
 

@@ -8,7 +8,7 @@ Objective::
 
 Deploy and verify a development instance of MLFlow in Red Hat OpenShift AI.
 
-WARNING: Work In Progress
+WARNING: Pending review
 
 == Before you begin
 
@@ -168,7 +168,8 @@ The results should an array containing a single `Workspace` object named `my-fir
 This notebook takes advantage of the integration between the RHOAI dashboard and its managed instance of the MLFlow server.
 It connects using the service account of the `test-mlflow` workbench, which is authorized to access the MLFlow workspace corresponding to its `my-first-model` project.
 
-.. If you wish, you can remove the unnamed notebook, or if you prefer you can save itm, rename and reuse for the next activity.
+.. If you wish, you can remove the unnamed notebook, or if you prefer you can save it, rename it to `test.ipynb`, and reuse for the next activity.
+Whatever your preference, do NOT delete the `test-mlflow` workbench because you will keep using it in the next activity.
 
 After completing these steps, you have verified that you have a minmal but funcional MLFLow instance, to which you can connect from applications running inside your RHOAI cluster and store data from your experiments.
 
