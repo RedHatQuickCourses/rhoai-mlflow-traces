@@ -1,22 +1,79 @@
-:time_estimate: 5
-
 = Lab: Trace MCP Tool Calls from an Agent
-
-_Estimated reading time: *{time_estimate} minutes*._
 
 Objective::
 
 Deploy an MCP server and capture its tool invocations in MLFlow traces.
 
-WARNING: Not started yet.
+WARNING: Work In Progress
 
 == Before you begin
 
-Describe requirements, such as customer portal accounts, Red Hat Developer free sub, already configured machines, access to container registries, etc.
+You need access to the predeployed Red Hat OpenShift AI (RHOAI) instance provided in your lab environment, which was already configured by the xref:ch2-deploy-mlflow:s2-deploy-lab.adoc[second lab] with a development instance of the MLFlow server.
+
+Ensure you have:
+
+* Access credentials and the URL for the RHOAI dashboard
+* A web browser to access the RHOAI dashboard
+* Access credentials and the URL for the OpenShift web console
 
 == Instructions
 
-High-level summary of what you will perform in this lab, but more detailed than the objective.
+You will deploy an MCP server, which allow instrospection of the state of an OpenShift cluster and its resources.
+Then, you will create a simple agent which uses that MCP server to assess the state of workloads running on your OpenShift cluster.
+Finally, you will interpret traces from the agent to assess if it is able to make efficient use of tools from the MCP server.
+
+As you perform this activity, you will alternate between three browser tabs:
+
+* The Red Hat OpenShift web console
+* The Red Hat OpenShift AI (RHOAI) dashboard
+* A Jupyter notebook from a RHOAI workbench.
+
+Once you open one of these tabs, keep it open because you may return to it later.
+
+1. Deploy the OpenShift MCP server with restricted privileges.
+
+.. TBD
+
+2. Test the MCP server using the Gen AI playground
+
+.. TBD
+
+3. Create a Jupyter notebook for your agentic application.
+
+.. TBD
+
+4. Insert the code for a simple agent into your notebook.
+
+.. TBD
+
+5. Run your agent to verify it is working.
+
+.. TBD
+
+6. Instrument your agent with MLFlow tracing.
+
+.. TBD
+
+7. Run your agent to verify it continue working after changes.
+
+.. TBD
+
+8. View the trace in the RHOAI dashboard.
+
+.. TBD
+
+9. Add sample prompts to the prompt registry.
+
+.. TBD
+
+10. Modify your agent to retrieve its prompts from the prompt registry.
+
+.. TBD
+
+11. Run your agent, to verify it continue working after changes, and view its traces.
+
+.. TBD
+
 
 1. Deploy an MCP server.
 
