@@ -150,9 +150,6 @@
 <h1 class="page">Lab: Trace MCP Tool Calls from an Agent</h1>
 <div id="preamble">
 <div class="sectionbody">
-<div class="paragraph">
-<p><em>Estimated reading time: <strong>5 minutes</strong>.</em></p>
-</div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Objective</dt>
@@ -168,7 +165,7 @@
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-Not started yet.
+Work In Progress
 </td>
 </tr>
 </table>
@@ -179,7 +176,23 @@ Not started yet.
 <h2 id="_before_you_begin"><a class="anchor" href="#_before_you_begin"></a>Before you begin</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Describe requirements, such as customer portal accounts, Red Hat Developer free sub, already configured machines, access to container registries, etc.</p>
+<p>You need access to the predeployed Red Hat OpenShift AI (RHOAI) instance provided in your lab environment, which was already configured by the <a href="../ch2-deploy-mlflow/s2-deploy-lab.html" class="xref page">second lab</a> with a development instance of the MLFlow server.</p>
+</div>
+<div class="paragraph">
+<p>Ensure you have:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Access credentials and the URL for the RHOAI dashboard</p>
+</li>
+<li>
+<p>A web browser to access the RHOAI dashboard</p>
+</li>
+<li>
+<p>Access credentials and the URL for the OpenShift web console</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -187,10 +200,141 @@ Not started yet.
 <h2 id="_instructions"><a class="anchor" href="#_instructions"></a>Instructions</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>High-level summary of what you will perform in this lab, but more detailed than the objective.</p>
+<p>You will deploy an MCP server, which allow instrospection of the state of an OpenShift cluster and its resources.
+Then, you will create a simple agent which uses that MCP server to assess the state of workloads running on your OpenShift cluster.
+Finally, you will interpret traces from the agent to assess if it is able to make efficient use of tools from the MCP server.</p>
+</div>
+<div class="paragraph">
+<p>As you perform this activity, you will alternate between three browser tabs:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The Red Hat OpenShift web console</p>
+</li>
+<li>
+<p>The Red Hat OpenShift AI (RHOAI) dashboard</p>
+</li>
+<li>
+<p>A Jupyter notebook from a RHOAI workbench.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Once you open one of these tabs, keep it open because you may return to it later.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
+<li>
+<p>Deploy the OpenShift MCP server with restricted privileges.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>TBD</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Test the MCP server using the Gen AI playground</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>TBD</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Create a Jupyter notebook for your agentic application.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>TBD</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Insert the code for a simple agent into your notebook.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>TBD</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Run your agent to verify it is working.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>TBD</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Instrument your agent with MLFlow tracing.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>TBD</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Run your agent to verify it continue working after changes.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>TBD</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>View the trace in the RHOAI dashboard.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>TBD</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Add sample prompts to the prompt registry.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>TBD</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Modify your agent to retrieve its prompts from the prompt registry.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>TBD</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Run your agent, to verify it continue working after changes, and view its traces.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>TBD</p>
+</li>
+</ol>
+</div>
+</li>
 <li>
 <p>Deploy an MCP server.</p>
 <div class="olist loweralpha">
