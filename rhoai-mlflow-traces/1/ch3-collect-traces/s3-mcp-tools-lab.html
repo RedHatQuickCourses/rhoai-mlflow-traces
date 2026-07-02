@@ -200,9 +200,9 @@ Work In Progress
 <h2 id="_instructions"><a class="anchor" href="#_instructions"></a>Instructions</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You will deploy an MCP server, which allow instrospection of the state of an OpenShift cluster and its resources.
+<p>You will deploy an MCP server which allow instrospection of the state of an OpenShift cluster and its resources.
 Then, you will create a simple agent which uses that MCP server to assess the state of workloads running on your OpenShift cluster.
-Finally, you will interpret traces from the agent to assess if it is able to make efficient use of tools from the MCP server.</p>
+Finally, you will interpret traces from the agent to assess if it is able to make use of tools from the MCP server.</p>
 </div>
 <div class="paragraph">
 <p>As you perform this activity, you will alternate between three browser tabs:</p>
@@ -239,7 +239,7 @@ Scroll down to find the <strong>Type</strong> heading and click <b class="menure
 Then click the entry <b class="menuref">Red Hat OpenShift Mcp Server</b> and, on its details pane, click <b class="menuref">Create</b>.</p>
 </li>
 <li>
-<p>In the <strong>Create Helm Release</strong> page, click the <b class="menuref">Project</b> combo box, which probably displays the <code>default</code> project, and click <b class="menuref">Create Project</b>.
+<p>In the <strong>Create Helm Release</strong> page, click the <b class="menuref">Project</b> field, which probably displays the <code>default</code> project, and click <b class="menuref">Create Project</b>.
 Type <code>mcp-servers</code> as the <strong>Name</strong> field and click <b class="menuref">Create</b>.</p>
 </li>
 <li>
@@ -272,7 +272,7 @@ Click the Helm icon to display its workload details page, to the right, and wait
 <li>
 <p>Create a config map which provides the Gen AI studio with a list of available MCP servers.</p>
 <div class="paragraph">
-<p>In the left navigation pane, select <span class="menuseq"><b class="menu">Workloads</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">ConfigMaps</b></span> and, in the <b class="menuref">Project</b> combo at the top, select the <code>redhat-ods-applications</code> project.</p>
+<p>In the left navigation pane, select <span class="menuseq"><b class="menu">Workloads</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">ConfigMaps</b></span> and, in the <b class="menuref">Project</b> field at the top, select the <code>redhat-ods-applications</code> project.</p>
 </div>
 </li>
 <li>
@@ -332,112 +332,118 @@ Hopefully, you will get a correct response, which you can optionally verify by s
 </li>
 <li>
 <p>Create a Jupyter notebook for your agentic application.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>..</p>
+</div>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
 <p>TBD</p>
-</li>
-</ol>
-</div>
-</li>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>Insert the code for a simple agent into your notebook.</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>TBD</p>
 </li>
 </ol>
 </div>
 </li>
+<li>
+<p>TBD</p>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>Run your agent to verify it is working.</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>TBD</p>
 </li>
 </ol>
 </div>
 </li>
+<li>
+<p>TBD</p>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>Instrument your agent with MLFlow tracing.</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>TBD</p>
 </li>
 </ol>
 </div>
 </li>
+<li>
+<p>TBD</p>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>Run your agent to verify it continue working after changes.</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>TBD</p>
 </li>
 </ol>
 </div>
 </li>
+<li>
+<p>TBD</p>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>View the trace in the RHOAI dashboard.</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>TBD</p>
 </li>
 </ol>
 </div>
 </li>
+<li>
+<p>TBD</p>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>Add sample prompts to the prompt registry.</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>TBD</p>
 </li>
 </ol>
 </div>
 </li>
+<li>
+<p>TBD</p>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>Modify your agent to retrieve its prompts from the prompt registry.</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>TBD</p>
 </li>
 </ol>
 </div>
 </li>
+<li>
+<p>TBD</p>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>Run your agent, to verify it continue working after changes, and view its traces.</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>TBD</p>
 </li>
 </ol>
 </div>
 </li>
 <li>
+<p>TBD</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
 <p>Deploy an MCP server.</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
+</li>
+</ol>
+</div>
+</li>
 <li>
 <p>Something to do, using a graphical or web UI.
 Click <b class="menuref">Save As</b> to save your work.</p>
 </li>
 <li>
 <p>More things to do</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Add the MCP server to your agentic application.</p>
 </li>
 </ol>
 </div>
 </li>
-<li>
-<p>Add the MCP server to your agentic application.</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
 <li>
 <p>Something to do, using a shell.</p>
 <div class="listingblock">
@@ -451,9 +457,6 @@ highlight <strong>something</strong> in the output</code></pre>
 <li>
 <p>More things to do.
 Press <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>C</kbd></span> to interrupt.</p>
-</li>
-</ol>
-</div>
 </li>
 </ol>
 </div>
