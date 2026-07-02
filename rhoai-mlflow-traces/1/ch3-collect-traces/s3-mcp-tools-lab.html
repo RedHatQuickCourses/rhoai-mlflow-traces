@@ -223,6 +223,8 @@ Finally, you will interpret traces from the agent to assess if it is able to mak
 <div class="paragraph">
 <p>Once you open one of these tabs, keep it open because you may return to it later.</p>
 </div>
+<div class="sect2">
+<h3 id="_deploy_and_validate_an_mcp_server"><a class="anchor" href="#_deploy_and_validate_an_mcp_server"></a>Deploy and validate an MCP server</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -330,6 +332,13 @@ Hopefully, you will get a correct response, which you can optionally verify by s
 </ol>
 </div>
 </li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_import_a_simple_agentic_application_from_git"><a class="anchor" href="#_import_a_simple_agentic_application_from_git"></a>Import a simple agentic application from git</h3>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>Import the Jupyter notebook for a simple agent.</p>
 <div class="olist loweralpha">
@@ -493,6 +502,13 @@ You are designed to answer questions in a concise and professional manner.
 </ol>
 </div>
 </li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_view_traces_containing_mcp_tool_calls"><a class="anchor" href="#_view_traces_containing_mcp_tool_calls"></a>View traces containing MCP tool calls</h3>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>Run the agent to produce a trace.</p>
 <div class="olist loweralpha">
@@ -621,10 +637,14 @@ But you can also find that there are a number of useful prompts this small model
 </li>
 </ol>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_summary"><a class="anchor" href="#_summary"></a>Summary</h3>
 <div class="paragraph">
 <p>After completing these steps, you have executed a simple agentic application which produces traces on the MLFlow server in RHOAI.
 You also interpreted those traces to identify when the model requested tool calls, the specific data returned by the MCP server for each call, and how the data was send back from the agent to the model.
 Finally, you verified that the non-deterministic nature of large language models (LLMs) impacts their ability of requesting tool calls and using the returned data to produce a response.</p>
+</div>
 </div>
 </div>
 </div>
