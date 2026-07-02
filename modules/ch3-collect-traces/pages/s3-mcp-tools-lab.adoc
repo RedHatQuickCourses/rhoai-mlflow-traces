@@ -18,9 +18,9 @@ Ensure you have:
 
 == Instructions
 
-You will deploy an MCP server, which allow instrospection of the state of an OpenShift cluster and its resources.
+You will deploy an MCP server which allow instrospection of the state of an OpenShift cluster and its resources.
 Then, you will create a simple agent which uses that MCP server to assess the state of workloads running on your OpenShift cluster.
-Finally, you will interpret traces from the agent to assess if it is able to make efficient use of tools from the MCP server.
+Finally, you will interpret traces from the agent to assess if it is able to make use of tools from the MCP server.
 
 As you perform this activity, you will alternate between three browser tabs:
 
@@ -39,7 +39,7 @@ Scroll down to find the *Type* heading and click menu:Helm charts[].
 .. Scroll up to the *All items* field and type `mcp`.
 Then click the entry menu:Red Hat OpenShift Mcp Server[] and, on its details pane, click menu:Create[].
 
-.. In the *Create Helm Release* page, click the menu:Project[] combo box, which probably displays the `default` project, and click menu:Create Project[]. 
+.. In the *Create Helm Release* page, click the menu:Project[] field, which probably displays the `default` project, and click menu:Create Project[]. 
 Type `mcp-servers` as the *Name* field and click menu:Create[].
 
 .. In the *Create Helm Release* page, delete all contents from its text editor and paste the following configuration, which gives the MCP server read-only access to all resources int the cluster, but disables external access.
@@ -64,7 +64,7 @@ Click the Helm icon to display its workload details page, to the right, and wait
 
 .. Create a config map which provides the Gen AI studio with a list of available MCP servers.
 +
-In the left navigation pane, select menu:Workloads[ConfigMaps] and, in the menu:Project[] combo at the top, select the `redhat-ods-applications` project.
+In the left navigation pane, select menu:Workloads[ConfigMaps] and, in the menu:Project[] field at the top, select the `redhat-ods-applications` project.
 
 .. Click menu:Create ConfigMap[] and, in the *Create Configmap* page, type `gen-ai-aa-mcp-servers` as the *Name* field.
 
@@ -110,6 +110,8 @@ Hopefully, you will get a correct response, which you can optionally verify by s
 
 
 3. Create a Jupyter notebook for your agentic application.
+
+.. 
 
 .. TBD
 

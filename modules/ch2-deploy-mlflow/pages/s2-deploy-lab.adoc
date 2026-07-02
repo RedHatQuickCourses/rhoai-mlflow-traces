@@ -19,6 +19,12 @@ You need access to the predeployed Red Hat OpenShift AI (RHOAI) instance provide
 You will enable MLFlow on your Data Science Cluster singleton resource and deploy a development instance of the MLFlow server.
 Then you will create a simple Jupyter notebook to test connectivity to the MLFlow server by means of the MLFlow SDK for Python.
 
+As you perform this activity, you will alternate between three browser tabs:
+
+* The Red Hat OpenShift web console
+* The Red Hat OpenShift AI (RHOAI) dashboard
+* A Jupyter notebook from a RHOAI workbench.
+
 1. Enable MLFlow on RHOAI.
 
 .. Open the OpenShift web console and log in as a user with `cluster-admin` rigts.
@@ -26,7 +32,7 @@ Then you will create a simple Jupyter notebook to test connectivity to the MLFlo
 .. In the left navigation pane, select menu:Ecossystem[Installed Operators].
 Then click menu:Red Hat OpenShift AI[].
 
-.. In the Red Hat OpenShift AI operator page, click the menu:Data Science Cluster[] tab.
+.. In the Red Hat OpenShift AI operator page, select the menu:Data Science Cluster[] tab.
 Then click the menu:default-dsc[] resource.
 
 .. In the `default-dsc` resource page, select the menu:YAML[] tab.
