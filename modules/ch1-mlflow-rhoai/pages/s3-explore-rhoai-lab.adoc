@@ -59,7 +59,8 @@ Ignore the prefix on the model name.
 What is RHEL?
 ----
 
-.. You may get different answers, if you attempt the same prompt again, but they would hopefully all be correct and reasonable.
+.. Type kbd:[Enter] to submit the prompt and see the response from the model.
+You may get different answers, if you attempt the same prompt again, but they all would, hopefully, be correct and reasonable.
 
 4. Verify that there are no RHOAI dasbboard pages related to MLFlow.
 
