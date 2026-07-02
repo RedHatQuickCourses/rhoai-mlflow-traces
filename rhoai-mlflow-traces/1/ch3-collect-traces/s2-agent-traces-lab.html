@@ -257,7 +257,7 @@ Click the <b class="menuref">test-mlflow</b> workbench, which you created in the
 </li>
 <li>
 <p>In the left navigation pane, right click the <b class="menuref">Untitled.ipynb</b> file, which is your new notebook, and select <b class="menuref">Rename</b>.
-Then type <code>basic-chat</code> as ts new file name.</p>
+Then type <code>basic-chat</code> as its new file name.</p>
 </li>
 <li>
 <p>Alternatively, you can open and reuse the <code>test.ipnyb</code>, which you created in the <a href="../ch2-deploy-mlflow/s2-deploy-lab.html" class="xref page">previous lab</a>.</p>
@@ -428,17 +428,23 @@ In summary, RHEL is a paid, enterprise-focused distribution, while CentOS is a f
 <pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">BASE_URL = "http://llama-32-3b-instruct-predictor.my-first-model.svc.cluster.local:8080/v1"
 model_name = "llama-32-3b-instruct"
 
-<strong>MLFLOW_TRACKING_URL = "CHANGE_ME"</strong>
+<strong>MLFLOW_TRACKING_URL = "https://mlflow.redhat-ods-applications.svc.cluster.local:8443"</strong>
 <strong>MLFLOW_EXPERIMENT = "basic-chat"</strong></code></pre>
 </div>
 </div>
-</li>
-<li>
-<p>Switch to your RHOAI dashboard and select, in the left navigation pane, <span class="menuseq"><b class="menu">Develop &amp; train</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Experiments(MLflow)</b></span>.
-Right-click the <b class="menuref">Launch MLflow</b> link and select <b class="menuref">Copy Link</b>.</p>
-</li>
-<li>
-<p>Switch do you jupyter notebook and replace the <code>CHANGE_ME</code> text with the URL in your clipboard.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+In this example, we are using the <em>internal</em> URL of the MLFLow server, which is fixed.
+You can use this URL only with applications running on the same OpenShift cluster.
+</td>
+</tr>
+</table>
+</div>
 </li>
 <li>
 <p>Add code to configure the connection to the MLFlow server, right before the code which gets your kubernetes service account token.</p>

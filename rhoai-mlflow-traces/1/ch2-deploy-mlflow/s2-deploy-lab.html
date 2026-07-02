@@ -401,6 +401,24 @@ Right-click it and copy its URL to the clipboard.</p>
 </li>
 <li>
 <p>Switch to your jupyter lab browser tab and replace, in the second notebook cell, the <code>CHANGE_ME</code> text with the URL on your clipboard.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>In this example, we are using the <em>external</em> URL of the MLFLow server, which depends on the applications domain of your OpenShift Ingress operator.
+This is the URL you would use for applications running outside of its OpenShift cluster.</p>
+</div>
+<div class="paragraph">
+<p>External applications also need to set the <code>MLFLOW_TRACKING_TOKEN</code> environment variable with a valid an OpenShift authentication token, for example the one returned by the <code>oc whoami -t</code> command.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </li>
 <li>
 <p>In the top toolbar from the notebook, click the play icon.

@@ -1,5 +1,5 @@
 {
-  "totalSeconds": 1063,
+  "totalSeconds": 1083,
   "pageCount": 13,
   "pages": [
     {
@@ -45,7 +45,7 @@
     {
       "module": "ch2-deploy-mlflow",
       "page": "s2-deploy-lab.adoc",
-      "seconds": 148
+      "seconds": 162
     },
     {
       "module": "ch3-collect-traces",
@@ -60,7 +60,7 @@
     {
       "module": "ch3-collect-traces",
       "page": "s2-agent-traces-lab.adoc",
-      "seconds": 273
+      "seconds": 279
     },
     {
       "module": "ch3-collect-traces",
