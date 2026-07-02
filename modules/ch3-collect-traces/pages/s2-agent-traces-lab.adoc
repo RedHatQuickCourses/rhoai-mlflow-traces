@@ -8,7 +8,7 @@ WARNING: Pending review
 
 == Before you begin
 
-You need access to the predeployed Red Hat OpenShift AI (RHOAI) instance provided in your lab environment, which was already configured by the xref:ch2-deploy-mlflow:s2-deploy-lab.adoc[previous lab] with a development instance of the MLFlow server.
+You need access to the predeployed Red Hat OpenShift AI (RHOAI) instance provided in your lab environment, which was already configured by the xref:ch2-deploy-mlflow:s2-deploy-lab.adoc[previous lab] with a development instance of the MLFlow server and an RHOAI workbench.
 
 Ensure you have:
 
