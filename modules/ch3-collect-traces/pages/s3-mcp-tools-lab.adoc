@@ -30,13 +30,84 @@ As you perform this activity, you will alternate between three browser tabs:
 
 Once you open one of these tabs, keep it open because you may return to it later.
 
-1. Deploy the OpenShift MCP server with restricted privileges.
+1. Deploy the https://catalog.redhat.com/en/software/container-stacks/detail/69a94fac9956d5da803edd1a#resources[MCP Server for Red Hat OpenShift^] with restricted privileges, by using its https://github.com/openshift/openshift-mcp-server/blob/main/charts/kubernetes-mcp-server/README.md[helm chart^] and the OpenShift Ecosystem Catalog.
 
-.. TBD
+.. Open the OpenShift web console and log in using the `admin` user.
+In the left navigation menu, select menu:Ecosystem[Software Catalog].
+Scroll down to find the *Type* heading and click menu:Helm charts[].
 
-2. Test the MCP server using the Gen AI playground
+.. Scroll up to the *All items* field and type `mcp`.
+Then click the entry menu:Red Hat OpenShift Mcp Server[] and, on its details pane, click menu:Create[].
 
-.. TBD
+.. In the *Create Helm Release* page, click the menu:Project[] combo box, which probably displays the `default` project, and click menu:Create Project[]. 
+Type `mcp-servers` as the *Name* field and click menu:Create[].
+
+.. In the *Create Helm Release* page, delete all contents from its text editor and paste the following configuration, which gives the MCP server read-only access to all resources int the cluster, but disables external access.
++
+[source,yaml,subs="verbatim,quotes"]
+----
+ingress:
+  enabled: false
+rbac:
+  extraClusterRoleBindings:
+    - name: use-view-role
+      roleRef:
+        name: view
+        external: true
+----
+
+.. Click menu:Create[].
+You should be now in the menu:Workloads[Topologu] page of the `mcp-servers` project, which displays a Helm icon for the MCP server deployment.
+Click the Helm icon to display its workload details page, to the right, and wait until its only pod is runnig.
+
+2. Test the MCP server using the Gen AI studio
+
+.. Create a config map which provides the Gen AI studio with a list of available MCP servers.
++
+In the left navigation pane, select menu:Workloads[ConfigMaps] and, in the menu:Project[] combo at the top, select the `redhat-ods-applications` project.
+
+.. Click menu:Create ConfigMap[] and, in the *Create Configmap* page, type `gen-ai-aa-mcp-servers` as the *Name* field.
+
+.. Type the following as the *Value* field and click menu:Create[].
++
+[source,json,subs="verbatim,quotes"]
+----
+{
+      "url": "http://redhat-openshift-mcp-server.mcp-servers.svc.cluster.local:8080/mcp",
+      "description": "Red Hat OpenShift MCP server"
+}
+----
+
+.. Verify that the Gen AI studio can connect to the MCP server.
++
+Open your RHOAI dashboard and login as the `admin` user.
+In the left navigation pane, select menu:Gen AI studio[AI assets endpoints] and select the menu:MCP servers[] tab.
+It should list the `OpenShift-MCP-Server`, as configured by the config map, with the `Active` status, which means the Gen AI studio was able to retrieve the tools list from the MCP server.
+
+.. Test the MCP server tools using a playground.
++
+In the left navitation pane, select menu:GenAI studio[Playground].
+Then type `my` in the *Project* field and select menu:my-first-project[].
+Click menu:Create playground[].
+In the *Configure playground* form, leve the model checked and click menu:Create[].
+
+.. Wait while the Gen AI studio deploys a llama stack server for your playground.
+It displays a confirmation popup when done and enters the *Playground* page, 
+
+.. In the *Configure* pane of the playground, select the menu:MCP[] tab and check the row with name `OpenShift-MCP-Server`.
+You should see a popup stating *Connection successful* and the number of tools provided by the MCP server.
+Click menu:Save[] to select all tools.
+
+.. In the right pane, click the `Send a message...`​ text and type a prompt which requires using the MCP server, for example:
++
+[source,none,subs="verbatim,quotes"]
+----
+Which pods are in my-first-model?
+----
+
+.. Type kbd:[Enter] to submit the prompt.
+Hopefully, you will get a correct response, which you can optionally verify by switching to the OpenShit web console.
+
 
 3. Create a Jupyter notebook for your agentic application.
 
