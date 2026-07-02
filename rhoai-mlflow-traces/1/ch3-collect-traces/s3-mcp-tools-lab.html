@@ -165,7 +165,7 @@
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-Work In Progress
+Pending review.
 </td>
 </tr>
 </table>
@@ -176,7 +176,7 @@ Work In Progress
 <h2 id="_before_you_begin"><a class="anchor" href="#_before_you_begin"></a>Before you begin</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You need access to the predeployed Red Hat OpenShift AI (RHOAI) instance provided in your lab environment, which was already configured by the <a href="../ch2-deploy-mlflow/s2-deploy-lab.html" class="xref page">second lab</a> with a development instance of the MLFlow server.</p>
+<p>You need access to the predeployed Red Hat OpenShift AI (RHOAI) instance provided in your lab environment, which was already configured by the <a href="../ch2-deploy-mlflow/s2-deploy-lab.html" class="xref page">second lab</a> with a development instance of the MLFlow server and an RHOAI workbench.</p>
 </div>
 <div class="paragraph">
 <p>Ensure you have:</p>
@@ -325,143 +325,306 @@ Click <b class="menuref">Save</b> to select all tools.</p>
 </li>
 <li>
 <p>Type <kbd>Enter</kbd> to submit the prompt.
-Hopefully, you will get a correct response, which you can optionally verify by switching to the OpenShit web console.</p>
+Hopefully, you will get a correct response, which you can optionally verify by switching to the OpenShit web console and listing pods from the <code>my-first-model</code> project.</p>
 </li>
 </ol>
 </div>
 </li>
 <li>
-<p>Create a Jupyter notebook for your agentic application.</p>
+<p>Import the Jupyter notebook for a simple agent.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>In the left navigation pane, select <b class="menuref">Projects</b> and, in the <strong>Project</strong> field, select <b class="menuref">All projects</b>.
+Then type <code>my</code> and, in the list of projects, select <b class="menuref">my-first-model</b>.</p>
+</li>
+<li>
+<p>In the projects page for <code>my-first-model</code>, select the <b class="menuref">Workbenches</b> tab.
+Click the <b class="menuref">test-mlflow</b> workbench, which you created in the <a href="../ch2-deploy-mlflow/s2-deploy-lab.html" class="xref page">second lab</a>, to open its jupyter lab in a new browser tab.</p>
+</li>
+<li>
+<p>In the left toolbar of your Jupyter Lab, click the <b class="menuref">Git Clone</b> icon.</p>
+</li>
+<li>
+<p>In the <strong>Clone a repo</strong> popup, type <code><a href="https://github.com/RedHatQuickCourses/rhoai-mlflow-samples.git" class="bare">https://github.com/RedHatQuickCourses/rhoai-mlflow-samples.git</a></code> as the URI of the remote Git repository and click <b class="menuref">Clone</b>.</p>
+</li>
+<li>
+<p>In the file browser of your Jupyter Lab, enter the <code>/rhoai-mlflow-samples/traces</code> directory and then open the <code>basic-agent.ipnyb</code> notebook.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p>..</p>
+</li>
+<li>
+<p>Review the code for a simple agent.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The expanations here are <strong>not</strong> intended to explain all code in the agentic application, but just its general structure, so you can later read its traces.
+The code snippets here enable learners to locate each section of code, if they wish to study and use it as a starting point for their agentic applications.
+</td>
+</tr>
+</table>
 </div>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>TBD</p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Insert the code for a simple agent into your notebook.</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>TBD</p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Run your agent to verify it is working.</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>TBD</p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Instrument your agent with MLFlow tracing.</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>TBD</p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Run your agent to verify it continue working after changes.</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>TBD</p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>View the trace in the RHOAI dashboard.</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>TBD</p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Add sample prompts to the prompt registry.</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>TBD</p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Modify your agent to retrieve its prompts from the prompt registry.</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>TBD</p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Run your agent, to verify it continue working after changes, and view its traces.</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>TBD</p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Deploy an MCP server.</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Something to do, using a graphical or web UI.
-Click <b class="menuref">Save As</b> to save your work.</p>
-</li>
-<li>
-<p>More things to do</p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Add the MCP server to your agentic application.</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Something to do, using a shell.</p>
+<p>In its first cell, notice the use of <code>--extra-index-url</code> option for the <code>pip install</code> command.
+It is necessary because the RHOAI index does not include the <code>openai-agents</code> library.
+That way, pip falls back to the comunity index for any module not present in its primary index.</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ <strong>command --options fixed-arguments <em>variable-arguments</em></strong>
-output of the command
-highlight <strong>something</strong> in the output</code></pre>
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">! pip install --extra-index-url https://pypi.org/simple openai openai-agents mlflow[kubernetes]</code></pre>
 </div>
 </div>
 </li>
 <li>
-<p>More things to do.
-Press <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>C</kbd></span> to interrupt.</p>
+<p>In the second cell, notice the variables which set the URLs and connection parameters for the model server, the MCP server, and the MLFlow server.
+They are all internal URLs, which refer to their respective Kubernetes services.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">BASE_URL = "http://llama-32-3b-instruct-predictor.my-first-model.svc.cluster.local:8080/v1"
+model_name = "llama-32-3b-instruct"
+
+MCP_SERVER_URL = "http://redhat-openshift-mcp-server.mcp-servers.svc.cluster.local:8080/mcp"
+
+MLFLOW_TRACKING_URL = "https://mlflow.redhat-ods-applications.svc.cluster.local:8443"
+MLFLOW_EXPERIMENT = "basic-agent"</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Then it sets a user prompt, which should require the MCP server, and a generic system prompt.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">input_text = """
+List the names of all pods in namespace 'my-first-model'
+"""
+system_instructions = """
+You are a helpful AI assistant.
+You are designed to answer questions in a concise and professional manner.
+"""</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>So far, the code is very similar from previous examples but, after it gets the service account token and eneables MLFlow tracing, the code to connect to the model and submit a prompt is <em>very</em> different from the previous chat example.</p>
+<div class="paragraph">
+<p>Differences start by creating an asynchronous client for the model server:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">async def main():
+    """Main async function to run chat with MCP tools"""
+
+    # Configure custom OpenAI endpoint globally
+    custom_client = AsyncOpenAI(
+        base_url=BASE_URL,
+        api_key=AUTH_TOKEN
+    )</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>It also creates an asynchronous MCP client:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">    async with MCPServerStreamableHttp(
+        name="Remote MCP Server",
+        params={
+            "url": MCP_SERVER_URL,
+            "timeout": 30,
+        },
+        cache_tools_list=True,
+    ) as mcp_server:</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>The agent object refers, implicitly, to the global OpenAI endpoint configured earlier, and also refers explicitly to the MCP client and the system prompt.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">        agent = Agent(
+            name="Assistant",
+            instructions=system_instructions,
+            model=model_name,
+            mcp_servers=[mcp_server],
+        )</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>An asynchronous runner submits the prompt to the agent and displays its final response.</p>
+<div class="paragraph">
+<p>The agent loops on the responses received from the model, invoking MCP tools, and sending the output of tool calls back to the model.</p>
+</div>
+<div class="paragraph">
+<p>This loop, inside the agent object, continues until the agent gets a response from the model which does <strong>not</strong> request another tool call.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">        # Run the agent
+        result = await Runner.run(agent, input_text)
+
+        # Print the final output
+        print("Assistant:", result.final_output)</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>The final piece of code enables running the asyncronous code from both a standalone application and a Jupyter notebook, which already sets an asynchronous runner for its cells.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">        try:
+            get_ipython()
+            # Running in Jupyter - use await directly (top-level await is supported)
+            import nest_asyncio
+            nest_asyncio.apply()
+            asyncio.run(main())
+        except NameError:
+            # Not in Jupyter - use asyncio.run() normally
+            asyncio.run(main())</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Run the agent to produce a trace.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>In the top toolbar from the notebook, click the <b class="menuref">fast forward</b> icon, with the tooltip <b class="menuref">Restart the kernel and run all cells</b>.</p>
+</li>
+<li>
+<p>It may take a while to download all OpenAI and MLFlow libraries and their dependencies, in the first cell before it actually submits the prompt, in the second cell.</p>
+<div class="paragraph">
+<p>If all goes well, you will get a correct response, similar to the following example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">Connecting to MCP server at http://redhat-openshift-mcp-server.mcp-servers.svc.cluster.local:8080/mcp...
+
+Found 14 tools from MCP server:
+
+Processing query: List the names of all pods in namespace 'my-first-model'
+
+Assistant: Based on the output, the names of all pods in the namespace 'my-first-model' are:
+
+1. llama-32-3b-instruct-predictor-6bd8fbdd49-28b9m
+2. llama-32-3b-instruct-predictor-6bd8fbdd49-j9dxk
+3. llama-32-3b-instruct-predictor-6bd8fbdd49-nkvn9
+4. llama-32-3b-instruct-predictor-6bd8fbdd49-vvwgb
+5. llama-32-3b-instruct-predictor-6bd8fbdd49-wbgxn
+6. lsd-genai-playground-55555b9d99-78zqk
+7. test-mlflow-0</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The output includes the number of tools from the MCP server as proof that the agent can connect to it, even if the response looks like it didn&#8217;t.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+There is a higher change of getting an incorrect response, or no reponse at all, compared to the previos example.
+The later may happen because the agent received too many tool call requests from the model, and decided that the model is lost and cannot produce a final response.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>View the trace in the RHOAI dashboard.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Switch to the RHOAI dashboard and, in the left navigation pane, select <span class="menuseq"><b class="menu">Develop &amp; train</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Experiments (MLflow)</b></span>.
+In the <b class="menuref">Project</b> field, type <code>my</code> and select the <b class="menuref">my-first-model</b> project.
+Then click the <b class="menuref">basic-agent</b> experiment.</p>
+</li>
+<li>
+<p>In the left pane of the <strong>Experiments</strong> page for the <code>basic-agent</code> project, click <b class="menuref">Traces</b>.
+You should see a trace whose request and reponse correspond to your notebook run.
+Click it.</p>
+</li>
+<li>
+<p>In the summary page for the trace, you will see a number of items labeled <b class="menuref">AsyncCompletions</b>.
+Each of them corresponds to a roundtrip between the agent and the model.
+If you are lucky, you will see two of them.</p>
+</li>
+<li>
+<p>Click the <b class="menuref">expand/collapse</b> icon (<b class="menuref">&gt;</b>) from the first <b class="menuref">AsyncCompletions</b>, but do <strong>not</strong> click the <b class="menuref">AsyncCompletions</b> itself.
+You will see it contains <b class="menuref">Inputs</b> and <b class="menuref">Outputs</b>.</p>
+<div class="paragraph">
+<p>The <b class="menuref">Inputs</b> include the user and system prompts, a list of tools, and a number of OpenAI parameters which the sample agent didn&#8217;t set explicitily, so they took their default values.</p>
+</div>
+<div class="paragraph">
+<p>The <b class="menuref">Outputs:</b> include a reques to call the tool named <code>pods_lists_in_namespace</code> with arguments <code>"namespace": "my-first-model"</code></p>
+</div>
+</li>
+<li>
+<p>Click the <b class="menuref">expand/collapse</b> icon (<b class="menuref">&gt;</b>) from the second (or latest) <b class="menuref">AsyncCompletions</b>.</p>
+<div class="paragraph">
+<p>Notice its <b class="menuref">Inputs</b> include everythig you saw from the previous completions in the same trace, including prompts and lists of tools. But it adds the results of the tool call requested by the previous completion.</p>
+</div>
+<div class="paragraph">
+<p>It may be hard to read in the trace, but you can recognise similarities with the output of an <code>oc get pod -o wide</code> command.</p>
+</div>
+<div class="paragraph">
+<p>The <b class="menuref">Outputs</b> should match the final response displayed by your notebook run.</p>
+</div>
+</li>
+<li>
+<p>If you got more than two <b class="menuref">AsyncCompletions</b> items, it might be because the model was not able to recognize that the tool call contains the information it needs, and requested a another tool call, maybe with different parameters, maybe of a different tool.</p>
+<div class="paragraph">
+<p>For more complex prompts, it might be necessary to use the output of a tool call as parameters of another tool call, and many such rounds might be necessary.
+But you may find that, even with simpler prompts, a model might requests tool calls which make no sense.</p>
+</div>
+</li>
+<li>
+<p>When you are satisfied that you understand the trace, click the its <b class="menuref">close</b> icon, that is, the <b class="menuref">x</b> to the top right of the trace summary page, to return to the list of traces.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>(Optional) You may switch to your Jupyter Lab and run the second cell again a few times.
+Each run produces its own trace, and they may take different numbers of completions to produce its response.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Sometimes the responses will be correct, as in including the sames of all pods and no extra pods, but vary on their wording.</p>
+</li>
+<li>
+<p>Sometimes you may get an incorrect response, such as <code>This output indicates that there are no pods in the 'my-first-model' project.</code></p>
+</li>
+<li>
+<p>Because the demo enviroment only supports a small model, with a small context window, you can easily devise a prompt which produces an error, such as lising all pods in the cluster.
+But you can also find that there are a number of useful prompts this small model can answer correctly and frequently.</p>
+</li>
+<li>
+<p>You may also try subtle changes in the prompts, for example referring to "the my-first-model project" instead of to a "namespace", or trying to provide a better suited system prompt for an IT operations or a Kubernetes administrator persona.</p>
+</li>
+</ol>
+</div>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>Summary of what you accomplished.</p>
+<p>After completing these steps, you have executed a simple agentic application which produces traces on the MLFlow server in RHOAI.
+You also interpreted those traces to identify when the model requested tool calls, the specific data returned by the MCP server for each call, and how the data was send back from the agent to the model.
+Finally, you verified that the non-deterministic nature of large language models (LLMs) impacts their ability of requesting tool calls and using the returned data to produce a response.</p>
 </div>
 </div>
 </div>

@@ -1,5 +1,5 @@
 {
-  "totalSeconds": 1083,
+  "totalSeconds": 1221,
   "pageCount": 13,
   "pages": [
     {
@@ -65,7 +65,7 @@
     {
       "module": "ch3-collect-traces",
       "page": "s3-mcp-tools-lab.adoc",
-      "seconds": 207
+      "seconds": 345
     }
   ]
 }
