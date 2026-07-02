@@ -94,7 +94,6 @@ You are designed to answer questions in a concise and professional manner.
 import os
 from openai import OpenAI
 
-# there should be an easier way of getting the service account token
 try:
     with open("/var/run/secrets/kubernetes.io/serviceaccount/token", "r") as f:
         AUTH_TOKEN = f.read().strip()
@@ -203,7 +202,6 @@ from openai import OpenAI
 *mlflow.set_tracking_uri(MLFLOW_TRACKING_URL)*
 *mlflow.set_experiment(MLFLOW_EXPERIMENT)*
 
-# there should be an easier way of getting the service account token
 try:
     with open("/var/run/secrets/kubernetes.io/serviceaccount/token", "r") as f:
         AUTH_TOKEN = f.read().strip()
