@@ -320,7 +320,6 @@ You are designed to answer questions in a concise and professional manner.
 <pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">import os
 from openai import OpenAI
 
-# there should be an easier way of getting the service account token
 try:
     with open("/var/run/secrets/kubernetes.io/serviceaccount/token", "r") as f:
         AUTH_TOKEN = f.read().strip()
@@ -458,7 +457,6 @@ from openai import OpenAI
 <strong>mlflow.set_tracking_uri(MLFLOW_TRACKING_URL)</strong>
 <strong>mlflow.set_experiment(MLFLOW_EXPERIMENT)</strong>
 
-# there should be an easier way of getting the service account token
 try:
     with open("/var/run/secrets/kubernetes.io/serviceaccount/token", "r") as f:
         AUTH_TOKEN = f.read().strip()
