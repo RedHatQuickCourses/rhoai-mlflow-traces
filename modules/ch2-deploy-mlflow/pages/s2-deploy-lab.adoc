@@ -120,6 +120,8 @@ Notice the new item named menu:Experiments (mlflow)[] and click it.
 You should not need it: all funcionality you need for this course is available from the RHOAI dashboard.
 
 4. Test connectivity to MLFlow from a workbench.
++
+NOTE: If you have trouble typing the Python code in this and other activities of this course, or you cannot cut-and-pate from the course page, you can access the complete source code for all jupyter notebooks in a https://github.com/RedHatQuickCourses/rhoai-mlflow-samples/tree/main/traces[git repository^].
 
 .. In the left navigation pane, click menu:Projects[] and select menu:All projects[] in the projects combo box.
 Then type `my` in the filter by name field and click `my-first-project` in the list of projects.
