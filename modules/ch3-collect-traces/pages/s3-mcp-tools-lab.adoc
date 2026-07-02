@@ -4,11 +4,11 @@ Objective::
 
 Deploy an MCP server and capture its tool invocations in MLFlow traces.
 
-WARNING: Work In Progress
+WARNING: Pending review.
 
 == Before you begin
 
-You need access to the predeployed Red Hat OpenShift AI (RHOAI) instance provided in your lab environment, which was already configured by the xref:ch2-deploy-mlflow:s2-deploy-lab.adoc[second lab] with a development instance of the MLFlow server.
+You need access to the predeployed Red Hat OpenShift AI (RHOAI) instance provided in your lab environment, which was already configured by the xref:ch2-deploy-mlflow:s2-deploy-lab.adoc[second lab] with a development instance of the MLFlow server and an RHOAI workbench.
 
 Ensure you have:
 
@@ -106,71 +106,233 @@ Which pods are in my-first-model?
 ----
 
 .. Type kbd:[Enter] to submit the prompt.
-Hopefully, you will get a correct response, which you can optionally verify by switching to the OpenShit web console.
+Hopefully, you will get a correct response, which you can optionally verify by switching to the OpenShit web console and listing pods from the `my-first-model` project.
 
+3. Import the Jupyter notebook for a simple agent.
 
-3. Create a Jupyter notebook for your agentic application.
+.. In the left navigation pane, select menu:Projects[] and, in the *Project* field, select menu:All projects[].
+Then type `my` and, in the list of projects, select menu:my-first-model[].
 
-.. 
+.. In the projects page for `my-first-model`, select the menu:Workbenches[] tab.
+Click the menu:test-mlflow[] workbench, which you created in the xref:ch2-deploy-mlflow:s2-deploy-lab.adoc[second lab], to open its jupyter lab in a new browser tab.
 
-.. TBD
+.. In the left toolbar of your Jupyter Lab, click the menu:Git Clone[] icon.
 
-4. Insert the code for a simple agent into your notebook.
+.. In the *Clone a repo* popup, type `https://github.com/RedHatQuickCourses/rhoai-mlflow-samples.git` as the URI of the remote Git repository and click menu:Clone[].
 
-.. TBD
+.. In the file browser of your Jupyter Lab, enter the `/rhoai-mlflow-samples/traces` directory and then open the `basic-agent.ipnyb` notebook.
 
-5. Run your agent to verify it is working.
-
-.. TBD
-
-6. Instrument your agent with MLFlow tracing.
-
-.. TBD
-
-7. Run your agent to verify it continue working after changes.
-
-.. TBD
-
-8. View the trace in the RHOAI dashboard.
-
-.. TBD
-
-9. Add sample prompts to the prompt registry.
-
-.. TBD
-
-10. Modify your agent to retrieve its prompts from the prompt registry.
-
-.. TBD
-
-11. Run your agent, to verify it continue working after changes, and view its traces.
-
-.. TBD
-
-
-1. Deploy an MCP server.
-
-.. Something to do, using a graphical or web UI.
-Click menu:Save As[] to save your work.
-
-.. More things to do
-
-2. Add the MCP server to your agentic application.
-
-.. Something to do, using a shell.
+4. Review the code for a simple agent.
 +
-[source,console,subs="verbatim,quotes"]
---
-$ *command --options fixed-arguments _variable-arguments_*
-output of the command
-highlight *something* in the output
---
+NOTE: The expanations here are *not* intended to explain all code in the agentic application, but just its general structure, so you can later read its traces.
+The code snippets here enable learners to locate each section of code, if they wish to study and use it as a starting point for their agentic applications.
 
+.. In its first cell, notice the use of `--extra-index-url` option for the `pip install` command.
+It is necessary because the RHOAI index does not include the `openai-agents` library.
+That way, pip falls back to the comunity index for any module not present in its primary index. 
++
+[source,python,subs="verbatim,quotes"]
+----
+! pip install --extra-index-url https://pypi.org/simple openai openai-agents mlflow[kubernetes]
+----
 
-.. More things to do.
-Press kbd:[Ctrl+C] to interrupt.
+.. In the second cell, notice the variables which set the URLs and connection parameters for the model server, the MCP server, and the MLFlow server.
+They are all internal URLs, which refer to their respective Kubernetes services.
++
+[source,python,subs="verbatim,quotes"]
+----
+BASE_URL = "http://llama-32-3b-instruct-predictor.my-first-model.svc.cluster.local:8080/v1"
+model_name = "llama-32-3b-instruct"
 
-Summary of what you accomplished.
+MCP_SERVER_URL = "http://redhat-openshift-mcp-server.mcp-servers.svc.cluster.local:8080/mcp"
+
+MLFLOW_TRACKING_URL = "https://mlflow.redhat-ods-applications.svc.cluster.local:8443"
+MLFLOW_EXPERIMENT = "basic-agent"
+----
+
+.. Then it sets a user prompt, which should require the MCP server, and a generic system prompt.
++
+[source,python,subs="verbatim,quotes"]
+----
+input_text = """
+List the names of all pods in namespace 'my-first-model'
+"""
+system_instructions = """
+You are a helpful AI assistant.
+You are designed to answer questions in a concise and professional manner.
+"""
+----
+
+.. So far, the code is very similar from previous examples but, after it gets the service account token and eneables MLFlow tracing, the code to connect to the model and submit a prompt is _very_ different from the previous chat example.
++
+Differences start by creating an asynchronous client for the model server: 
++
+[source,python,subs="verbatim,quotes"]
+----
+async def main():
+    """Main async function to run chat with MCP tools"""
+
+    # Configure custom OpenAI endpoint globally
+    custom_client = AsyncOpenAI(
+        base_url=BASE_URL,
+        api_key=AUTH_TOKEN
+    )
+----
+
+.. It also creates an asynchronous MCP client:
++
+[source,python,subs="verbatim,quotes"]
+----
+    async with MCPServerStreamableHttp(
+        name="Remote MCP Server",
+        params={
+            "url": MCP_SERVER_URL,
+            "timeout": 30,
+        },
+        cache_tools_list=True,
+    ) as mcp_server:
+----
+
+.. The agent object refers, implicitly, to the global OpenAI endpoint configured earlier, and also refers explicitly to the MCP client and the system prompt.
++
+[source,python,subs="verbatim,quotes"]
+----
+        agent = Agent(
+            name="Assistant",
+            instructions=system_instructions,
+            model=model_name,
+            mcp_servers=[mcp_server],
+        )
+----
+
+.. An asynchronous runner submits the prompt to the agent and displays its final response.
++
+The agent loops on the responses received from the model, invoking MCP tools, and sending the output of tool calls back to the model.
++
+This loop, inside the agent object, continues until the agent gets a response from the model which does *not* request another tool call.
++
+[source,python,subs="verbatim,quotes"]
+----
+        # Run the agent
+        result = await Runner.run(agent, input_text)
+
+        # Print the final output
+        print("Assistant:", result.final_output)
+----
+
+.. The final piece of code enables running the asyncronous code from both a standalone application and a Jupyter notebook, which already sets an asynchronous runner for its cells.
++
+[source,python,subs="verbatim,quotes"]
+----
+        try:
+            get_ipython()
+            # Running in Jupyter - use await directly (top-level await is supported)
+            import nest_asyncio
+            nest_asyncio.apply()
+            asyncio.run(main())
+        except NameError:
+            # Not in Jupyter - use asyncio.run() normally
+            asyncio.run(main())
+----
+
+5. Run the agent to produce a trace.
+
+.. In the top toolbar from the notebook, click the menu:fast forward[] icon, with the tooltip menu:Restart the kernel and run all cells[].
+
+.. It may take a while to download all OpenAI and MLFlow libraries and their dependencies, in the first cell before it actually submits the prompt, in the second cell.
++
+If all goes well, you will get a correct response, similar to the following example:
++
+[source,python,subs="verbatim,quotes"]
+----
+Connecting to MCP server at http://redhat-openshift-mcp-server.mcp-servers.svc.cluster.local:8080/mcp...
+
+Found 14 tools from MCP server:
+
+Processing query: List the names of all pods in namespace 'my-first-model'
+
+Assistant: Based on the output, the names of all pods in the namespace 'my-first-model' are:
+
+1. llama-32-3b-instruct-predictor-6bd8fbdd49-28b9m
+2. llama-32-3b-instruct-predictor-6bd8fbdd49-j9dxk
+3. llama-32-3b-instruct-predictor-6bd8fbdd49-nkvn9
+4. llama-32-3b-instruct-predictor-6bd8fbdd49-vvwgb
+5. llama-32-3b-instruct-predictor-6bd8fbdd49-wbgxn
+6. lsd-genai-playground-55555b9d99-78zqk
+7. test-mlflow-0
+----
++
+The output includes the number of tools from the MCP server as proof that the agent can connect to it, even if the response looks like it didn't.
++
+NOTE: There is a higher change of getting an incorrect response, or no reponse at all, compared to the previos example.
+The later may happen because the agent received too many tool call requests from the model, and decided that the model is lost and cannot produce a final response.
+
+6. View the trace in the RHOAI dashboard.
+
+.. Switch to the RHOAI dashboard and, in the left navigation pane, select menu:Develop & train[Experiments (MLflow)].
+In the menu:Project[] field, type `my` and select the menu:my-first-model[] project.
+Then click the menu:basic-agent[] experiment.
+
+.. In the left pane of the *Experiments* page for the `basic-agent` project, click menu:Traces[].
+You should see a trace whose request and reponse correspond to your notebook run.
+Click it.
+
+.. In the summary page for the trace, you will see a number of items labeled menu:AsyncCompletions[].
+Each of them corresponds to a roundtrip between the agent and the model.
+If you are lucky, you will see two of them.
+
+.. Click the menu:expand/collapse[] icon (menu:>[]) from the first menu:AsyncCompletions[], but do *not* click the menu:AsyncCompletions[] itself.
+You will see it contains menu:Inputs[] and menu:Outputs[].
++
+The menu:Inputs[] include the user and system prompts, a list of tools, and a number of OpenAI parameters which the sample agent didn't set explicitily, so they took their default values.
++
+The menu:Outputs:[] include a reques to call the tool named `pods_lists_in_namespace` with arguments `"namespace": "my-first-model"`
+
+.. Click the menu:expand/collapse[] icon (menu:>[]) from the second (or latest) menu:AsyncCompletions[].
++
+Notice its menu:Inputs[] include everythig you saw from the previous completions in the same trace, including prompts and lists of tools. But it adds the results of the tool call requested by the previous completion.
++
+It may be hard to read in the trace, but you can recognise similarities with the output of an `oc get pod -o wide` command.
++
+The menu:Outputs[] should match the final response displayed by your notebook run.
+
+.. If you got more than two menu:AsyncCompletions[] items, it might be because the model was not able to recognize that the tool call contains the information it needs, and requested a another tool call, maybe with different parameters, maybe of a different tool.
++
+For more complex prompts, it might be necessary to use the output of a tool call as parameters of another tool call, and many such rounds might be necessary.
+But you may find that, even with simpler prompts, a model might requests tool calls which make no sense. 
+
+.. When you are satisfied that you understand the trace, click the its menu:close[] icon, that is, the menu:x[] to the top right of the trace summary page, to return to the list of traces.
+
+7. (Optional) You may switch to your Jupyter Lab and run the second cell again a few times.
+Each run produces its own trace, and they may take different numbers of completions to produce its response.
+
+.. Sometimes the responses will be correct, as in including the sames of all pods and no extra pods, but vary on their wording.
+
+.. Sometimes you may get an incorrect response, such as `This output indicates that there are no pods in the 'my-first-model' project.`
+
+.. Because the demo enviroment only supports a small model, with a small context window, you can easily devise a prompt which produces an error, such as lising all pods in the cluster.
+But you can also find that there are a number of useful prompts this small model can answer correctly and frequently.
+
+.. You may also try subtle changes in the prompts, for example referring to "the my-first-model project" instead of to a "namespace", or trying to provide a better suited system prompt for an IT operations or a Kubernetes administrator persona.
+
+////
+
+7. Add sample prompts to the prompt registry.
+
+.. TBD
+
+8. Modify your agent to retrieve its prompts from the prompt registry.
+
+.. TBD
+
+9. Run your agent, to verify it continue working after changes, and view its traces.
+
+.. TBD
+////
+
+After completing these steps, you have executed a simple agentic application which produces traces on the MLFlow server in RHOAI.
+You also interpreted those traces to identify when the model requested tool calls, the specific data returned by the MCP server for each call, and how the data was send back from the agent to the model.
+Finally, you verified that the non-deterministic nature of large language models (LLMs) impacts their ability of requesting tool calls and using the returned data to produce a response.
 
 == What's next
 
