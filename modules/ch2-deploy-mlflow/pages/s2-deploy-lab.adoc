@@ -163,6 +163,14 @@ Notice, close to the top left, the menu:Launch MLflow[] link.
 Right-click it and copy its URL to the clipboard.
 
 .. Switch to your jupyter lab browser tab and replace, in the second notebook cell, the `CHANGE_ME` text with the URL on your clipboard.
++
+[NOTE]
+====
+In this example, we are using the _external_ URL of the MLFLow server, which depends on the applications domain of your OpenShift Ingress operator.
+This is the URL you would use for applications running outside of its OpenShift cluster.
+
+External applications also need to set the `MLFLOW_TRACKING_TOKEN` environment variable with a valid an OpenShift authentication token, for example the one returned by the `oc whoami -t` command.
+====
 
 .. In the top toolbar from the notebook, click the play icon.
 The results should an array containing a single `Workspace` object named `my-first-model`.

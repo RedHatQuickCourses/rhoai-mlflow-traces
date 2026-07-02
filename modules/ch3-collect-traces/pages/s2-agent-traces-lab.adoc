@@ -44,7 +44,7 @@ Click the menu:test-mlflow[] workbench, which you created in the xref:ch2-deploy
 .. In the jupyter lab, select the menu:Launcher[] tab and click the menu:Python 3.12[] icon to create a new jupyter notebook.
 
 .. In the left navigation pane, right click the menu:Untitled.ipynb[] file, which is your new notebook, and select menu:Rename[].
-Then type `basic-chat` as ts new file name.
+Then type `basic-chat` as its new file name.
 
 .. Alternatively, you can open and reuse the `test.ipnyb`, which you created in the xref:ch2-deploy-mlflow:s2-deploy-lab.adoc[previous lab].
 
@@ -184,14 +184,12 @@ In summary, RHEL is a paid, enterprise-focused distribution, while CentOS is a f
 BASE_URL = "http://llama-32-3b-instruct-predictor.my-first-model.svc.cluster.local:8080/v1"
 model_name = "llama-32-3b-instruct"
 
-*MLFLOW_TRACKING_URL = "CHANGE_ME"*
+*MLFLOW_TRACKING_URL = "https://mlflow.redhat-ods-applications.svc.cluster.local:8443"*
 *MLFLOW_EXPERIMENT = "basic-chat"*
 ----
-
-.. Switch to your RHOAI dashboard and select, in the left navigation pane, menu:Develop & train[Experiments(MLflow)].
-Right-click the menu:Launch MLflow[] link and select menu:Copy Link[].
-
-.. Switch do you jupyter notebook and replace the `CHANGE_ME` text with the URL in your clipboard.
++
+NOTE: In this example, we are using the _internal_ URL of the MLFLow server, which is fixed.
+You can use this URL only with applications running on the same OpenShift cluster.
 
 .. Add code to configure the connection to the MLFlow server, right before the code which gets your kubernetes service account token.
 +
