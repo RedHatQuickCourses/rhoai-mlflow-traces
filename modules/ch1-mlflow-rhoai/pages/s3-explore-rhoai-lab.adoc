@@ -17,6 +17,8 @@ You need access to the predeployed Red Hat OpenShift AI (RHOAI) instance provide
 
 In this lab, you will log in to the RHOAI dashboard and explore its main features and components to understand the platform's capabilities.
 
+=== Inspect the existing projects and deployed models
+
 1. Access the RHOAI Dashboard.
 
 .. Navigate to the RHOAI dashboard URL of your demo environment.
@@ -62,6 +64,8 @@ What is RHEL?
 .. Type kbd:[Enter] to submit the prompt and see the response from the model.
 You may get different answers, if you attempt the same prompt again, but they all would, hopefully, be correct and reasonable.
 
+=== Confirm that MLFLow is not deployed yet in RHOAI.
+
 4. Verify that there are no RHOAI dasbboard pages related to MLFlow.
 
 .. In the left pane, expand the menu:Gen AI studio[] category, which contains entries named menu:Playground[] and menu:AI asset endpoints[]. 
@@ -75,6 +79,8 @@ Verify that there are no MCP servers configured for use by Gen AI studio playgro
 .. In the left pane, expand the menu:Develop & train[] category, which contains entries named menu:Feture store[], menu:Pipelines[], menu:Jobs[], and menu:Evaluations[].
 
 .. In the toolbar, to the top right, click the menu:Applications[] icon, which is close to the menu:Question[] icon, and verify that there is *not* an entry named menu:MLFlow[].
+
+=== Summary 
 
 After completing these steps, you have verified that you have a functional RHOAI instance with a pre-deployed model, which is available only for internal access, and that you can submit prompts to the model using an RHOAI playground. 
 

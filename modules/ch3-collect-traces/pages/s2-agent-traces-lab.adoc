@@ -29,7 +29,9 @@ As you perform this activity, you will alternate between three browser tabs:
 
 Once you open one of these tabs, keep it open because you may return to it later.
 
-1. Create a Jupyter notebook for you chat application.
+=== Create a simple chat application
+
+1. Create a Jupyter notebook for your chat application.
 
 .. Open the RHOAI dashboard and log in using the `admin` user.
 +
@@ -165,6 +167,8 @@ Red Hat Enterprise Linux (RHEL) and CentOS are both popular Linux distributions,
 In summary, RHEL is a paid, enterprise-focused distribution, while CentOS is a free, community-supported distribution based on RHEL.
 ----
 
+=== Add tracing to the chat application
+
 4. Instrument your chat application with MLFlow tracing.
 
 .. Edit the first cell to also install the MLFlow SDK for Python.
@@ -241,6 +245,8 @@ RHEL (Red Hat Enterprise Linux) and CentOS are both Linux distributions, but the
 ...
 ----
 
+=== View and compare multiple traces
+
 6. View the trace in the RHOAI dashboard.
 
 .. Switch to your brower tab on the RHOAI dashboard, which should be already in the Experiments page, and notice there is a new item, besides the `dummy experiment` created by the previous lab.
@@ -306,6 +312,8 @@ You may need to refresh your browser window to view the second trace.
 .. Verify that the trace summary shows the latest, longer system prompt on its inputs, and the latest, shorter response on its outputs.
 Do *not* close the trace summary page.
 
+=== Add assessments to your traces
+
 9. Register a human assessment, simulating what a real-world chat application might do when a user clicks either a thumbs up or a thumbs down icon.
 
 .. Click menu:Show assessments[] to display the Assessments pane, to the right of the trace summary page. 
@@ -323,6 +331,8 @@ There is also an menu:x[] icon on the Assessments page, which is *not* the one y
 .. Click the trace ID of the previous trace, from before you changed the system prompt.
 Add an human assessment using the same name but with a value of `False`.
 Close the summary page of that trace and see how the summary changes.
+
+=== Summary
 
 After completing these steps, you have executed a simple chat application with MLFLow tracing enabled.
 You also compared traces from multiple runs of the chat application and recorded human assessments of its responses.

@@ -30,6 +30,8 @@ As you perform this activity, you will alternate between three browser tabs:
 
 Once you open one of these tabs, keep it open because you may return to it later.
 
+=== Deploy and validate an MCP server
+
 1. Deploy the https://catalog.redhat.com/en/software/container-stacks/detail/69a94fac9956d5da803edd1a#resources[MCP Server for Red Hat OpenShift^] with restricted privileges, by using its https://github.com/openshift/openshift-mcp-server/blob/main/charts/kubernetes-mcp-server/README.md[helm chart^] and the OpenShift Ecosystem Catalog.
 
 .. Open the OpenShift web console and log in using the `admin` user.
@@ -107,6 +109,8 @@ Which pods are in my-first-model?
 
 .. Type kbd:[Enter] to submit the prompt.
 Hopefully, you will get a correct response, which you can optionally verify by switching to the OpenShit web console and listing pods from the `my-first-model` project.
+
+=== Import a simple agentic application from git
 
 3. Import the Jupyter notebook for a simple agent.
 
@@ -235,6 +239,8 @@ This loop, inside the agent object, continues until the agent gets a response fr
             asyncio.run(main())
 ----
 
+=== View traces containing MCP tool calls
+
 5. Run the agent to produce a trace.
 
 .. In the top toolbar from the notebook, click the menu:fast forward[] icon, with the tooltip menu:Restart the kernel and run all cells[].
@@ -329,6 +335,8 @@ But you can also find that there are a number of useful prompts this small model
 
 .. TBD
 ////
+
+=== Summary
 
 After completing these steps, you have executed a simple agentic application which produces traces on the MLFlow server in RHOAI.
 You also interpreted those traces to identify when the model requested tool calls, the specific data returned by the MCP server for each call, and how the data was send back from the agent to the model.

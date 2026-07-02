@@ -25,6 +25,10 @@ As you perform this activity, you will alternate between three browser tabs:
 * The Red Hat OpenShift AI (RHOAI) dashboard
 * A Jupyter notebook from a RHOAI workbench.
 
+Once you open one of these tabs, keep it open because you may return to it later.
+
+=== Install and configure the MLFlow Server
+
 1. Enable MLFlow on RHOAI.
 
 .. Open the OpenShift web console and log in as a user with `cluster-admin` rigts.
@@ -99,6 +103,8 @@ spec:
 ----
 
 .. Click menu:Create[] and, in the MLflow details page, wait until the `Available` condition is `True` and the `Progressing` condition is `False`.
+
+=== Test your MLFlow server using the dashboard and a workbench
 
 3. Verify MLFlow is available from RHOAI
 
@@ -182,6 +188,8 @@ It connects using the service account of the `test-mlflow` workbench, which is a
 
 .. If you wish, you can remove the unnamed notebook, or if you prefer you can save it, rename it to `test.ipynb`, and reuse for the next activity.
 Whatever your preference, do NOT delete the `test-mlflow` workbench because you will keep using it in the next activity.
+
+=== Summary
 
 After completing these steps, you have verified that you have a minmal but funcional MLFLow instance, to which you can connect from applications running inside your RHOAI cluster and store data from your experiments.
 
