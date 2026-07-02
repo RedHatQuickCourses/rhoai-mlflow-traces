@@ -226,21 +226,106 @@ Finally, you will interpret traces from the agent to assess if it is able to mak
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Deploy the OpenShift MCP server with restricted privileges.</p>
+<p>Deploy the <a href="https://catalog.redhat.com/en/software/container-stacks/detail/69a94fac9956d5da803edd1a#resources" target="_blank" rel="noopener">MCP Server for Red Hat OpenShift</a> with restricted privileges, by using its <a href="https://github.com/openshift/openshift-mcp-server/blob/main/charts/kubernetes-mcp-server/README.md" target="_blank" rel="noopener">helm chart</a> and the OpenShift Ecosystem Catalog.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>TBD</p>
+<p>Open the OpenShift web console and log in using the <code>admin</code> user.
+In the left navigation menu, select <span class="menuseq"><b class="menu">Ecosystem</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Software Catalog</b></span>.
+Scroll down to find the <strong>Type</strong> heading and click <b class="menuref">Helm charts</b>.</p>
+</li>
+<li>
+<p>Scroll up to the <strong>All items</strong> field and type <code>mcp</code>.
+Then click the entry <b class="menuref">Red Hat OpenShift Mcp Server</b> and, on its details pane, click <b class="menuref">Create</b>.</p>
+</li>
+<li>
+<p>In the <strong>Create Helm Release</strong> page, click the <b class="menuref">Project</b> combo box, which probably displays the <code>default</code> project, and click <b class="menuref">Create Project</b>.
+Type <code>mcp-servers</code> as the <strong>Name</strong> field and click <b class="menuref">Create</b>.</p>
+</li>
+<li>
+<p>In the <strong>Create Helm Release</strong> page, delete all contents from its text editor and paste the following configuration, which gives the MCP server read-only access to all resources int the cluster, but disables external access.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">ingress:
+  enabled: false
+rbac:
+  extraClusterRoleBindings:
+    - name: use-view-role
+      roleRef:
+        name: view
+        external: true</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Click <b class="menuref">Create</b>.
+You should be now in the <span class="menuseq"><b class="menu">Workloads</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Topologu</b></span> page of the <code>mcp-servers</code> project, which displays a Helm icon for the MCP server deployment.
+Click the Helm icon to display its workload details page, to the right, and wait until its only pod is runnig.</p>
 </li>
 </ol>
 </div>
 </li>
 <li>
-<p>Test the MCP server using the Gen AI playground</p>
+<p>Test the MCP server using the Gen AI studio</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>TBD</p>
+<p>Create a config map which provides the Gen AI studio with a list of available MCP servers.</p>
+<div class="paragraph">
+<p>In the left navigation pane, select <span class="menuseq"><b class="menu">Workloads</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">ConfigMaps</b></span> and, in the <b class="menuref">Project</b> combo at the top, select the <code>redhat-ods-applications</code> project.</p>
+</div>
+</li>
+<li>
+<p>Click <b class="menuref">Create ConfigMap</b> and, in the <strong>Create Configmap</strong> page, type <code>gen-ai-aa-mcp-servers</code> as the <strong>Name</strong> field.</p>
+</li>
+<li>
+<p>Type the following as the <strong>Value</strong> field and click <b class="menuref">Create</b>.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+      "url": "http://redhat-openshift-mcp-server.mcp-servers.svc.cluster.local:8080/mcp",
+      "description": "Red Hat OpenShift MCP server"
+}</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Verify that the Gen AI studio can connect to the MCP server.</p>
+<div class="paragraph">
+<p>Open your RHOAI dashboard and login as the <code>admin</code> user.
+In the left navigation pane, select <span class="menuseq"><b class="menu">Gen AI studio</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">AI assets endpoints</b></span> and select the <b class="menuref">MCP servers</b> tab.
+It should list the <code>OpenShift-MCP-Server</code>, as configured by the config map, with the <code>Active</code> status, which means the Gen AI studio was able to retrieve the tools list from the MCP server.</p>
+</div>
+</li>
+<li>
+<p>Test the MCP server tools using a playground.</p>
+<div class="paragraph">
+<p>In the left navitation pane, select <span class="menuseq"><b class="menu">GenAI studio</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Playground</b></span>.
+Then type <code>my</code> in the <strong>Project</strong> field and select <b class="menuref">my-first-project</b>.
+Click <b class="menuref">Create playground</b>.
+In the <strong>Configure playground</strong> form, leve the model checked and click <b class="menuref">Create</b>.</p>
+</div>
+</li>
+<li>
+<p>Wait while the Gen AI studio deploys a llama stack server for your playground.
+It displays a confirmation popup when done and enters the <strong>Playground</strong> page,</p>
+</li>
+<li>
+<p>In the <strong>Configure</strong> pane of the playground, select the <b class="menuref">MCP</b> tab and check the row with name <code>OpenShift-MCP-Server</code>.
+You should see a popup stating <strong>Connection successful</strong> and the number of tools provided by the MCP server.
+Click <b class="menuref">Save</b> to select all tools.</p>
+</li>
+<li>
+<p>In the right pane, click the <code>Send a message&#8230;&#8203;</code>​ text and type a prompt which requires using the MCP server, for example:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">Which pods are in my-first-model?</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Type <kbd>Enter</kbd> to submit the prompt.
+Hopefully, you will get a correct response, which you can optionally verify by switching to the OpenShit web console.</p>
 </li>
 </ol>
 </div>
