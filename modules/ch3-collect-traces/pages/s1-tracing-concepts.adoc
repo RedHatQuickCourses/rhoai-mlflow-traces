@@ -18,12 +18,12 @@ The accuracy is the number of good or correct answers compared to the number of 
 You never reach 100% accuracy, but there are approaches to handle the innevitable bad answers, such as adding guardrails and evals before displaying the answer to an end user or before using the answer for the next task in an automated workflow.
 
 The cost of running an agent depends mainly on the token usage, and again each attempt, even if taking exactly the same input data, may have a different cost.
-Larger models, reasoning models, etc provide a higher accuracy at a higher cost per token and in number of tokens.
+Larger models, reasoning models, and frontier models provide a higher accuracy at a higher cost per token and by spending a larger ammount of tokens per request.
 
-So you must run your tests many time using the same input data.
-And you also must run tests using different input data: different requests you expect that your agent should be able to answer or process.
+So you must run your tests many times using the same input data.
+And you also must run tests using different input data: different kinds of requests which you expect that your agent should be able to answer or process.
 
-As you attempt to optmize your agent (or just reach a good enough working state) you will also variations on parameters such as input prompts, tool sets, and RAG sources.
+As you attempt to optmize your agent (or just reach a good enough working state) you will also try variations on parameters such as system prompts, tool sets, and RAG sources.
 Maybe even try with different models.
 
 In fact, collecting traces of an agent is the start of a process which requires post-processing of the data in such traces.
@@ -50,18 +50,18 @@ From a trace, it should be possible to reproduce the conversation, providing exa
 
 == Traces and MCP servers
 
-If it is an agentic application, the response from the model may request a tool call.
-The tool is usually provided by an MCP server.
-Agents are expected to provide a model with a list of all tools they are able to call, for every request!
+If it is an agentic application, the response from the model may request one or more tool calls.
+These tools are usually provided by one or more MCP servers.
+Agents are expected to provide a model with a list of all tools they are able to call, and that for each and every request!
 
-The agent is reponsible for peforming the tool call, collecting its ouputs, and adding these outputs to the next request submitted to the model, as part of the same conversation.
+The agent is reponsible for peforming all tool calls, collecting their ouputs, and adding these outputs to the next request submitted to the model, as part of the same conversation.
 
 The model may decide to request yet additional tool calls, until it is satisfied it has collected all data it needs to provide a final response.
-It is like the agent and the model are having a conversation with each other, without any participation from the end user.
+It is like the agent and the model are having a conversation between themselves, without any participation from the end user.
 
 An agent runs a loop, checking if the model requests another tool call, and only when the model signals its done the agent displays the final response (or takes whatever action it does from the final response).
 
-As the agent runs its loop, its trace gets more spans.
+As the agent runs its loop, its current trace grows with more spans.
 Each span records the current state of the context, including prompts, available tools, previous messages and previous responses.
 
 NOTE: The label you see on your spans depend on the client framework and on the usage of autotrace or manual trace.
