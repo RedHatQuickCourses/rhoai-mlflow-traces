@@ -187,14 +187,14 @@ The accuracy is the number of good or correct answers compared to the number of 
 </div>
 <div class="paragraph">
 <p>The cost of running an agent depends mainly on the token usage, and again each attempt, even if taking exactly the same input data, may have a different cost.
-Larger models, reasoning models, etc provide a higher accuracy at a higher cost per token and in number of tokens.</p>
+Larger models, reasoning models, and frontier models provide a higher accuracy at a higher cost per token and by spending a larger ammount of tokens per request.</p>
 </div>
 <div class="paragraph">
-<p>So you must run your tests many time using the same input data.
-And you also must run tests using different input data: different requests you expect that your agent should be able to answer or process.</p>
+<p>So you must run your tests many times using the same input data.
+And you also must run tests using different input data: different kinds of requests which you expect that your agent should be able to answer or process.</p>
 </div>
 <div class="paragraph">
-<p>As you attempt to optmize your agent (or just reach a good enough working state) you will also variations on parameters such as input prompts, tool sets, and RAG sources.
+<p>As you attempt to optmize your agent (or just reach a good enough working state) you will also try variations on parameters such as system prompts, tool sets, and RAG sources.
 Maybe even try with different models.</p>
 </div>
 <div class="paragraph">
@@ -250,22 +250,22 @@ They collect all inputs and ouptus of each individual interaction between an app
 <h2 id="_traces_and_mcp_servers"><a class="anchor" href="#_traces_and_mcp_servers"></a>Traces and MCP servers</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If it is an agentic application, the response from the model may request a tool call.
-The tool is usually provided by an MCP server.
-Agents are expected to provide a model with a list of all tools they are able to call, for every request!</p>
+<p>If it is an agentic application, the response from the model may request one or more tool calls.
+These tools are usually provided by one or more MCP servers.
+Agents are expected to provide a model with a list of all tools they are able to call, and that for each and every request!</p>
 </div>
 <div class="paragraph">
-<p>The agent is reponsible for peforming the tool call, collecting its ouputs, and adding these outputs to the next request submitted to the model, as part of the same conversation.</p>
+<p>The agent is reponsible for peforming all tool calls, collecting their ouputs, and adding these outputs to the next request submitted to the model, as part of the same conversation.</p>
 </div>
 <div class="paragraph">
 <p>The model may decide to request yet additional tool calls, until it is satisfied it has collected all data it needs to provide a final response.
-It is like the agent and the model are having a conversation with each other, without any participation from the end user.</p>
+It is like the agent and the model are having a conversation between themselves, without any participation from the end user.</p>
 </div>
 <div class="paragraph">
 <p>An agent runs a loop, checking if the model requests another tool call, and only when the model signals its done the agent displays the final response (or takes whatever action it does from the final response).</p>
 </div>
 <div class="paragraph">
-<p>As the agent runs its loop, its trace gets more spans.
+<p>As the agent runs its loop, its current trace grows with more spans.
 Each span records the current state of the context, including prompts, available tools, previous messages and previous responses.</p>
 </div>
 <div class="admonitionblock note">
