@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Introduction to MLFlow in Red Hat OpenShift AI :: Agent Traces with MLFLow and Red Hat OpenShift AI</title>
+    <title>Introduction to MLflow in Red Hat OpenShift AI :: Agent Traces with MLFLow and Red Hat OpenShift AI</title>
     <link rel="prev" href="index.html">
-    <link rel="next" href="s2-concepts-quiz.html">
+    <link rel="next" href="s3-explore-rhoai-lab.html">
     <meta name="generator" content="Antora 3.2.0-alpha.12">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <link rel="stylesheet" href="../../../_/css/vendor/tabs.css">
@@ -62,10 +62,7 @@
     <a class="nav-link" href="index.html">Understanding MLFlow and Red Hat OpenShift AI</a>
 <ul class="nav-list">
   <li class="nav-item is-current-page" data-depth="2">
-    <a class="nav-link" href="s1-introduction.html">Introduction to MLFlow in Red Hat OpenShift AI</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="s2-concepts-quiz.html">Quiz: MLFlow Concepts Review</a>
+    <a class="nav-link" href="s1-introduction.html">Introduction to MLflow in Red Hat OpenShift AI</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="s3-explore-rhoai-lab.html">Lab: Explore the RHOAI Instance</a>
@@ -81,7 +78,7 @@
     <a class="nav-link" href="../ch2-deploy-mlflow/index.html">Deploying MLFlow for Development</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../ch2-deploy-mlflow/s1-architecture.html">MLFlow Architecture and RHOAI Integration</a>
+    <a class="nav-link" href="../ch2-deploy-mlflow/s1-architecture.html">MLFlow within Red Hat OpenShift AI</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../ch2-deploy-mlflow/s2-deploy-lab.html">Lab: Deploy MLFlow on Red Hat OpenShift AI</a>
@@ -139,7 +136,7 @@
   <ul>
     <li><a href="../index.html">Agent Traces with MLFLow and Red Hat OpenShift AI</a></li>
     <li><a href="index.html">Understanding MLFlow and Red Hat OpenShift AI</a></li>
-    <li><a href="s1-introduction.html">Introduction to MLFlow in Red Hat OpenShift AI</a></li>
+    <li><a href="s1-introduction.html">Introduction to MLflow in Red Hat OpenShift AI</a></li>
   </ul>
 </nav>
 </div>
@@ -148,17 +145,14 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Introduction to MLFlow in Red Hat OpenShift AI</h1>
+<h1 class="page">Introduction to MLflow in Red Hat OpenShift AI</h1>
 <div id="preamble">
 <div class="sectionbody">
-<div class="paragraph">
-<p><em>Estimated reading time: <strong>5 minutes</strong>.</em></p>
-</div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Objective</dt>
 <dd>
-<p>Understand MLFlow&#8217;s features for agentic applications and how it integrates with Red Hat OpenShift AI.</p>
+<p>Understand MLFlow&#8217;s features for agentic applications and its place as part of Red Hat OpenShift AI.</p>
 </dd>
 </dl>
 </div>
@@ -169,7 +163,7 @@
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-Not started yet.
+Work In Progress
 </td>
 </tr>
 </table>
@@ -177,26 +171,116 @@ Not started yet.
 </div>
 </div>
 <div class="sect1">
-<h2 id="_mlflow_features_in_rhoai"><a class="anchor" href="#_mlflow_features_in_rhoai"></a>MLFlow Features in RHOAI</h2>
+<h2 id="_introduction_to_mlflow"><a class="anchor" href="#_introduction_to_mlflow"></a>Introduction to MLflow</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Lorem ipsum</p>
+<p>According to their own <a href="https://mlflow.org/" target="_blank" rel="noopener">web site</a>:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>MLflow is the largest open source AI engineering platform for agents, LLMs, and ML models.
+MLflow enables teams of all sizes to debug, evaluate, monitor, and optimize production-quality AI applications while controlling costs and managing access to models and data.</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>MLflow provides fundamental observability and experiment tracking capabilities which enable developers and data scientists ensure their applications work beyond a demonstration and perform as expected in production.</p>
+</div>
+<div class="paragraph">
+<p>By using MLflow capabilities, developers and data scientists can optimize their applications for cost and accuracy, for example by selecting smaller models or tuning their prompts, confident that they didn&#8217;t introduce unnaceptable performance degradation.</p>
+</div>
+<div class="paragraph">
+<p>AI-enabled application usually degrade over time, because user behavior and input data changes.
+MLFlow enables continuous evaluation of runtime performance of applications, so improvements can be made before users start complaining.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_focus_on_generative_ai_applications"><a class="anchor" href="#_focus_on_generative_ai_applications"></a>Focus on Generative AI Applications</h2>
+<h2 id="_high_level_architecture_of_mlflow"><a class="anchor" href="#_high_level_architecture_of_mlflow"></a>High-level architecture of MLflow</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Lorem ipsum</p>
+<p>MLflow is based on a client/server architecture.
+A client application, which is instrumented by using either the MLflow SDK or OpenTelemetry, sends observability data, such as metrics and traces, to an MLflow server, which stores that data and provides HTML-based visualization features.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/mlflow-arch.svg" alt="mlflow arch">
+</div>
+<div class="title">Figure 1. Architecture of MLflow</div>
+</div>
+<div class="paragraph">
+<p>The application is responsible for interacting with ML models or, in the case of GenAI applications, with LLMs.
+The genAI application is also responsible for interacting with MCP servers, providing local tools, or connecting to RAG data sources.</p>
+</div>
+<div class="paragraph">
+<p>It does not matter whether the "application" is a user-facing application, an authonomous agent, or a training or evaluation pipeline.
+It just needs to send observability data to an MLflow server.</p>
+</div>
+<div class="paragraph">
+<p>Client applications can also consume data from MLflow servers, for example to compare metrics from different training sessions and determine which one provided better outputs, or to track performance degradation, over time, for a production application.</p>
+</div>
+<div class="paragraph">
+<p>The MLflow server makes use of a relational database and a file or object store to record artifacts such as model weights (in case of training ML models) or prompts (in case of genAI applications).
+It is recommended that the artifact store be an S3 service for scalability.</p>
+</div>
+<div class="paragraph">
+<p>The relational database stores metadata and tags which enables the MLflow server to relating all inputs, outputs, and observability data from a single training session or from a single conversation withan LLM to each other.
+A PostgreSQL database is a popular option for the MLflow database.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_mlflow_experiments"><a class="anchor" href="#_mlflow_experiments"></a>MLFlow Experiments</h2>
+<h2 id="_mlflow_for_generative_ai_applications"><a class="anchor" href="#_mlflow_for_generative_ai_applications"></a>MLflow for Generative AI Applications</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Lorem ipsum</p>
+<p>MLflow started by supporting Machine Learning (ML) applications and data scientists, offering features to support model training and tuning.
+Like many tools focused on ML, MLflow was initially very Python-centric.</p>
+</div>
+<div class="paragraph">
+<p>More recently, MLflow added features for supporting Generative AI (genAI) applications and agents.
+By that time, MLflow was also offering native SDKs for other programming languages, such as TypeScript and Java.</p>
+</div>
+<div class="paragraph">
+<p>Nowadays, MLflow also supports the OpenTelemetry standard, which enables applications using any programming language and any kind of infrastructure to submit observability data to an MLflow server.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mlflow_experiments_and_workspaces"><a class="anchor" href="#_mlflow_experiments_and_workspaces"></a>MLflow experiments and workspaces</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Experiments are a key concept in MLflow.
+An <em>experiment</em> is a grouping of observability data, from multiple runs.
+Each run collects all data obtained while running an AI application once.
+Runs may take multiple forms, and the one we are interested in this course are <em>traces</em>, which record the iteractions between an agent and a model.</p>
+</div>
+<div class="paragraph">
+<p>A workspace is a grouping of experiments.
+Tipically, a workspace corresponds to an application, and experiments corresponds to running the application with different configuration parameters, such as different models, or different system prompts.</p>
+</div>
+<div class="paragraph">
+<p>Then, inside an experiment, each run connects an input to its output, and provides metrics and other observability data from that run.
+Frequently there are multiple runs, such as multiple traces, which started from exactly the same input data because LLMS are inerently non-deterministic.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mlflow_features_in_red_hat_openshift_ai"><a class="anchor" href="#_mlflow_features_in_red_hat_openshift_ai"></a>MLflow Features in Red Hat OpenShift AI</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>MLflow is a compehensive platform for managing AI applications (AIOps) but it does not provide everything data scientists, software developers, and AI engineers need to develop and manage their ML or genAI applications.
+This is the stated goal of Red Hat OpenShift AI (RHOAI).
+While MLflow provides many features which are useful by themselves, others work better then paired with tools outside of MLflow.</p>
+</div>
+<div class="paragraph">
+<p>Sometimes, there&#8217;s overlap between a feature from MLflow and a feature from another component of RHOAI.
+All features from MLflow are available from RHOAI but not all of them may be integrated with the RHOAI dashboard and with other features of RHOAI.</p>
+</div>
+<div class="paragraph">
+<p>The upstream web interface from MLflow is available, as a standalone application, from RHOAI.
+Users are free to continue using this interface.
+But you may find it is easier and more conveniente to use the subset of features made available from RHOAI dashboard, because it facilitates easier using these features integrated with other components and features from RHOAI.</p>
 </div>
 </div>
 </div>
@@ -204,13 +288,13 @@ Not started yet.
 <h2 id="_whats_next"><a class="anchor" href="#_whats_next"></a>What&#8217;s Next</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Now that you understand MLFlow&#8217;s role in RHOAI and agentic applications, the next section provides a quiz to verify your understanding of key MLFlow concepts.</p>
+<p>Now that you understand MLflow&#8217;s role in RHOAI and agentic applications, the next activity walks through the environment for hands-on activities, which provides an instance of RHOAI preconfired with an LLM.</p>
 </div>
 </div>
 </div>
 <nav class="pagination">
   <span class="prev"><a href="index.html">Understanding MLFlow and Red Hat OpenShift AI</a></span>
-  <span class="next"><a href="s2-concepts-quiz.html">Quiz: MLFlow Concepts Review</a></span>
+  <span class="next"><a href="s3-explore-rhoai-lab.html">Lab: Explore the RHOAI Instance</a></span>
 </nav>
 </article>
   </div>
