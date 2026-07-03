@@ -1,6 +1,6 @@
 {
-  "totalSeconds": 619,
-  "pageCount": 13,
+  "totalSeconds": 1436,
+  "pageCount": 12,
   "pages": [
     {
       "module": "ROOT",
@@ -20,17 +20,12 @@
     {
       "module": "ch1-mlflow-rhoai",
       "page": "s1-introduction.adoc",
-      "seconds": 45
-    },
-    {
-      "module": "ch1-mlflow-rhoai",
-      "page": "s2-concepts-quiz.adoc",
-      "seconds": 26
+      "seconds": 273
     },
     {
       "module": "ch1-mlflow-rhoai",
       "page": "s3-explore-rhoai-lab.adoc",
-      "seconds": 102
+      "seconds": 120
     },
     {
       "module": "ch2-deploy-mlflow",
@@ -40,12 +35,12 @@
     {
       "module": "ch2-deploy-mlflow",
       "page": "s1-architecture.adoc",
-      "seconds": 38
+      "seconds": 36
     },
     {
       "module": "ch2-deploy-mlflow",
       "page": "s2-deploy-lab.adoc",
-      "seconds": 65
+      "seconds": 180
     },
     {
       "module": "ch3-collect-traces",
@@ -60,12 +55,12 @@
     {
       "module": "ch3-collect-traces",
       "page": "s2-agent-traces-lab.adoc",
-      "seconds": 71
+      "seconds": 276
     },
     {
       "module": "ch3-collect-traces",
       "page": "s3-mcp-tools-lab.adoc",
-      "seconds": 66
+      "seconds": 345
     }
   ]
 }

@@ -1,14 +1,10 @@
-:time_estimate: 5
-
-= MLFlow Architecture and RHOAI Integration
-
-_Estimated reading time: *{time_estimate} minutes*._
+= MLFlow within Red Hat OpenShift AI
 
 Objective::
 
 Understand MLFlow's architecture and how it integrates with Red Hat OpenShift AI.
 
-WARNING: Not started yet.
+WARNING: Work In Progress.
 
 == MLFlow Components
 
