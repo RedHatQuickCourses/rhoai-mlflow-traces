@@ -1,5 +1,5 @@
 {
-  "totalSeconds": 1436,
+  "totalSeconds": 1597,
   "pageCount": 12,
   "pages": [
     {
@@ -35,7 +35,7 @@
     {
       "module": "ch2-deploy-mlflow",
       "page": "s1-architecture.adoc",
-      "seconds": 36
+      "seconds": 197
     },
     {
       "module": "ch2-deploy-mlflow",

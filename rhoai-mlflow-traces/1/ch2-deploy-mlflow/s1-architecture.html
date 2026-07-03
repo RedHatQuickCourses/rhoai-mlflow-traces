@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>MLFlow within Red Hat OpenShift AI :: Agent Traces with MLFLow and Red Hat OpenShift AI</title>
+    <title>MLflow within Red Hat OpenShift AI :: Agent Traces with MLFLow and Red Hat OpenShift AI</title>
     <link rel="prev" href="index.html">
     <link rel="next" href="s2-deploy-lab.html">
     <meta name="generator" content="Antora 3.2.0-alpha.12">
@@ -78,7 +78,7 @@
     <a class="nav-link" href="index.html">Deploying MLFlow for Development</a>
 <ul class="nav-list">
   <li class="nav-item is-current-page" data-depth="2">
-    <a class="nav-link" href="s1-architecture.html">MLFlow within Red Hat OpenShift AI</a>
+    <a class="nav-link" href="s1-architecture.html">MLflow within Red Hat OpenShift AI</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="s2-deploy-lab.html">Lab: Deploy MLFlow on Red Hat OpenShift AI</a>
@@ -136,7 +136,7 @@
   <ul>
     <li><a href="../index.html">Agent Traces with MLFLow and Red Hat OpenShift AI</a></li>
     <li><a href="index.html">Deploying MLFlow for Development</a></li>
-    <li><a href="s1-architecture.html">MLFlow within Red Hat OpenShift AI</a></li>
+    <li><a href="s1-architecture.html">MLflow within Red Hat OpenShift AI</a></li>
   </ul>
 </nav>
 </div>
@@ -145,14 +145,14 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">MLFlow within Red Hat OpenShift AI</h1>
+<h1 class="page">MLflow within Red Hat OpenShift AI</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Objective</dt>
 <dd>
-<p>Understand MLFlow&#8217;s architecture and how it integrates with Red Hat OpenShift AI.</p>
+<p>Understand how MLflow integrates with Red Hat OpenShift AI.</p>
 </dd>
 </dl>
 </div>
@@ -171,26 +171,100 @@ Work In Progress.
 </div>
 </div>
 <div class="sect1">
-<h2 id="_mlflow_components"><a class="anchor" href="#_mlflow_components"></a>MLFlow Components</h2>
+<h2 id="_the_mlflow_operator_and_rhoai"><a class="anchor" href="#_the_mlflow_operator_and_rhoai"></a>The MLflow Operator and RHOAI</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Lorem ipsum</p>
+<p>There&#8217;s an MLflow operator included with Red Hat OpenShift AI (RHOAI), but this operator won&#8217;t appear in the software catalog or in the list of installed operators managed by the Operator Lifecycle Manager (OLM).
+The MLflow operator is managed by the RHOAI operator itself.</p>
+</div>
+<div class="paragraph">
+<p>To deploy an MLflow server, you must perform two actions:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Edit the singleton data scient cluster resource of your RHOAI instance to enable the MLflow operator by setting its <code>spec.components.mlflowoperator.managementState</code> field to <code>Managed</code>.</p>
+</li>
+<li>
+<p>Create an MLflow resource, which configures the database and artifact storages of the MLflow server.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Once the MLflow resource is available, the RHOAI dashboard displays a number of new pages, or adds more elements to some of its existing pages.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_rhoai_integration"><a class="anchor" href="#_rhoai_integration"></a>RHOAI Integration</h2>
+<h2 id="_mlflow_workspaces_and_authentication_within_openshift"><a class="anchor" href="#_mlflow_workspaces_and_authentication_within_openshift"></a>MLflow workspaces and authentication within OpenShift</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Lorem ipsum</p>
+<p>The MLflow operator maps Kubernetes namespaces and OpenShift projects (not just AI projects) to MLflow workspaces.
+That is, for each project in RHOAI there is an MLflow workspace.</p>
+</div>
+<div class="paragraph">
+<p>The MLflow operator also configures the MLflow server to delegate authentication and authorization to OpenShift, so any OpenShift user is a valid MLflow user.
+Such users have access to data in MLflow workspaces based on their RBAC permissions from the respective OpenShift project.</p>
+</div>
+<div class="paragraph">
+<p>Besides, service accounts with access to resources in a namespace automatically gain access to MLflow workspace.
+This means pods running in OpenShift, including GenAI studio playgrounds and AI workbenches (including their Jupyter notebooks) atomatically get access to MLflow workspaces.</p>
+</div>
+<div class="paragraph">
+<p>In summary, you manage credentials and permissions to access the MLflow server managed by RHOAI by using configuring OpenShift users and standard Kubernetes RBAC.
+For example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You can enable applications to submit observability data by granting them the <code>edit</code> cluster role on their projects.</p>
+</li>
+<li>
+<p>You can enable users to view (but not change) observability data by granting the <code>view</code> cluster role on the application project.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Older releases of the MLflow SDK did not include the <code>kubernetes</code> extension, which automatically retrieves the authorization token from the running pod and uses it as the MLflow authentication token.
+That required using a ROAI fork of the MLflow SDK, but that extension is already merged upstream since MLflow 3.10.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If you must connect to MLflow an applicaton running outside if its OpenShift cluster, you can take same user token you would use for access to Kuberentes APIs and use it to authenticate to the MLflow server.
+External applications connect to the MLflow server using the same route (URL) a web browser uses to access the standalone MLflow web UI.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_development_vs_production_deployments"><a class="anchor" href="#_development_vs_production_deployments"></a>Development vs Production Deployments</h2>
+<h2 id="_development_vs_production_deployments_of_mlflow"><a class="anchor" href="#_development_vs_production_deployments_of_mlflow"></a>Development vs production deployments of MLflow</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Lorem ipsum</p>
+<p><a href="https://docs.redhat.com/en/documentation/red_hat_openshift_ai_self-managed/3.4/html/working_with_mlflow/installing-mlflow_mlflow" target="_blank" rel="noopener">RHOAI product documentation</a> provides two examples of MLflow resources, one for a development environment, and another for a production environment.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The development example runs an in-container SQLlite database, which stores data on a PVC attached to the MLflow server pod, and uses the same PVC as its artifact store.
+You can increase the size of that PVC and you are responsible for backing up data from it, possibly using the OADP API.</p>
+</li>
+<li>
+<p>The production example uses an external PostgreSQL database server and an external S3 object storage service, for example AWS S3 or OpenShift Data Foundations (ODF) from Red Hat OpenShift Plus.
+You are reponsible for providing access credentals and for managing high availability, disaster recovery, and data retention of both the external database and S3 object buckets.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Nothing prevents you from using a managed database service from a cloud provider as your MLflow database.
+Just be aware that RHOAI and its MLflow operator to not manage the relational database and object storage in any way.
+They just store data there.</p>
 </div>
 </div>
 </div>
@@ -198,7 +272,7 @@ Work In Progress.
 <h2 id="_whats_next"><a class="anchor" href="#_whats_next"></a>What&#8217;s Next</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Now that you understand MLFlow&#8217;s architecture and integration with RHOAI, the next section provides hands-on experience deploying MLFlow in a development environment.</p>
+<p>Now that you understand MLflow&#8217;s architecture and its integration with RHOAI, the next section provides hands-on experience deploying MLflow in a development environment.</p>
 </div>
 </div>
 </div>
