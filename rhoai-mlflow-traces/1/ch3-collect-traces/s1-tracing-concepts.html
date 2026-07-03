@@ -148,14 +148,11 @@
 <h1 class="page">Tracing Agentic Applications</h1>
 <div id="preamble">
 <div class="sectionbody">
-<div class="paragraph">
-<p><em>Estimated reading time: <strong>5 minutes</strong>.</em></p>
-</div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Objective</dt>
 <dd>
-<p>Understand why tracing is essential for agentic applications and how MLFlow organizes trace data.</p>
+<p>Understand why tracing is essential for agentic applications and how MfFlow organizes trace data.</p>
 </dd>
 </dl>
 </div>
@@ -166,7 +163,7 @@
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-Not started yet.
+Work In Progress
 </td>
 </tr>
 </table>
@@ -174,34 +171,210 @@ Not started yet.
 </div>
 </div>
 <div class="sect1">
-<h2 id="_why_developers_need_traces"><a class="anchor" href="#_why_developers_need_traces"></a>Why Developers Need Traces</h2>
+<h2 id="_why_developers_need_traces"><a class="anchor" href="#_why_developers_need_traces"></a>Why developers need traces</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Lorem ipsum</p>
+<p>If you provide exactly the same data to an LLM, in multiple attempts, each one returns a different response.
+Sometimes, it&#8217;s a small differente in wording.
+But sometimes it is a completely non-sense response, that is, an hallucination.</p>
+</div>
+<div class="paragraph">
+<p>Developers working on agentic applications want to reach a compromise between the accuracy and the cost of running the agent.
+The accuracy is the number of good or correct answers compared to the number of bad or incorrect answers, by whatever criteria you define "good" and "bad".</p>
+</div>
+<div class="paragraph">
+<p>You never reach 100% accuracy, but there are approaches to handle the innevitable bad answers, such as adding guardrails and evals before displaying the answer to an end user or before using the answer for the next task in an automated workflow.</p>
+</div>
+<div class="paragraph">
+<p>The cost of running an agent depends mainly on the token usage, and again each attempt, even if taking exactly the same input data, may have a different cost.
+Larger models, reasoning models, etc provide a higher accuracy at a higher cost per token and in number of tokens.</p>
+</div>
+<div class="paragraph">
+<p>So you must run your tests many time using the same input data.
+And you also must run tests using different input data: different requests you expect that your agent should be able to answer or process.</p>
+</div>
+<div class="paragraph">
+<p>As you attempt to optmize your agent (or just reach a good enough working state) you will also variations on parameters such as input prompts, tool sets, and RAG sources.
+Maybe even try with different models.</p>
+</div>
+<div class="paragraph">
+<p>In fact, collecting traces of an agent is the start of a process which requires post-processing of the data in such traces.
+RHOAI provides tools for such post-processing, for example the <strong>Eval Hub</strong> feature, which are <strong>not</strong> in scope for this course.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_mlflow_sdk_and_trace_calls"><a class="anchor" href="#_mlflow_sdk_and_trace_calls"></a>MLFlow SDK and Trace Calls</h2>
+<h2 id="_trances_and_spans"><a class="anchor" href="#_trances_and_spans"></a>Trances and spans</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Lorem ipsum</p>
+<p>MLflow traces are usefull for both interactive applications and autonomous agents.
+They collect all inputs and ouptus of each individual interaction between an application and a model, for example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The model name</p>
+</li>
+<li>
+<p>The system prompt</p>
+</li>
+<li>
+<p>Model invocation parameters, such as temperature</p>
+</li>
+<li>
+<p>The final response from the model</p>
+</li>
+<li>
+<p>Error messages from the model and/or from the application, such as context exhaustion</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/mlflow-chat-trace.svg" alt="mlflow chat trace">
+</div>
+<div class="title">Figure 1. Workplaces, experiments, traces, spans, and data recorded for each span</div>
+</div>
+<div class="paragraph">
+<p>Every time you run the application again (or submit a new prompt) it generates a new trace. If it is a conversational application, each subsequent prompt from the same conversation is added to the same trace, as a new <em>span</em>, until the conversation is terminated.</p>
+</div>
+<div class="paragraph">
+<p>If your application makes use of RAG sources, it should include in the trace all data data returned by RAG, which is added to the context of the model, as additional inputs.</p>
+</div>
+<div class="paragraph">
+<p>From a trace, it should be possible to reproduce the conversation, providing exaclty the same context, and compare the final and intermediate responses, in addition to metrics such as latency and token usage.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_experiments_and_runs"><a class="anchor" href="#_experiments_and_runs"></a>Experiments and Runs</h2>
+<h2 id="_traces_and_mcp_servers"><a class="anchor" href="#_traces_and_mcp_servers"></a>Traces and MCP servers</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Lorem ipsum</p>
+<p>If it is an agentic application, the response from the model may request a tool call.
+The tool is usually provided by an MCP server.
+Agents are expected to provide a model with a list of all tools they are able to call, for every request!</p>
+</div>
+<div class="paragraph">
+<p>The agent is reponsible for peforming the tool call, collecting its ouputs, and adding these outputs to the next request submitted to the model, as part of the same conversation.</p>
+</div>
+<div class="paragraph">
+<p>The model may decide to request yet additional tool calls, until it is satisfied it has collected all data it needs to provide a final response.
+It is like the agent and the model are having a conversation with each other, without any participation from the end user.</p>
+</div>
+<div class="paragraph">
+<p>An agent runs a loop, checking if the model requests another tool call, and only when the model signals its done the agent displays the final response (or takes whatever action it does from the final response).</p>
+</div>
+<div class="paragraph">
+<p>As the agent runs its loop, its trace gets more spans.
+Each span records the current state of the context, including prompts, available tools, previous messages and previous responses.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The label you see on your spans depend on the client framework and on the usage of autotrace or manual trace.
+So they may vary between applications and frameworks.
+Anyway, be ready to look at a lot of hierarchical data inside a trace.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_significant_events_in_traces"><a class="anchor" href="#_significant_events_in_traces"></a>Significant Events in Traces</h2>
+<h2 id="_viewing_traces_with_the_rhoai_dasboard"><a class="anchor" href="#_viewing_traces_with_the_rhoai_dasboard"></a>Viewing traces with the RHOAI dasboard</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Lorem ipsum</p>
+<p>RHOAI displays traces for the selected project in the <span class="menuseq"><b class="menu">Develop &amp; train</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Experiments</b></span> page.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/rhoai-mlflow-experiments-traces.png" alt="rhoai mlflow experiments traces">
+</div>
+<div class="title">Figure 2. List of traces in an experiment</div>
+</div>
+<div class="paragraph">
+<p>Each trace gets an auto-assigned ID.
+Click either the ID or the user prompt (in the <strong>Request</strong> column) to view the spans inside that trace.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/rhoai-mlflow-trace-spans.png" alt="rhoai mlflow trace spans">
+</div>
+<div class="title">Figure 3. List of spans inside a trace</div>
+</div>
+<div class="paragraph">
+<p>In the previous figure, each span is labeled <code>AsyncCompletions</code> because of the OpenAI extension for agents.</p>
+</div>
+<div class="paragraph">
+<p>You can expand each individual span to show its input, outputs, and other data:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/rhoai-mlflow-span-tool.png" alt="rhoai mlflow span tool">
+</div>
+<div class="title">Figure 4. An span with submits the data from a tool call</div>
+</div>
+<div class="paragraph">
+<p>The previous example shows a span where the agent provides to the model data returned by a tool call, which was requested by the model during the previous span.</p>
+</div>
+<div class="paragraph">
+<p>Because the context in a conversation with a model is cumulative, it is usually sufficient to check the latest span in a trace.
+Well, that for simple agents.</p>
+</div>
+<div class="paragraph">
+<p>More sophisticated agents could orchestrate a complex workflow, which submits requests to different models, and control how much context to submit for each request.
+In such cases, as well as with conversational applications, you have the option of organizing related traces into <em>sessions</em>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This course only presents very simplistic sample applications, which are not convesational and do not delimit sessions.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tracing_with_the_mlflow_sdk"><a class="anchor" href="#_tracing_with_the_mlflow_sdk"></a>Tracing with the MLflow SDK</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The simplest way of generating tracing from your agent, at least with the MLflow Python SDK, is to use its <em>autologging</em> feature.</p>
+</div>
+<div class="paragraph">
+<p>For example, if you application uses OpenAI APIs:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">mlflow.openai.autolog()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If your agent runs as a pod inside OpenShift, its project is automatically taken as its MLflow workspace.
+But you can and should set the name of the current experiment, <strong>before</strong> you start logging traces.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">mlflow.set_experiment(<em>"my-experiment"</em>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This course will not detail most of the tracing functions available in the MLflow SDK.
+If you must, you can have fine control of when you start a new span, how you label spans.
+Similarly, you can also control when you start and stop sessions and how you label sessions.
+You can also append additional parameters and metrics to each span.</p>
+</div>
+<div class="paragraph">
+<p>It is also possible to use a generic logging framework, if it is configurable as an OpenTelemetry provider.
+These and other alternatives are detailed in the MLflow <a href="https://mlflow.org/docs/latest/genai/tracing/" target="_blank" rel="noopener">community documentation</a>.</p>
 </div>
 </div>
 </div>
@@ -209,7 +382,9 @@ Not started yet.
 <h2 id="_whats_next"><a class="anchor" href="#_whats_next"></a>What&#8217;s Next</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Now that you understand tracing concepts, the next section provides hands-on experience modifying an agent to record traces using the MLFlow SDK.</p>
+<p>Now that you understand tracing concepts, the next section provides hands-on experience modifying an agent to record traces using the MLFlow SDK.
+First, you add tracing to a basic chat application.
+Then, you run an agent which makes MCP tool calls and inspect its traces.</p>
 </div>
 </div>
 </div>

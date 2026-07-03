@@ -1,5 +1,5 @@
 {
-  "totalSeconds": 1597,
+  "totalSeconds": 1901,
   "pageCount": 12,
   "pages": [
     {
@@ -50,7 +50,7 @@
     {
       "module": "ch3-collect-traces",
       "page": "s1-tracing-concepts.adoc",
-      "seconds": 29
+      "seconds": 333
     },
     {
       "module": "ch3-collect-traces",
