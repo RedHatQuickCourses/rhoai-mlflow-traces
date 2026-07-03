@@ -1,26 +1,64 @@
-= MLFlow within Red Hat OpenShift AI
+= MLflow within Red Hat OpenShift AI
 
 Objective::
 
-Understand MLFlow's architecture and how it integrates with Red Hat OpenShift AI.
+Understand how MLflow integrates with Red Hat OpenShift AI.
 
 WARNING: Work In Progress.
 
-== MLFlow Components
+== The MLflow Operator and RHOAI
 
-Lorem ipsum
+There's an MLflow operator included with Red Hat OpenShift AI (RHOAI), but this operator won't appear in the software catalog or in the list of installed operators managed by the Operator Lifecycle Manager (OLM).
+The MLflow operator is managed by the RHOAI operator itself.
 
-== RHOAI Integration
+To deploy an MLflow server, you must perform two actions:
 
-Lorem ipsum
+. Edit the singleton data scient cluster resource of your RHOAI instance to enable the MLflow operator by setting its `spec.components.mlflowoperator.managementState` field to `Managed`.
 
-== Development vs Production Deployments
+. Create an MLflow resource, which configures the database and artifact storages of the MLflow server.
 
-Lorem ipsum
+Once the MLflow resource is available, the RHOAI dashboard displays a number of new pages, or adds more elements to some of its existing pages.
+
+== MLflow workspaces and authentication within OpenShift
+
+The MLflow operator maps Kubernetes namespaces and OpenShift projects (not just AI projects) to MLflow workspaces.
+That is, for each project in RHOAI there is an MLflow workspace.
+
+The MLflow operator also configures the MLflow server to delegate authentication and authorization to OpenShift, so any OpenShift user is a valid MLflow user.
+Such users have access to data in MLflow workspaces based on their RBAC permissions from the respective OpenShift project.
+
+Besides, service accounts with access to resources in a namespace automatically gain access to MLflow workspace.
+This means pods running in OpenShift, including GenAI studio playgrounds and AI workbenches (including their Jupyter notebooks) atomatically get access to MLflow workspaces.
+
+In summary, you manage credentials and permissions to access the MLflow server managed by RHOAI by using configuring OpenShift users and standard Kubernetes RBAC.
+For example:
+
+* You can enable applications to submit observability data by granting them the `edit` cluster role on their projects.
+* You can enable users to view (but not change) observability data by granting the `view` cluster role on the application project.
+
+NOTE: Older releases of the MLflow SDK did not include the `kubernetes` extension, which automatically retrieves the authorization token from the running pod and uses it as the MLflow authentication token.
+That required using a ROAI fork of the MLflow SDK, but that extension is already merged upstream since MLflow 3.10.
+
+If you must connect to MLflow an applicaton running outside if its OpenShift cluster, you can take same user token you would use for access to Kuberentes APIs and use it to authenticate to the MLflow server.
+External applications connect to the MLflow server using the same route (URL) a web browser uses to access the standalone MLflow web UI.
+
+== Development vs production deployments of MLflow
+
+https://docs.redhat.com/en/documentation/red_hat_openshift_ai_self-managed/3.4/html/working_with_mlflow/installing-mlflow_mlflow[RHOAI product documentation^] provides two examples of MLflow resources, one for a development environment, and another for a production environment.
+
+* The development example runs an in-container SQLlite database, which stores data on a PVC attached to the MLflow server pod, and uses the same PVC as its artifact store.
+You can increase the size of that PVC and you are responsible for backing up data from it, possibly using the OADP API.
+
+* The production example uses an external PostgreSQL database server and an external S3 object storage service, for example AWS S3 or OpenShift Data Foundations (ODF) from Red Hat OpenShift Plus.
+You are reponsible for providing access credentals and for managing high availability, disaster recovery, and data retention of both the external database and S3 object buckets.
+
+Nothing prevents you from using a managed database service from a cloud provider as your MLflow database.
+Just be aware that RHOAI and its MLflow operator to not manage the relational database and object storage in any way.
+They just store data there.
 
 == What's Next
 
-Now that you understand MLFlow's architecture and integration with RHOAI, the next section provides hands-on experience deploying MLFlow in a development environment.
+Now that you understand MLflow's architecture and its integration with RHOAI, the next section provides hands-on experience deploying MLflow in a development environment.
 
 ////
 How to deploy MLFlow in RHOAI and how to access it from code and web UIs.
