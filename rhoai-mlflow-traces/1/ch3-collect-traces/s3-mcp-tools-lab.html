@@ -151,7 +151,7 @@
 <dl>
 <dt class="hdlist1">Objective</dt>
 <dd>
-<p>Deploy an MCP server and capture its tool invocations in MLFlow traces.</p>
+<p>Deploy an MCP server and capture its tool invocations in MLflow traces.</p>
 </dd>
 </dl>
 </div>
@@ -173,7 +173,7 @@ Pending review.
 <h2 id="_before_you_begin"><a class="anchor" href="#_before_you_begin"></a>Before you begin</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You need access to the predeployed Red Hat OpenShift AI (RHOAI) instance provided in your lab environment, which was already configured by the <a href="../ch2-deploy-mlflow/s2-deploy-lab.html" class="xref page">second lab</a> with a development instance of the MLFlow server and an RHOAI workbench.</p>
+<p>You need access to the predeployed Red Hat OpenShift AI (RHOAI) instance provided in your lab environment, which the <a href="../ch2-deploy-mlflow/s2-deploy-lab.html" class="xref page">second lab</a> already configured with a development instance of the MLflow server and an RHOAI workbench.</p>
 </div>
 <div class="paragraph">
 <p>Ensure you have:</p>
@@ -197,7 +197,7 @@ Pending review.
 <h2 id="_instructions"><a class="anchor" href="#_instructions"></a>Instructions</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You will deploy an MCP server which allow instrospection of the state of an OpenShift cluster and its resources.
+<p>You will deploy an MCP server which allows introspection of the state of an OpenShift cluster and its resources.
 Then, you will create a simple agent which uses that MCP server to assess the state of workloads running on your OpenShift cluster.
 Finally, you will interpret traces from the agent to assess if it is able to make use of tools from the MCP server.</p>
 </div>
@@ -242,7 +242,7 @@ Then click the entry <b class="menuref">Red Hat OpenShift Mcp Server</b> and, on
 Type <code>mcp-servers</code> as the <strong>Name</strong> field and click <b class="menuref">Create</b>.</p>
 </li>
 <li>
-<p>In the <strong>Create Helm Release</strong> page, delete all contents from its text editor and paste the following configuration, which gives the MCP server read-only access to all resources int the cluster, but disables external access.</p>
+<p>In the <strong>Create Helm Release</strong> page, delete all contents from its text editor and paste the following configuration, which gives the MCP server read-only access to all resources in the cluster, but disables external access.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">ingress:
@@ -258,8 +258,8 @@ rbac:
 </li>
 <li>
 <p>Click <b class="menuref">Create</b>.
-You should be now in the <span class="menuseq"><b class="menu">Workloads</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Topologu</b></span> page of the <code>mcp-servers</code> project, which displays a Helm icon for the MCP server deployment.
-Click the Helm icon to display its workload details page, to the right, and wait until its only pod is runnig.</p>
+You should be now in the <span class="menuseq"><b class="menu">Workloads</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Topology</b></span> page of the <code>mcp-servers</code> project, which displays a Helm icon for the MCP server deployment.
+Click the Helm icon to display its workload details page, to the right, and wait until its only pod is running.</p>
 </li>
 </ol>
 </div>
@@ -275,7 +275,7 @@ Click the Helm icon to display its workload details page, to the right, and wait
 </div>
 </li>
 <li>
-<p>Click <b class="menuref">Create ConfigMap</b> and, in the <strong>Create Configmap</strong> page, type <code>gen-ai-aa-mcp-servers</code> as the <strong>Name</strong> field.</p>
+<p>Click <b class="menuref">Create ConfigMap</b> and, in the <strong>Create Configmap</strong> page, type <code>gen-ai-aa-mcp-servers</code> in the <strong>Name</strong> field.</p>
 </li>
 <li>
 <p>Type the following as the <strong>Value</strong> field and click <b class="menuref">Create</b>.</p>
@@ -291,7 +291,7 @@ Click the Helm icon to display its workload details page, to the right, and wait
 <li>
 <p>Verify that the Gen AI studio can connect to the MCP server.</p>
 <div class="paragraph">
-<p>Open your RHOAI dashboard and login as the <code>admin</code> user.
+<p>Open the RHOAI dashboard and login as the <code>admin</code> user.
 In the left navigation pane, select <span class="menuseq"><b class="menu">Gen AI studio</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">AI assets endpoints</b></span> and select the <b class="menuref">MCP servers</b> tab.
 It should list the <code>OpenShift-MCP-Server</code>, as configured by the config map, with the <code>Active</code> status, which means the Gen AI studio was able to retrieve the tools list from the MCP server.</p>
 </div>
@@ -299,19 +299,19 @@ It should list the <code>OpenShift-MCP-Server</code>, as configured by the confi
 <li>
 <p>Test the MCP server tools using a playground.</p>
 <div class="paragraph">
-<p>In the left navitation pane, select <span class="menuseq"><b class="menu">GenAI studio</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Playground</b></span>.
+<p>In the left navigation pane, select <span class="menuseq"><b class="menu">GenAI studio</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Playground</b></span>.
 Then type <code>my</code> in the <strong>Project</strong> field and select <b class="menuref">my-first-project</b>.
 Click <b class="menuref">Create playground</b>.
-In the <strong>Configure playground</strong> form, leve the model checked and click <b class="menuref">Create</b>.</p>
+In the <strong>Configure playground</strong> form, let the model checked and click <b class="menuref">Create</b>.</p>
 </div>
 </li>
 <li>
 <p>Wait while the Gen AI studio deploys a llama stack server for your playground.
-It displays a confirmation popup when done and enters the <strong>Playground</strong> page,</p>
+It displays a confirmation pop-up when done and enters the <strong>Playground</strong> page,</p>
 </li>
 <li>
 <p>In the <strong>Configure</strong> pane of the playground, select the <b class="menuref">MCP</b> tab and check the row with name <code>OpenShift-MCP-Server</code>.
-You should see a popup stating <strong>Connection successful</strong> and the number of tools provided by the MCP server.
+You should see a pop-up stating <strong>Connection successful</strong> and the number of tools provided by the MCP server.
 Click <b class="menuref">Save</b> to select all tools.</p>
 </li>
 <li>
@@ -324,7 +324,7 @@ Click <b class="menuref">Save</b> to select all tools.</p>
 </li>
 <li>
 <p>Type <kbd>Enter</kbd> to submit the prompt.
-Hopefully, you will get a correct response, which you can optionally verify by switching to the OpenShit web console and listing pods from the <code>my-first-model</code> project.</p>
+Hopefully, you will get a correct response, which you can optionally verify by switching to the OpenShift web console and listing pods from the <code>my-first-model</code> project.</p>
 </li>
 </ol>
 </div>
@@ -369,7 +369,7 @@ Click the <b class="menuref">test-mlflow</b> workbench, which you created in the
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The expanations here are <strong>not</strong> intended to explain all code in the agentic application, but just its general structure, so you can later read its traces.
+The explanations here are <strong>not</strong> intended to explain all code in the agentic application, but just its general structure, so you can later read its traces.
 The code snippets here enable learners to locate each section of code, if they wish to study and use it as a starting point for their agentic applications.
 </td>
 </tr>
@@ -380,7 +380,7 @@ The code snippets here enable learners to locate each section of code, if they w
 <li>
 <p>In its first cell, notice the use of <code>--extra-index-url</code> option for the <code>pip install</code> command.
 It is necessary because the RHOAI index does not include the <code>openai-agents</code> library.
-That way, pip falls back to the comunity index for any module not present in its primary index.</p>
+That way, pip falls back to the community index for any module not present in its primary index.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">! pip install --extra-index-url https://pypi.org/simple openai openai-agents mlflow[kubernetes]</code></pre>
@@ -417,7 +417,7 @@ You are designed to answer questions in a concise and professional manner.
 </div>
 </li>
 <li>
-<p>So far, the code is very similar from previous examples but, after it gets the service account token and eneables MLFlow tracing, the code to connect to the model and submit a prompt is <em>very</em> different from the previous chat example.</p>
+<p>So far, the code is very similar to previous examples but, after it gets the service account token and enables MLflow tracing, the code to connect to the model and submit a prompt is <em>very</em> different from the previous chat example.</p>
 <div class="paragraph">
 <p>Differences start by creating an asynchronous client for the model server:</p>
 </div>
@@ -481,7 +481,7 @@ You are designed to answer questions in a concise and professional manner.
 </div>
 </li>
 <li>
-<p>The final piece of code enables running the asyncronous code from both a standalone application and a Jupyter notebook, which already sets an asynchronous runner for its cells.</p>
+<p>The final piece of code enables running the asynchronous code from both a stand-alone application and a Jupyter notebook, which already sets an asynchronous runner for its cells.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">        try:
@@ -511,7 +511,7 @@ You are designed to answer questions in a concise and professional manner.
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>In the top toolbar from the notebook, click the <b class="menuref">fast forward</b> icon, with the tooltip <b class="menuref">Restart the kernel and run all cells</b>.</p>
+<p>In the top toolbar from the notebook, click the <b class="menuref">fast forward</b> icon, with the tooltip "Restart the kernel and run all cells".</p>
 </li>
 <li>
 <p>It may take a while to download all OpenAI and MLFlow libraries and their dependencies, in the first cell before it actually submits the prompt, in the second cell.</p>
@@ -547,8 +547,8 @@ Assistant: Based on the output, the names of all pods in the namespace 'my-first
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-There is a higher change of getting an incorrect response, or no reponse at all, compared to the previos example.
-The later may happen because the agent received too many tool call requests from the model, and decided that the model is lost and cannot produce a final response.
+There is a higher chance of getting an incorrect response, or no response at all, compared to the previous example.
+The latter may happen because the agent received too many tool call requests from the model, and decided that the model is lost and cannot produce a final response.
 </td>
 </tr>
 </table>
@@ -568,31 +568,31 @@ Then click the <b class="menuref">basic-agent</b> experiment.</p>
 </li>
 <li>
 <p>In the left pane of the <strong>Experiments</strong> page for the <code>basic-agent</code> project, click <b class="menuref">Traces</b>.
-You should see a trace whose request and reponse correspond to your notebook run.
+You should see a trace whose request and response correspond to your notebook run.
 Click it.</p>
 </li>
 <li>
 <p>In the summary page for the trace, you will see a number of items labeled <b class="menuref">AsyncCompletions</b>.
-Each of them corresponds to a roundtrip between the agent and the model.
+Each of them corresponds to a round-trip between the agent and the model.
 If you are lucky, you will see two of them.</p>
 </li>
 <li>
 <p>Click the <b class="menuref">expand/collapse</b> icon (<b class="menuref">&gt;</b>) from the first <b class="menuref">AsyncCompletions</b>, but do <strong>not</strong> click the <b class="menuref">AsyncCompletions</b> itself.
 You will see it contains <b class="menuref">Inputs</b> and <b class="menuref">Outputs</b>.</p>
 <div class="paragraph">
-<p>The <b class="menuref">Inputs</b> include the user and system prompts, a list of tools, and a number of OpenAI parameters which the sample agent didn&#8217;t set explicitily, so they took their default values.</p>
+<p>The <b class="menuref">Inputs</b> include the user and system prompts, a list of tools, and a number of OpenAI parameters which the sample agent didn&#8217;t set explicitly, so they took their default values.</p>
 </div>
 <div class="paragraph">
-<p>The <b class="menuref">Outputs:</b> include a reques to call the tool named <code>pods_lists_in_namespace</code> with arguments <code>"namespace": "my-first-model"</code></p>
+<p>The <b class="menuref">Outputs:</b> include a request to call the tool named <code>pods_lists_in_namespace</code> with arguments <code>"namespace": "my-first-model"</code></p>
 </div>
 </li>
 <li>
 <p>Click the <b class="menuref">expand/collapse</b> icon (<b class="menuref">&gt;</b>) from the second (or latest) <b class="menuref">AsyncCompletions</b>.</p>
 <div class="paragraph">
-<p>Notice its <b class="menuref">Inputs</b> include everythig you saw from the previous completions in the same trace, including prompts and lists of tools. But it adds the results of the tool call requested by the previous completion.</p>
+<p>Notice its <b class="menuref">Inputs</b> include everything you saw from the previous completions in the same trace, including prompts and lists of tools. But it adds the results of the tool call requested by the previous completion.</p>
 </div>
 <div class="paragraph">
-<p>It may be hard to read in the trace, but you can recognise similarities with the output of an <code>oc get pod -o wide</code> command.</p>
+<p>It may be hard to read in the trace, but you can recognize similarities with the output of an <code>oc get pod -o wide</code> command.</p>
 </div>
 <div class="paragraph">
 <p>The <b class="menuref">Outputs</b> should match the final response displayed by your notebook run.</p>
@@ -606,7 +606,7 @@ But you may find that, even with simpler prompts, a model might requests tool ca
 </div>
 </li>
 <li>
-<p>When you are satisfied that you understand the trace, click the its <b class="menuref">close</b> icon, that is, the <b class="menuref">x</b> to the top right of the trace summary page, to return to the list of traces.</p>
+<p>When you are satisfied that you understand the trace, click its <b class="menuref">close</b> icon, that is, the <b class="menuref">x</b> to the top right of the trace summary page, to return to the list of traces.</p>
 </li>
 </ol>
 </div>
@@ -617,13 +617,16 @@ Each run produces its own trace, and they may take different numbers of completi
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Sometimes the responses will be correct, as in including the sames of all pods and no extra pods, but vary on their wording.</p>
+<p>Sometimes the responses will be correct, as in including the names of all pods and no extra pods, but vary on their wording.</p>
 </li>
 <li>
 <p>Sometimes you may get an incorrect response, such as <code>This output indicates that there are no pods in the 'my-first-model' project.</code></p>
 </li>
 <li>
-<p>Because the demo enviroment only supports a small model, with a small context window, you can easily devise a prompt which produces an error, such as lising all pods in the cluster.
+<p>Notice that sometimes it uses the <code>pods_list_in_namespace</code> and other times it uses the <code>resources_list</code> tool. The latter usually leads to more spans to produce the final response.</p>
+</li>
+<li>
+<p>Because the demo environment only supports a small model, with a small context window, you can easily devise a prompt which produces an error, such as listing all pods in the cluster.
 But you can also find that there are a number of useful prompts this small model can answer correctly and frequently.</p>
 </li>
 <li>
@@ -638,7 +641,7 @@ But you can also find that there are a number of useful prompts this small model
 <div class="sect2">
 <h3 id="_summary"><a class="anchor" href="#_summary"></a>Summary</h3>
 <div class="paragraph">
-<p>After completing these steps, you have executed a simple agentic application which produces traces on the MLFlow server in RHOAI.
+<p>After completing these steps, you have executed a simple agentic application which produces traces on the MLflow server in RHOAI.
 You also interpreted those traces to identify when the model requested tool calls, the specific data returned by the MCP server for each call, and how the data was send back from the agent to the model.
 Finally, you verified that the non-deterministic nature of large language models (LLMs) impacts their ability of requesting tool calls and using the returned data to produce a response.</p>
 </div>

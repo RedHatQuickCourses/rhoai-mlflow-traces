@@ -1,5 +1,5 @@
 {
-  "totalSeconds": 1956,
+  "totalSeconds": 1957,
   "pageCount": 12,
   "pages": [
     {
@@ -50,17 +50,17 @@
     {
       "module": "ch3-collect-traces",
       "page": "s1-tracing-concepts.adoc",
-      "seconds": 339
+      "seconds": 340
     },
     {
       "module": "ch3-collect-traces",
       "page": "s2-agent-traces-lab.adoc",
-      "seconds": 276
+      "seconds": 277
     },
     {
       "module": "ch3-collect-traces",
       "page": "s3-mcp-tools-lab.adoc",
-      "seconds": 345
+      "seconds": 344
     }
   ]
 }
