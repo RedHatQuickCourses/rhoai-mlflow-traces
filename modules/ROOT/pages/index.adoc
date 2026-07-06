@@ -1,31 +1,33 @@
-= Agent Traces with MLFlow and Red Hat OpenShift AI
+= Agent Traces with MLflow and Red Hat OpenShift AI
 :navtitle: Home
 
 == Goal
 
-This course teaches how to deploy MLFlow, as included with Red Hat OpenShift AI 3.4; How to collect traces of an agentic application, using the MLFlow SDK with Python; and how to visualize those traces using the Red Hat OpenShift AI web interface.
+This course teaches you how to deploy MLflow, as included with Red Hat OpenShift AI 3.4.
+You will learn how to collect traces of an agentic application using the MLflow SDK with Python.
+You will also learn how to visualize those traces using the Red Hat OpenShift AI web interface.
 
-This course is intended to require learners between 4 hours to one working day to complete.
+Learners should reserve a full working day to complete this course.
 
-WARNING: Work In Progress
+WARNING: Pending review
 
 == Objectives
 
 On completing this course, you should be able to:
 
-* Understand how MLFlow relates to agentic applications and to Red Hat OpenShift AI.
+* Understand how MLflow relates to agentic applications and to Red Hat OpenShift AI.
 
-* Deploy a development environment with MLFlow
+* Deploy a development environment with MLflow
 
-* Collect traces from an agentic application using MLFlow
+* Collect traces from an agentic application using MLflow
 
 == Audience
 
 * Software developers working on agentic applications and agentic harnesses.
 
-* Red Hat and Partner roles that perform demonstrations, PoC and PoV of MLFlow with Red Hat OpenShift AI, such as Solutions Architects.
+* Red Hat and Partner roles that perform demonstrations, PoC and PoV of MLflow with Red Hat OpenShift AI, such as Solutions Architects.
 
-* Red Hat and Partner roles that implement and support MLFlow with Red Hat OpenShift AI, such as Services Consultants, Technical Account Managers, and Customer Support Engineers.
+* Red Hat and Partner roles that implement and support MLflow with Red Hat OpenShift AI, such as Services Consultants, Technical Account Managers, and Customer Support Engineers.
 
 == Prerequisites
 
@@ -39,18 +41,22 @@ This course assumes that you have the following experience:
 
 == Classroom environment
 
-The demo catalog entry https://catalog.demo.redhat.com/catalog/babylon-catalog-prod?item=babylon-catalog-prod/published.openshift-ai-v3.prod[Red Hat OpenShift AI 3.4^] provides an SNO OpenShift cluster, backed by an AWS instance with a single GPU, with a predeployed llama-32-3b-instruct model which is capable of making tool calls.
+The demo catalog entry https://catalog.demo.redhat.com/catalog/babylon-catalog-prod?item=babylon-catalog-prod/published.openshift-ai-v3.prod[Red Hat OpenShift AI 3.4^] provides a single-node OpenShift cluster (SNO), backed by an AWS instance with a single GPU, with a predeployed `llama-32-3b-instruct` model which is capable of making tool calls.
 
-This course uses that demo entry as-is, and any additional components which are required by either MLFlow itself or any of the course activities will be configured by learners, as part of course activities, by using sample Python code and Kubernetes manifests provided in a public Git repository.
+This course uses that demo entry as-is.
+Learners will configure any additional components required by either MLflow itself or any of the course activities, as part of course activities.
+A public Git repository contains all sample Python code and Kubernetes manifests required to complete hands-on activities.
 
 == Other sources of information
 
-For documentation about MLFlow with Red Hat OpenShift AI, see the https://docs.redhat.com/en/documentation/red_hat_openshift_ai_self-managed/3.4[Red Hat OpenShift AI product documentation^].
+For documentation about MLflow with Red Hat OpenShift AI, see the https://docs.redhat.com/en/documentation/red_hat_openshift_ai_self-managed/3.4[Red Hat OpenShift AI product documentation^].
 
-For upstream MLFlow documentation, see the https://mlflow.org/docs/latest/index.html[MLFlow project documentation^].
+For upstream MLflow documentation, see the https://mlflow.org/docs/latest/index.html[MLflow project documentation^], especially the section about https://mlflow.org/docs/latest/genai/tracing/[Tracing (Observability)^].
 
 == Author
 
 *Fernando Lozano* +
 Training Content Architect +
 Red Hat - Product Portfolio Marketing & Learning
+
+Thanks to Adel Zaalouk, Andy Stoneberg, Calum Murray, Cansu Kavili Oernek, Francisco Arceo, Harshad Reddy Nalla, Jaideep Rao, Lazaro Coronado Torres, Matt Prahl, Peter Double, and Waldirio Pinheiro for their support creating this course and its hands-on activities.
