@@ -89,7 +89,7 @@ It should list the `OpenShift-MCP-Server`, as configured by the config map, with
 .. Test the MCP server tools using a playground.
 +
 In the left navigation pane, select menu:GenAI studio[Playground].
-Then type `my` in the *Project* field and select menu:my-first-project[].
+Then type `my` in the *Project* field and select menu:my-first-model[].
 Click menu:Create playground[].
 In the *Configure playground* form, let the model checked and click menu:Create[].
 

@@ -4,7 +4,7 @@ Objective::
 
 Understand MLflow's features for agentic applications and its place as part of Red Hat OpenShift AI.
 
-WARNING: Work In Progress
+WARNING: Pending review
 
 == Introduction to MLflow
 

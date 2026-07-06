@@ -4,7 +4,7 @@ Objective::
 
 Understand how MLflow integrates with Red Hat OpenShift AI.
 
-WARNING: Work In Progress.
+WARNING: Pending review
 
 == The MLflow Operator and RHOAI
 
