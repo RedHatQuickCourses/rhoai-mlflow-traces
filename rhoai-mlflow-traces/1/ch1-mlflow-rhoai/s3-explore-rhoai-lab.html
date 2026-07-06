@@ -59,7 +59,7 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="index.html">Understanding MLFlow and Red Hat OpenShift AI</a>
+    <a class="nav-link" href="index.html">Understanding MLflow and Red Hat OpenShift AI</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="s1-introduction.html">Introduction to MLflow in Red Hat OpenShift AI</a>
@@ -135,7 +135,7 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">Agent Traces with MLFLow and Red Hat OpenShift AI</a></li>
-    <li><a href="index.html">Understanding MLFlow and Red Hat OpenShift AI</a></li>
+    <li><a href="index.html">Understanding MLflow and Red Hat OpenShift AI</a></li>
     <li><a href="s3-explore-rhoai-lab.html">Lab: Explore the RHOAI Instance</a></li>
   </ul>
 </nav>
@@ -225,7 +225,7 @@ Pending review
 <p>In the left pane, select <span class="menuseq"><b class="menu">AI hub</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Models</b></span> and then select the <b class="menuref">Deployments</b> tab.</p>
 </li>
 <li>
-<p>In the <strong>Project</strong> field, type <code>my</code> and select <code>my-first-model</code>.</p>
+<p>In the <b class="menuref">Project</b> field, type <code>my</code> and select the <b class="menuref">my-first-model</b> project.</p>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -257,7 +257,7 @@ This means the model cannot be accessed from outside of its OpenShift cluster, u
 <p>In the left pane, select <span class="menuseq"><b class="menu">Gen AI studio</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Playground</b></span>.</p>
 </li>
 <li>
-<p>In the <strong>Project</strong> field, type <code>my</code> and select <code>my-first-model</code>.</p>
+<p>In the <b class="menuref">Project</b> field, type <code>my</code> and select the <b class="menuref">my-first-model</b> project.</p>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -273,7 +273,7 @@ The project previously selected in one page of the RHOAI dashboard may not be th
 </li>
 <li>
 <p>If you do not see a <strong>Configure</strong> pane, click <b class="menuref">Settings</b>.
-On the <strong>Configure</strong> pane, select the <b class="menuref">Model</b> tab and verify that the selected model is named <code>llama-32-3b-instruct</code>.
+In the <strong>Configure</strong> pane, select the <b class="menuref">Model</b> tab and verify that the selected model is named <code>llama-32-3b-instruct</code>.
 Ignore the prefix on the model name.</p>
 </li>
 <li>
@@ -286,7 +286,7 @@ Ignore the prefix on the model name.</p>
 </li>
 <li>
 <p>Type <kbd>Enter</kbd> to submit the prompt and see the response from the model.
-You may get different answers, if you attempt the same prompt again, but they all would, hopefully, be correct and reasonable.</p>
+The model may return different answers if you attempt the same prompt again, but they all would, hopefully, be correct and reasonable.</p>
 </li>
 </ol>
 </div>
@@ -295,17 +295,17 @@ You may get different answers, if you attempt the same prompt again, but they al
 </div>
 </div>
 <div class="sect2">
-<h3 id="_confirm_that_mlflow_is_not_deployed_yet_in_rhoai"><a class="anchor" href="#_confirm_that_mlflow_is_not_deployed_yet_in_rhoai"></a>Confirm that MLFLow is not deployed yet in RHOAI.</h3>
+<h3 id="_confirm_that_mlflow_is_not_deployed_yet_in_rhoai"><a class="anchor" href="#_confirm_that_mlflow_is_not_deployed_yet_in_rhoai"></a>Confirm that MLflow is not deployed yet in RHOAI.</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Verify that there are no RHOAI dasbboard pages related to MLFlow.</p>
+<p>Verify that there are no RHOAI dashboard pages related to MLflow.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
 <p>In the left pane, expand the <b class="menuref">Gen AI studio</b> category, which contains entries named <b class="menuref">Playground</b> and <b class="menuref">AI asset endpoints</b>.</p>
 <div class="paragraph">
-<p>After you enable MLFlow, there will be additional entries here.</p>
+<p>After you enable MLflow, there will be additional entries here.</p>
 </div>
 </li>
 <li>
@@ -315,10 +315,10 @@ You may get different answers, if you attempt the same prompt again, but they al
 </div>
 </li>
 <li>
-<p>In the left pane, expand the <b class="menuref">Develop &amp; train</b> category, which contains entries named <b class="menuref">Feture store</b>, <b class="menuref">Pipelines</b>, <b class="menuref">Jobs</b>, and <b class="menuref">Evaluations</b>.</p>
+<p>In the left pane, expand the <b class="menuref">Develop &amp; train</b> category, which contains entries named <b class="menuref">Feature store</b>, <b class="menuref">Pipelines</b>, <b class="menuref">Jobs</b>, and <b class="menuref">Evaluations</b>.</p>
 </li>
 <li>
-<p>In the toolbar, to the top right, click the <b class="menuref">Applications</b> icon, which is close to the <b class="menuref">Question</b> icon, and verify that there is <strong>not</strong> an entry named <b class="menuref">MLFlow</b>.</p>
+<p>In the toolbar, to the top right, click the <b class="menuref">Applications</b> icon, which is close to the <b class="menuref">Question</b> icon, and verify that there is <strong>not</strong> an entry named <b class="menuref">MLflow</b>.</p>
 </li>
 </ol>
 </div>
@@ -332,7 +332,7 @@ You may get different answers, if you attempt the same prompt again, but they al
 <p>After completing these steps, you have verified that you have a functional RHOAI instance with a pre-deployed model, which is available only for internal access, and that you can submit prompts to the model using an RHOAI playground.</p>
 </div>
 <div class="paragraph">
-<p>In addition, you have also verified that MLFlow is not installed on your RHOAI instance, and that there are no MCP servers deployed.</p>
+<p>In addition, you have also verified that MLflow is not installed on your RHOAI instance, and that there are no MCP servers deployed.</p>
 </div>
 </div>
 </div>
@@ -341,7 +341,7 @@ You may get different answers, if you attempt the same prompt again, but they al
 <h2 id="_whats_next"><a class="anchor" href="#_whats_next"></a>What&#8217;s next</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In the next chapter, you will learn how to deploy MLFlow on Red Hat OpenShift AI to enable experiment tracking and model management capabilities.</p>
+<p>In the next chapter, you will learn how to deploy MLflow on Red Hat OpenShift AI to enable experiment tracking and model management capabilities.</p>
 </div>
 </div>
 </div>
