@@ -2,13 +2,13 @@
 
 Objective::
 
-Deploy an MCP server and capture its tool invocations in MLFlow traces.
+Deploy an MCP server and capture its tool invocations in MLflow traces.
 
 WARNING: Pending review.
 
 == Before you begin
 
-You need access to the predeployed Red Hat OpenShift AI (RHOAI) instance provided in your lab environment, which was already configured by the xref:ch2-deploy-mlflow:s2-deploy-lab.adoc[second lab] with a development instance of the MLFlow server and an RHOAI workbench.
+You need access to the predeployed Red Hat OpenShift AI (RHOAI) instance provided in your lab environment, which the xref:ch2-deploy-mlflow:s2-deploy-lab.adoc[second lab] already configured with a development instance of the MLflow server and an RHOAI workbench.
 
 Ensure you have:
 
@@ -18,7 +18,7 @@ Ensure you have:
 
 == Instructions
 
-You will deploy an MCP server which allow instrospection of the state of an OpenShift cluster and its resources.
+You will deploy an MCP server which allows introspection of the state of an OpenShift cluster and its resources.
 Then, you will create a simple agent which uses that MCP server to assess the state of workloads running on your OpenShift cluster.
 Finally, you will interpret traces from the agent to assess if it is able to make use of tools from the MCP server.
 
@@ -44,7 +44,7 @@ Then click the entry menu:Red Hat OpenShift Mcp Server[] and, on its details pan
 .. In the *Create Helm Release* page, click the menu:Project[] field, which probably displays the `default` project, and click menu:Create Project[]. 
 Type `mcp-servers` as the *Name* field and click menu:Create[].
 
-.. In the *Create Helm Release* page, delete all contents from its text editor and paste the following configuration, which gives the MCP server read-only access to all resources int the cluster, but disables external access.
+.. In the *Create Helm Release* page, delete all contents from its text editor and paste the following configuration, which gives the MCP server read-only access to all resources in the cluster, but disables external access.
 +
 [source,yaml,subs="verbatim,quotes"]
 ----
@@ -59,8 +59,8 @@ rbac:
 ----
 
 .. Click menu:Create[].
-You should be now in the menu:Workloads[Topologu] page of the `mcp-servers` project, which displays a Helm icon for the MCP server deployment.
-Click the Helm icon to display its workload details page, to the right, and wait until its only pod is runnig.
+You should be now in the menu:Workloads[Topology] page of the `mcp-servers` project, which displays a Helm icon for the MCP server deployment.
+Click the Helm icon to display its workload details page, to the right, and wait until its only pod is running.
 
 2. Test the MCP server using the Gen AI studio
 
@@ -68,7 +68,7 @@ Click the Helm icon to display its workload details page, to the right, and wait
 +
 In the left navigation pane, select menu:Workloads[ConfigMaps] and, in the menu:Project[] field at the top, select the `redhat-ods-applications` project.
 
-.. Click menu:Create ConfigMap[] and, in the *Create Configmap* page, type `gen-ai-aa-mcp-servers` as the *Name* field.
+.. Click menu:Create ConfigMap[] and, in the *Create Configmap* page, type `gen-ai-aa-mcp-servers` in the *Name* field.
 
 .. Type the following as the *Value* field and click menu:Create[].
 +
@@ -82,22 +82,22 @@ In the left navigation pane, select menu:Workloads[ConfigMaps] and, in the menu:
 
 .. Verify that the Gen AI studio can connect to the MCP server.
 +
-Open your RHOAI dashboard and login as the `admin` user.
+Open the RHOAI dashboard and login as the `admin` user.
 In the left navigation pane, select menu:Gen AI studio[AI assets endpoints] and select the menu:MCP servers[] tab.
 It should list the `OpenShift-MCP-Server`, as configured by the config map, with the `Active` status, which means the Gen AI studio was able to retrieve the tools list from the MCP server.
 
 .. Test the MCP server tools using a playground.
 +
-In the left navitation pane, select menu:GenAI studio[Playground].
+In the left navigation pane, select menu:GenAI studio[Playground].
 Then type `my` in the *Project* field and select menu:my-first-project[].
 Click menu:Create playground[].
-In the *Configure playground* form, leve the model checked and click menu:Create[].
+In the *Configure playground* form, let the model checked and click menu:Create[].
 
 .. Wait while the Gen AI studio deploys a llama stack server for your playground.
-It displays a confirmation popup when done and enters the *Playground* page, 
+It displays a confirmation pop-up when done and enters the *Playground* page, 
 
 .. In the *Configure* pane of the playground, select the menu:MCP[] tab and check the row with name `OpenShift-MCP-Server`.
-You should see a popup stating *Connection successful* and the number of tools provided by the MCP server.
+You should see a pop-up stating *Connection successful* and the number of tools provided by the MCP server.
 Click menu:Save[] to select all tools.
 
 .. In the right pane, click the `Send a message...`​ text and type a prompt which requires using the MCP server, for example:
@@ -108,7 +108,7 @@ Which pods are in my-first-model?
 ----
 
 .. Type kbd:[Enter] to submit the prompt.
-Hopefully, you will get a correct response, which you can optionally verify by switching to the OpenShit web console and listing pods from the `my-first-model` project.
+Hopefully, you will get a correct response, which you can optionally verify by switching to the OpenShift web console and listing pods from the `my-first-model` project.
 
 === Import a simple agentic application from git
 
@@ -128,12 +128,12 @@ Click the menu:test-mlflow[] workbench, which you created in the xref:ch2-deploy
 
 4. Review the code for a simple agent.
 +
-NOTE: The expanations here are *not* intended to explain all code in the agentic application, but just its general structure, so you can later read its traces.
+NOTE: The explanations here are *not* intended to explain all code in the agentic application, but just its general structure, so you can later read its traces.
 The code snippets here enable learners to locate each section of code, if they wish to study and use it as a starting point for their agentic applications.
 
 .. In its first cell, notice the use of `--extra-index-url` option for the `pip install` command.
 It is necessary because the RHOAI index does not include the `openai-agents` library.
-That way, pip falls back to the comunity index for any module not present in its primary index. 
+That way, pip falls back to the community index for any module not present in its primary index. 
 +
 [source,python,subs="verbatim,quotes"]
 ----
@@ -167,7 +167,7 @@ You are designed to answer questions in a concise and professional manner.
 """
 ----
 
-.. So far, the code is very similar from previous examples but, after it gets the service account token and eneables MLFlow tracing, the code to connect to the model and submit a prompt is _very_ different from the previous chat example.
+.. So far, the code is very similar to previous examples but, after it gets the service account token and enables MLflow tracing, the code to connect to the model and submit a prompt is _very_ different from the previous chat example.
 +
 Differences start by creating an asynchronous client for the model server: 
 +
@@ -224,7 +224,7 @@ This loop, inside the agent object, continues until the agent gets a response fr
         print("Assistant:", result.final_output)
 ----
 
-.. The final piece of code enables running the asyncronous code from both a standalone application and a Jupyter notebook, which already sets an asynchronous runner for its cells.
+.. The final piece of code enables running the asynchronous code from both a stand-alone application and a Jupyter notebook, which already sets an asynchronous runner for its cells.
 +
 [source,python,subs="verbatim,quotes"]
 ----
@@ -243,7 +243,7 @@ This loop, inside the agent object, continues until the agent gets a response fr
 
 5. Run the agent to produce a trace.
 
-.. In the top toolbar from the notebook, click the menu:fast forward[] icon, with the tooltip menu:Restart the kernel and run all cells[].
+.. In the top toolbar from the notebook, click the menu:fast forward[] icon, with the tooltip "Restart the kernel and run all cells".
 
 .. It may take a while to download all OpenAI and MLFlow libraries and their dependencies, in the first cell before it actually submits the prompt, in the second cell.
 +
@@ -270,8 +270,8 @@ Assistant: Based on the output, the names of all pods in the namespace 'my-first
 +
 The output includes the number of tools from the MCP server as proof that the agent can connect to it, even if the response looks like it didn't.
 +
-NOTE: There is a higher change of getting an incorrect response, or no reponse at all, compared to the previos example.
-The later may happen because the agent received too many tool call requests from the model, and decided that the model is lost and cannot produce a final response.
+NOTE: There is a higher chance of getting an incorrect response, or no response at all, compared to the previous example.
+The latter may happen because the agent received too many tool call requests from the model, and decided that the model is lost and cannot produce a final response.
 
 6. View the trace in the RHOAI dashboard.
 
@@ -280,25 +280,25 @@ In the menu:Project[] field, type `my` and select the menu:my-first-model[] proj
 Then click the menu:basic-agent[] experiment.
 
 .. In the left pane of the *Experiments* page for the `basic-agent` project, click menu:Traces[].
-You should see a trace whose request and reponse correspond to your notebook run.
+You should see a trace whose request and response correspond to your notebook run.
 Click it.
 
 .. In the summary page for the trace, you will see a number of items labeled menu:AsyncCompletions[].
-Each of them corresponds to a roundtrip between the agent and the model.
+Each of them corresponds to a round-trip between the agent and the model.
 If you are lucky, you will see two of them.
 
 .. Click the menu:expand/collapse[] icon (menu:>[]) from the first menu:AsyncCompletions[], but do *not* click the menu:AsyncCompletions[] itself.
 You will see it contains menu:Inputs[] and menu:Outputs[].
 +
-The menu:Inputs[] include the user and system prompts, a list of tools, and a number of OpenAI parameters which the sample agent didn't set explicitily, so they took their default values.
+The menu:Inputs[] include the user and system prompts, a list of tools, and a number of OpenAI parameters which the sample agent didn't set explicitly, so they took their default values.
 +
-The menu:Outputs:[] include a reques to call the tool named `pods_lists_in_namespace` with arguments `"namespace": "my-first-model"`
+The menu:Outputs:[] include a request to call the tool named `pods_lists_in_namespace` with arguments `"namespace": "my-first-model"`
 
 .. Click the menu:expand/collapse[] icon (menu:>[]) from the second (or latest) menu:AsyncCompletions[].
 +
-Notice its menu:Inputs[] include everythig you saw from the previous completions in the same trace, including prompts and lists of tools. But it adds the results of the tool call requested by the previous completion.
+Notice its menu:Inputs[] include everything you saw from the previous completions in the same trace, including prompts and lists of tools. But it adds the results of the tool call requested by the previous completion.
 +
-It may be hard to read in the trace, but you can recognise similarities with the output of an `oc get pod -o wide` command.
+It may be hard to read in the trace, but you can recognize similarities with the output of an `oc get pod -o wide` command.
 +
 The menu:Outputs[] should match the final response displayed by your notebook run.
 
@@ -307,16 +307,18 @@ The menu:Outputs[] should match the final response displayed by your notebook ru
 For more complex prompts, it might be necessary to use the output of a tool call as parameters of another tool call, and many such rounds might be necessary.
 But you may find that, even with simpler prompts, a model might requests tool calls which make no sense. 
 
-.. When you are satisfied that you understand the trace, click the its menu:close[] icon, that is, the menu:x[] to the top right of the trace summary page, to return to the list of traces.
+.. When you are satisfied that you understand the trace, click its menu:close[] icon, that is, the menu:x[] to the top right of the trace summary page, to return to the list of traces.
 
 7. (Optional) You may switch to your Jupyter Lab and run the second cell again a few times.
 Each run produces its own trace, and they may take different numbers of completions to produce its response.
 
-.. Sometimes the responses will be correct, as in including the sames of all pods and no extra pods, but vary on their wording.
+.. Sometimes the responses will be correct, as in including the names of all pods and no extra pods, but vary on their wording.
 
 .. Sometimes you may get an incorrect response, such as `This output indicates that there are no pods in the 'my-first-model' project.`
 
-.. Because the demo enviroment only supports a small model, with a small context window, you can easily devise a prompt which produces an error, such as lising all pods in the cluster.
+.. Notice that sometimes it uses the `pods_list_in_namespace` and other times it uses the `resources_list` tool. The latter usually leads to more spans to produce the final response.
+
+.. Because the demo environment only supports a small model, with a small context window, you can easily devise a prompt which produces an error, such as listing all pods in the cluster.
 But you can also find that there are a number of useful prompts this small model can answer correctly and frequently.
 
 .. You may also try subtle changes in the prompts, for example referring to "the my-first-model project" instead of to a "namespace", or trying to provide a better suited system prompt for an IT operations or a Kubernetes administrator persona.
@@ -338,7 +340,7 @@ But you can also find that there are a number of useful prompts this small model
 
 === Summary
 
-After completing these steps, you have executed a simple agentic application which produces traces on the MLFlow server in RHOAI.
+After completing these steps, you have executed a simple agentic application which produces traces on the MLflow server in RHOAI.
 You also interpreted those traces to identify when the model requested tool calls, the specific data returned by the MCP server for each call, and how the data was send back from the agent to the model.
 Finally, you verified that the non-deterministic nature of large language models (LLMs) impacts their ability of requesting tool calls and using the returned data to produce a response.
 
