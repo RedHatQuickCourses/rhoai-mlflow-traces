@@ -1,7 +1,8 @@
-= Deploying MLFlow for Development
+= Deploying MLflow for Development
 
 Goal::
 
-Deploy a development environment with MLFlow
+Deploy a development environment with MLflow
 
-This chapter guides you through deploying MLFlow in Red Hat OpenShift AI for development purposes. You'll learn about MLFlow's architecture, how it integrates with RHOAI, and gain hands-on experience deploying and verifying your MLFlow instance.
+This chapter guides you through deploying MLflow in Red Hat OpenShift AI for development purposes.
+You will learn about MLflow's architecture, how it integrates with RHOAI, and gain hands-on experience deploying and verifying your MLflow instance.

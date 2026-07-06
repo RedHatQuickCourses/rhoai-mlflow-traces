@@ -1,8 +1,8 @@
-= Lab: Deploy MLFlow on Red Hat OpenShift AI
+= Lab: Deploy MLflow on Red Hat OpenShift AI
 
 Objective::
 
-Deploy and verify a development instance of MLFlow in Red Hat OpenShift AI.
+Deploy and verify a development instance of MLflow in Red Hat OpenShift AI.
 
 WARNING: Pending review
 
@@ -16,8 +16,9 @@ You need access to the predeployed Red Hat OpenShift AI (RHOAI) instance provide
 
 == Instructions
 
-You will enable MLFlow on your Data Science Cluster singleton resource and deploy a development instance of the MLFlow server.
-Then you will create a simple Jupyter notebook to test connectivity to the MLFlow server by means of the MLFlow SDK for Python.
+You will enable MLflow on your Data Science Cluster singleton resource and deploy a development instance of the MLflow server.
+Then you will create a simple Jupyter notebook to test connectivity to the MLflow server.
+You will use the MLflow SDK for Python.
 
 As you perform this activity, you will alternate between three browser tabs:
 
@@ -27,13 +28,13 @@ As you perform this activity, you will alternate between three browser tabs:
 
 Once you open one of these tabs, keep it open because you may return to it later.
 
-=== Install and configure the MLFlow Server
+=== Install and configure the MLflow Server
 
-1. Enable MLFlow on RHOAI.
+1. Enable MLflow on RHOAI by editing its data science cluster resource.
 
-.. Open the OpenShift web console and log in as a user with `cluster-admin` rigts.
+.. Open the OpenShift web console and log in as a user with `cluster-admin` rights.
 
-.. In the left navigation pane, select menu:Ecossystem[Installed Operators].
+.. In the left navigation pane, select menu:Ecosystem[Installed Operators].
 Then click menu:Red Hat OpenShift AI[].
 
 .. In the Red Hat OpenShift AI operator page, select the menu:Data Science Cluster[] tab.
@@ -73,7 +74,7 @@ $ *oc patch datasciencecluster default-dsc --type=merge \
 datasciencecluster.datasciencecluster.opendatahub.io/default-dsc patched
 ----
 
-2. Configure your MLFlow instance.
+2. Configure your MLflow instance by creating an MLflow resource.
 
 .. In the left navigation pane, select menu:Home[API Explorer].
 Then type `MLflow` in the search field.
@@ -104,17 +105,17 @@ spec:
 
 .. Click menu:Create[] and, in the MLflow details page, wait until the `Available` condition is `True` and the `Progressing` condition is `False`.
 
-=== Test your MLFlow server using the dashboard and a workbench
+=== Test your MLflow server using the dashboard and a workbench
 
-3. Verify MLFlow is available from RHOAI
+3. Verify MLflow is available from RHOAI and create an empty experiment.
 
-.. Open your RHOAI dash board.
+.. Open your RHOAI dashboard.
 If it is already open, refresh your browser window.
 
 .. In the left navigation pane, expand menu:Develop & train[].
 Notice the new item named menu:Experiments (mlflow)[] and click it.
 
-.. In the Project combo box, type `my` and select the `my-first` model project.
+.. In the menu:Project[] field, select the menu:my-first-model[] project.
 
 .. Click menu:Create Experiment[] and type `dummy experiment` as its name.
 
@@ -122,23 +123,23 @@ Notice the new item named menu:Experiments (mlflow)[] and click it.
 
 .. Creating an empty experiment is sufficient to prove that your MLflow instance can connect to its database and artifacts storage.
 
-.. You can, alternatively, open the upstream MLFlow web interface by clicking the applications menu, in the top navigation bar, close to the help icon, and selecting menu:MLflow[].
-You should not need it: all funcionality you need for this course is available from the RHOAI dashboard.
+.. You can, alternatively, open the upstream MLflow web interface by clicking the applications menu, in the top navigation bar, close to the help icon, and selecting menu:MLflow[].
+You should not need it: all functionality you need for this course is available from the RHOAI dashboard.
 
-4. Test connectivity to MLFlow from a workbench.
+4. Test connectivity to MLflow from a Jupyter notebook inside a workbench.
 +
 NOTE: If you have trouble typing the Python code in this and other activities of this course, or you cannot cut-and-pate from the course page, you can access the complete source code for all jupyter notebooks in a https://github.com/RedHatQuickCourses/rhoai-mlflow-samples/tree/main/traces[git repository^].
 
 .. In the left navigation pane, click menu:Projects[] and select menu:All projects[] in the projects combo box.
-Then type `my` in the filter by name field and click `my-first-project` in the list of projects.
+Then type `my` in the filter by name field and click menu:my-first-model[] in the list of projects.
 
-.. In the Projects page for `my-first-model`, select the menu:Workbenches[] tab and click menu:Create workbench.
+.. In the Projects page for `my-first-model`, select the menu:Workbenches[] tab and click menu:Create workbench[].
 
-.. In the Create workbench page, type `test-mlflow` for the *Name* field and, in the Workbench image field, select the `Jupyter | Minimal | CPU` image.
+.. In the Create workbench page, type `test-mlflow` for the *Name* field and, in the *Workbench image* field, select menu:Jupyter | Minimal | CPU[].
 
 .. Leave all other fields with their default values and click menu:Create workbench[].
 
-.. In the Workbenches list, wait until the row for the `test-mlflow` workench displays a `Ready` state and then click menu:test-mlflow[] to open its Jupyter Lab in a new browser tab.
+.. In the Workbenches list, wait until the row for the `test-mlflow` workbench displays a `Ready` state and then click menu:test-mlflow[] to open its Jupyter Lab in a new browser tab.
 
 .. Click the menu:Python 3.12[] Notebook icon to create an empty notebook.
 
@@ -149,9 +150,9 @@ Then type `my` in the filter by name field and click `my-first-project` in the l
 ! pip install mlflow[kubernetes]
 ----
 
-.. In the top toolbar from the notebook, click the play icon, with the tooltip menu:Run this cell and advance[].
+.. In the top toolbar from the notebook, click the menu:play[] icon, with the tooltip "Run this cell and advance".
 
-.. Wait until the MLFlow SDK and all its dependencies are loaded from the RHOAI index into the workbench.
+.. Wait until the MLflow SDK and all its dependencies are loaded from the RHOAI index into the workbench.
 
 .. After the `pip` command finishes, type the following on the second cell of your notebook:
 +
@@ -166,36 +167,36 @@ mlflow.set_tracking_uri("CHANGE_ME")
 print(mlflow.list_workspaces())
 ----
 
-.. Switch to your RHOAI dasbhoard page, which should still be in the Experiments page.
+.. Switch to your RHOAI dashboard page, which should still be in the Experiments page.
 Notice, close to the top left, the menu:Launch MLflow[] link.
-Right-click it and copy its URL to the clipboard.
+Right-click it and copy its URL to your clipboard.
 
-.. Switch to your jupyter lab browser tab and replace, in the second notebook cell, the `CHANGE_ME` text with the URL on your clipboard.
+.. Switch to your Jupyter Lab browser tab and replace, in the second notebook cell, the `CHANGE_ME` text with the URL on your clipboard.
 +
 [NOTE]
 ====
-In this example, we are using the _external_ URL of the MLFLow server, which depends on the applications domain of your OpenShift Ingress operator.
+In this example, we are using the _external_ URL of the MLflow server, which depends on the applications domain of your OpenShift Ingress operator.
 This is the URL you would use for applications running outside of its OpenShift cluster.
 
-External applications also need to set the `MLFLOW_TRACKING_TOKEN` environment variable with a valid an OpenShift authentication token, for example the one returned by the `oc whoami -t` command.
+External applications also need to set the `MLFLOW_TRACKING_TOKEN` environment variable with a valid OpenShift authentication token, for example the one returned by the `oc whoami -t` command.
 ====
 
-.. In the top toolbar from the notebook, click the play icon.
-The results should an array containing a single `Workspace` object named `my-first-model`.
+.. In the top toolbar from the notebook, click the menu:play[] icon.
+The results should be an array containing a single `Workspace` object named `my-first-model`.
 +
-This notebook takes advantage of the integration between the RHOAI dashboard and its managed instance of the MLFlow server.
-It connects using the service account of the `test-mlflow` workbench, which is authorized to access the MLFlow workspace corresponding to its `my-first-model` project.
+This notebook takes advantage of the integration between the RHOAI dashboard and its managed instance of the MLflow server.
+It connects using the service account of the `test-mlflow` workbench, which is authorized to access the MLflow workspace corresponding to its `my-first-model` project.
 
-.. If you wish, you can remove the unnamed notebook, or if you prefer you can save it, rename it to `test.ipynb`, and reuse for the next activity.
+.. If you wish, you can remove the unnamed notebook, or if you prefer you can save it, rename it to `test.ipynb`, and reuse it for the next activity.
 Whatever your preference, do NOT delete the `test-mlflow` workbench because you will keep using it in the next activity.
 
 === Summary
 
-After completing these steps, you have verified that you have a minmal but funcional MLFLow instance, to which you can connect from applications running inside your RHOAI cluster and store data from your experiments.
+After completing these steps, you have verified that you have a minimal but functional MLflow instance, to which you can connect from applications running inside your RHOAI cluster and store data from your experiments.
 
 == What's next
 
-Now that you have a working MLFlow deployment, the next chapter explores how to collect traces from agentic applications using the MLFlow SDK.
+Now that you have a working MLflow deployment, the next chapter explores how to collect traces from agentic applications using the MLflow SDK.
 
 ////
 Deploy MLFlow on Red Hat OpenShift AI for development
