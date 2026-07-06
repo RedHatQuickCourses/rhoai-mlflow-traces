@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Lab: Deploy MLFlow on Red Hat OpenShift AI :: Agent Traces with MLFLow and Red Hat OpenShift AI</title>
+    <title>Lab: Deploy MLflow on Red Hat OpenShift AI :: Agent Traces with MLFLow and Red Hat OpenShift AI</title>
     <link rel="prev" href="s1-architecture.html">
     <link rel="next" href="../ch3-collect-traces/index.html">
     <meta name="generator" content="Antora 3.2.0-alpha.12">
@@ -75,13 +75,13 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="index.html">Deploying MLFlow for Development</a>
+    <a class="nav-link" href="index.html">Deploying MLflow for Development</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="s1-architecture.html">MLflow within Red Hat OpenShift AI</a>
   </li>
   <li class="nav-item is-current-page" data-depth="2">
-    <a class="nav-link" href="s2-deploy-lab.html">Lab: Deploy MLFlow on Red Hat OpenShift AI</a>
+    <a class="nav-link" href="s2-deploy-lab.html">Lab: Deploy MLflow on Red Hat OpenShift AI</a>
   </li>
 </ul>
   </li>
@@ -135,8 +135,8 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">Agent Traces with MLFLow and Red Hat OpenShift AI</a></li>
-    <li><a href="index.html">Deploying MLFlow for Development</a></li>
-    <li><a href="s2-deploy-lab.html">Lab: Deploy MLFlow on Red Hat OpenShift AI</a></li>
+    <li><a href="index.html">Deploying MLflow for Development</a></li>
+    <li><a href="s2-deploy-lab.html">Lab: Deploy MLflow on Red Hat OpenShift AI</a></li>
   </ul>
 </nav>
 </div>
@@ -145,14 +145,14 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Lab: Deploy MLFlow on Red Hat OpenShift AI</h1>
+<h1 class="page">Lab: Deploy MLflow on Red Hat OpenShift AI</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Objective</dt>
 <dd>
-<p>Deploy and verify a development instance of MLFlow in Red Hat OpenShift AI.</p>
+<p>Deploy and verify a development instance of MLflow in Red Hat OpenShift AI.</p>
 </dd>
 </dl>
 </div>
@@ -195,8 +195,9 @@ Pending review
 <h2 id="_instructions"><a class="anchor" href="#_instructions"></a>Instructions</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You will enable MLFlow on your Data Science Cluster singleton resource and deploy a development instance of the MLFlow server.
-Then you will create a simple Jupyter notebook to test connectivity to the MLFlow server by means of the MLFlow SDK for Python.</p>
+<p>You will enable MLflow on your Data Science Cluster singleton resource and deploy a development instance of the MLflow server.
+Then you will create a simple Jupyter notebook to test connectivity to the MLflow server.
+You will use the MLflow SDK for Python.</p>
 </div>
 <div class="paragraph">
 <p>As you perform this activity, you will alternate between three browser tabs:</p>
@@ -218,18 +219,18 @@ Then you will create a simple Jupyter notebook to test connectivity to the MLFlo
 <p>Once you open one of these tabs, keep it open because you may return to it later.</p>
 </div>
 <div class="sect2">
-<h3 id="_install_and_configure_the_mlflow_server"><a class="anchor" href="#_install_and_configure_the_mlflow_server"></a>Install and configure the MLFlow Server</h3>
+<h3 id="_install_and_configure_the_mlflow_server"><a class="anchor" href="#_install_and_configure_the_mlflow_server"></a>Install and configure the MLflow Server</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Enable MLFlow on RHOAI.</p>
+<p>Enable MLflow on RHOAI by editing its data science cluster resource.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Open the OpenShift web console and log in as a user with <code>cluster-admin</code> rigts.</p>
+<p>Open the OpenShift web console and log in as a user with <code>cluster-admin</code> rights.</p>
 </li>
 <li>
-<p>In the left navigation pane, select <span class="menuseq"><b class="menu">Ecossystem</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Installed Operators</b></span>.
+<p>In the left navigation pane, select <span class="menuseq"><b class="menu">Ecosystem</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Installed Operators</b></span>.
 Then click <b class="menuref">Red Hat OpenShift AI</b>.</p>
 </li>
 <li>
@@ -278,7 +279,7 @@ datasciencecluster.datasciencecluster.opendatahub.io/default-dsc patched</code><
 </div>
 </li>
 <li>
-<p>Configure your MLFlow instance.</p>
+<p>Configure your MLflow instance by creating an MLflow resource.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -321,15 +322,15 @@ spec:
 </div>
 </div>
 <div class="sect2">
-<h3 id="_test_your_mlflow_server_using_the_dashboard_and_a_workbench"><a class="anchor" href="#_test_your_mlflow_server_using_the_dashboard_and_a_workbench"></a>Test your MLFlow server using the dashboard and a workbench</h3>
+<h3 id="_test_your_mlflow_server_using_the_dashboard_and_a_workbench"><a class="anchor" href="#_test_your_mlflow_server_using_the_dashboard_and_a_workbench"></a>Test your MLflow server using the dashboard and a workbench</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Verify MLFlow is available from RHOAI</p>
+<p>Verify MLflow is available from RHOAI and create an empty experiment.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Open your RHOAI dash board.
+<p>Open your RHOAI dashboard.
 If it is already open, refresh your browser window.</p>
 </li>
 <li>
@@ -337,7 +338,7 @@ If it is already open, refresh your browser window.</p>
 Notice the new item named <b class="menuref">Experiments (mlflow)</b> and click it.</p>
 </li>
 <li>
-<p>In the Project combo box, type <code>my</code> and select the <code>my-first</code> model project.</p>
+<p>In the <b class="menuref">Project</b> field, select the <b class="menuref">my-first-model</b> project.</p>
 </li>
 <li>
 <p>Click <b class="menuref">Create Experiment</b> and type <code>dummy experiment</code> as its name.</p>
@@ -349,14 +350,14 @@ Notice the new item named <b class="menuref">Experiments (mlflow)</b> and click 
 <p>Creating an empty experiment is sufficient to prove that your MLflow instance can connect to its database and artifacts storage.</p>
 </li>
 <li>
-<p>You can, alternatively, open the upstream MLFlow web interface by clicking the applications menu, in the top navigation bar, close to the help icon, and selecting <b class="menuref">MLflow</b>.
-You should not need it: all funcionality you need for this course is available from the RHOAI dashboard.</p>
+<p>You can, alternatively, open the upstream MLflow web interface by clicking the applications menu, in the top navigation bar, close to the help icon, and selecting <b class="menuref">MLflow</b>.
+You should not need it: all functionality you need for this course is available from the RHOAI dashboard.</p>
 </li>
 </ol>
 </div>
 </li>
 <li>
-<p>Test connectivity to MLFlow from a workbench.</p>
+<p>Test connectivity to MLflow from a Jupyter notebook inside a workbench.</p>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -373,19 +374,19 @@ If you have trouble typing the Python code in this and other activities of this 
 <ol class="loweralpha" type="a">
 <li>
 <p>In the left navigation pane, click <b class="menuref">Projects</b> and select <b class="menuref">All projects</b> in the projects combo box.
-Then type <code>my</code> in the filter by name field and click <code>my-first-project</code> in the list of projects.</p>
+Then type <code>my</code> in the filter by name field and click <b class="menuref">my-first-model</b> in the list of projects.</p>
 </li>
 <li>
-<p>In the Projects page for <code>my-first-model</code>, select the <b class="menuref">Workbenches</b> tab and click menu:Create workbench.</p>
+<p>In the Projects page for <code>my-first-model</code>, select the <b class="menuref">Workbenches</b> tab and click <b class="menuref">Create workbench</b>.</p>
 </li>
 <li>
-<p>In the Create workbench page, type <code>test-mlflow</code> for the <strong>Name</strong> field and, in the Workbench image field, select the <code>Jupyter | Minimal | CPU</code> image.</p>
+<p>In the Create workbench page, type <code>test-mlflow</code> for the <strong>Name</strong> field and, in the <strong>Workbench image</strong> field, select <b class="menuref">Jupyter | Minimal | CPU</b>.</p>
 </li>
 <li>
 <p>Leave all other fields with their default values and click <b class="menuref">Create workbench</b>.</p>
 </li>
 <li>
-<p>In the Workbenches list, wait until the row for the <code>test-mlflow</code> workench displays a <code>Ready</code> state and then click <b class="menuref">test-mlflow</b> to open its Jupyter Lab in a new browser tab.</p>
+<p>In the Workbenches list, wait until the row for the <code>test-mlflow</code> workbench displays a <code>Ready</code> state and then click <b class="menuref">test-mlflow</b> to open its Jupyter Lab in a new browser tab.</p>
 </li>
 <li>
 <p>Click the <b class="menuref">Python 3.12</b> Notebook icon to create an empty notebook.</p>
@@ -399,10 +400,10 @@ Then type <code>my</code> in the filter by name field and click <code>my-first-p
 </div>
 </li>
 <li>
-<p>In the top toolbar from the notebook, click the play icon, with the tooltip <b class="menuref">Run this cell and advance</b>.</p>
+<p>In the top toolbar from the notebook, click the <b class="menuref">play</b> icon, with the tooltip "Run this cell and advance".</p>
 </li>
 <li>
-<p>Wait until the MLFlow SDK and all its dependencies are loaded from the RHOAI index into the workbench.</p>
+<p>Wait until the MLflow SDK and all its dependencies are loaded from the RHOAI index into the workbench.</p>
 </li>
 <li>
 <p>After the <code>pip</code> command finishes, type the following on the second cell of your notebook:</p>
@@ -419,12 +420,12 @@ print(mlflow.list_workspaces())</code></pre>
 </div>
 </li>
 <li>
-<p>Switch to your RHOAI dasbhoard page, which should still be in the Experiments page.
+<p>Switch to your RHOAI dashboard page, which should still be in the Experiments page.
 Notice, close to the top left, the <b class="menuref">Launch MLflow</b> link.
-Right-click it and copy its URL to the clipboard.</p>
+Right-click it and copy its URL to your clipboard.</p>
 </li>
 <li>
-<p>Switch to your jupyter lab browser tab and replace, in the second notebook cell, the <code>CHANGE_ME</code> text with the URL on your clipboard.</p>
+<p>Switch to your Jupyter Lab browser tab and replace, in the second notebook cell, the <code>CHANGE_ME</code> text with the URL on your clipboard.</p>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -433,11 +434,11 @@ Right-click it and copy its URL to the clipboard.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>In this example, we are using the <em>external</em> URL of the MLFLow server, which depends on the applications domain of your OpenShift Ingress operator.
+<p>In this example, we are using the <em>external</em> URL of the MLflow server, which depends on the applications domain of your OpenShift Ingress operator.
 This is the URL you would use for applications running outside of its OpenShift cluster.</p>
 </div>
 <div class="paragraph">
-<p>External applications also need to set the <code>MLFLOW_TRACKING_TOKEN</code> environment variable with a valid an OpenShift authentication token, for example the one returned by the <code>oc whoami -t</code> command.</p>
+<p>External applications also need to set the <code>MLFLOW_TRACKING_TOKEN</code> environment variable with a valid OpenShift authentication token, for example the one returned by the <code>oc whoami -t</code> command.</p>
 </div>
 </td>
 </tr>
@@ -445,15 +446,15 @@ This is the URL you would use for applications running outside of its OpenShift 
 </div>
 </li>
 <li>
-<p>In the top toolbar from the notebook, click the play icon.
-The results should an array containing a single <code>Workspace</code> object named <code>my-first-model</code>.</p>
+<p>In the top toolbar from the notebook, click the <b class="menuref">play</b> icon.
+The results should be an array containing a single <code>Workspace</code> object named <code>my-first-model</code>.</p>
 <div class="paragraph">
-<p>This notebook takes advantage of the integration between the RHOAI dashboard and its managed instance of the MLFlow server.
-It connects using the service account of the <code>test-mlflow</code> workbench, which is authorized to access the MLFlow workspace corresponding to its <code>my-first-model</code> project.</p>
+<p>This notebook takes advantage of the integration between the RHOAI dashboard and its managed instance of the MLflow server.
+It connects using the service account of the <code>test-mlflow</code> workbench, which is authorized to access the MLflow workspace corresponding to its <code>my-first-model</code> project.</p>
 </div>
 </li>
 <li>
-<p>If you wish, you can remove the unnamed notebook, or if you prefer you can save it, rename it to <code>test.ipynb</code>, and reuse for the next activity.
+<p>If you wish, you can remove the unnamed notebook, or if you prefer you can save it, rename it to <code>test.ipynb</code>, and reuse it for the next activity.
 Whatever your preference, do NOT delete the <code>test-mlflow</code> workbench because you will keep using it in the next activity.</p>
 </li>
 </ol>
@@ -465,7 +466,7 @@ Whatever your preference, do NOT delete the <code>test-mlflow</code> workbench b
 <div class="sect2">
 <h3 id="_summary"><a class="anchor" href="#_summary"></a>Summary</h3>
 <div class="paragraph">
-<p>After completing these steps, you have verified that you have a minmal but funcional MLFLow instance, to which you can connect from applications running inside your RHOAI cluster and store data from your experiments.</p>
+<p>After completing these steps, you have verified that you have a minimal but functional MLflow instance, to which you can connect from applications running inside your RHOAI cluster and store data from your experiments.</p>
 </div>
 </div>
 </div>
@@ -474,7 +475,7 @@ Whatever your preference, do NOT delete the <code>test-mlflow</code> workbench b
 <h2 id="_whats_next"><a class="anchor" href="#_whats_next"></a>What&#8217;s next</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Now that you have a working MLFlow deployment, the next chapter explores how to collect traces from agentic applications using the MLFlow SDK.</p>
+<p>Now that you have a working MLflow deployment, the next chapter explores how to collect traces from agentic applications using the MLflow SDK.</p>
 </div>
 </div>
 </div>
