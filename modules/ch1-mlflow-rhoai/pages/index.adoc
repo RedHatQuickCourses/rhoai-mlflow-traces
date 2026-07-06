@@ -1,7 +1,7 @@
-= Understanding MLFlow and Red Hat OpenShift AI
+= Understanding MLflow and Red Hat OpenShift AI
 
 Goal::
 
-Understand how MLFlow relates to agentic applications and to Red Hat OpenShift AI.
+Understand how MLflow relates to agentic applications and to Red Hat OpenShift AI.
 
-This chapter introduces MLFlow in the context of Red Hat OpenShift AI, focusing on features relevant to generative AI and agentic applications. You'll learn about MLFlow's architecture, supported features, and how it integrates with RHOAI components.
+This chapter introduces MLflow in the context of Red Hat OpenShift AI, focusing on features relevant to generative AI and agentic applications. You'll learn about MLflow's architecture, supported features, and how it integrates with RHOAI components.
