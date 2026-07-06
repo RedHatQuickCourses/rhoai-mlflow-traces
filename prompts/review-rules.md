@@ -21,6 +21,8 @@ If the field is clickable, such as a combo box or check box, tag with the `menu:
 
 - When names of resources appear as clickable, such as in lists and tables, tag them with `menu:` ex: `In the menu:Project[] field, select the menu:my-first-model[] project`
 
+- Menu and navigation items use sentence case, for example "Gen AI studio". Use the same capitalization when referring to them as names of features in prose.
+
 == The following rules apply to prose, anywhere
 
 - "MLflow" must be capitalized with uppercase ML and lowercase flow, except in links and code blocks.
@@ -29,3 +31,6 @@ If the field is clickable, such as a combo box or check box, tag with the `menu:
 
 - Use short sentences, and avoid long paragraphs (containing more than five sentences)
 
+- Do not use contractions such as don't and can't.
+
+- Use "GenAI" instead of "genAI" or "gen AI" for "generative AI"

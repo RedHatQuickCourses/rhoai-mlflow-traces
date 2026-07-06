@@ -1,0 +1,1 @@
+Review the current document using rules from @template/review-rules.md. Also review for grammar and typos. Show a report of issues found and propose fixes for each issue, then make edits. 
