@@ -196,7 +196,7 @@ Pending review
 <div class="sectionbody">
 <div class="paragraph">
 <p>You will enable MLflow on your Data Science Cluster singleton resource and deploy a development instance of the MLflow server.
-Then you will create a simple Jupyter notebook to test connectivity to the MLflow server.
+Then you will create a Jupyter notebook to test connectivity to the MLflow server.
 You will use the MLflow SDK for Python.</p>
 </div>
 <div class="paragraph">
@@ -239,7 +239,7 @@ Then click the <b class="menuref">default-dsc</b> resource.</p>
 </li>
 <li>
 <p>In the <code>default-dsc</code> resource page, select the <b class="menuref">YAML</b> tab.
-In the text editor, search for the <code>spec.components</code> field, and set its <code>mlflowoperator.managementState</code> field to <code>true</code>.</p>
+In the text editor, search for the <code>spec.components</code> field, and set <code>mlflowoperator.managementState</code> to <code>Managed</code>.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">...
@@ -263,10 +263,10 @@ spec:
 </div>
 </li>
 <li>
-<p>If you get an error message, fix the errors on your YAML and try saving again.</p>
+<p>If you receive an error message, fix the errors in your YAML and try saving again.</p>
 </li>
 <li>
-<p>Alternatively, you could run the following <code>oc patch</code> command, which is provided by the <a href="https://docs.redhat.com/en/documentation/red_hat_openshift_ai_self-managed/3.4/html/working_with_mlflow/installing-mlflow_mlflow#mlflow-configuration-parameters_mlflow" target="_blank" rel="noopener">RHOAI product docs</a>:</p>
+<p>Alternatively, you could run the following <code>oc patch</code> command, which is provided by the <a href="https://docs.redhat.com/en/documentation/red_hat_openshift_ai_self-managed/3.4/html/working_with_mlflow/installing-mlflow_mlflow#mlflow-configuration-parameters_mlflow" target="_blank" rel="noopener">Red Hat OpenShift AI product documentation</a>:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ <strong>oc patch datasciencecluster default-dsc --type=merge \
@@ -284,14 +284,14 @@ datasciencecluster.datasciencecluster.opendatahub.io/default-dsc patched</code><
 <ol class="loweralpha" type="a">
 <li>
 <p>In the left navigation pane, select <span class="menuseq"><b class="menu">Home</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">API Explorer</b></span>.
-Then type <code>MLflow</code> in the search field.
-You will see three resource types, click on <b class="menuref">MLflow</b>.</p>
+Then enter <code>MLflow</code> in the search field.
+You will see three resource types; click <b class="menuref">MLflow</b>.</p>
 </li>
 <li>
 <p>In the MLflow Resource details page, select the <b class="menuref">Instances</b> tab and click <b class="menuref">Create MLflow</b>.</p>
 </li>
 <li>
-<p>In the YAML text editor, delete all of its sample contents and type the following, which corresponds to the example from <a href="https://docs.redhat.com/en/documentation/red_hat_openshift_ai_self-managed/3.4/html/working_with_mlflow/installing-mlflow_mlflow#mlflow-configuration-parameters_mlflow:" target="_blank" rel="noopener">Minimal development or test deployment</a> in product docs.</p>
+<p>In the YAML text editor, delete all of its sample contents and enter the following, which corresponds to the example from <a href="https://docs.redhat.com/en/documentation/red_hat_openshift_ai_self-managed/3.4/html/working_with_mlflow/installing-mlflow_mlflow#mlflow-configuration-parameters_mlflow" target="_blank" rel="noopener">Minimal development or test deployment</a> in the Red Hat OpenShift AI product documentation.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: mlflow.opendatahub.io/v1
@@ -341,7 +341,7 @@ Notice the new item named <b class="menuref">Experiments (mlflow)</b> and click 
 <p>In the <b class="menuref">Project</b> field, select the <b class="menuref">my-first-model</b> project.</p>
 </li>
 <li>
-<p>Click <b class="menuref">Create Experiment</b> and type <code>dummy experiment</code> as its name.</p>
+<p>Click <b class="menuref">Create Experiment</b> and enter <code>dummy experiment</code> as its name.</p>
 </li>
 <li>
 <p>Verify that you see the Experiments page for <code>dummy experiment</code> but there is no data on any of its pages, such as <b class="menuref">Traces</b>, <b class="menuref">Sessions</b>, or <b class="menuref">Prompts</b>.</p>
@@ -350,7 +350,7 @@ Notice the new item named <b class="menuref">Experiments (mlflow)</b> and click 
 <p>Creating an empty experiment is sufficient to prove that your MLflow instance can connect to its database and artifacts storage.</p>
 </li>
 <li>
-<p>You can, alternatively, open the upstream MLflow web interface by clicking the applications menu, in the top navigation bar, close to the help icon, and selecting <b class="menuref">MLflow</b>.
+<p>You can, alternatively, open the upstream MLflow web interface by clicking the <b class="menuref">applications</b> menu, near the top right of the navigation bar close to the help icon, and selecting <b class="menuref">MLflow</b>.
 You should not need it: all functionality you need for this course is available from the RHOAI dashboard.</p>
 </li>
 </ol>
@@ -365,7 +365,7 @@ You should not need it: all functionality you need for this course is available 
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If you have trouble typing the Python code in this and other activities of this course, or you cannot cut-and-pate from the course page, you can access the complete source code for all jupyter notebooks in a <a href="https://github.com/RedHatQuickCourses/rhoai-mlflow-samples/tree/main/traces" target="_blank" rel="noopener">git repository</a>.
+If you have trouble typing the Python code in this and other activities of this course, or you cannot cut-and-paste from the course page, you can access the complete source code for all Jupyter notebooks in a <a href="https://github.com/RedHatQuickCourses/rhoai-mlflow-samples/tree/main/traces" target="_blank" rel="noopener">git repository</a>.
 </td>
 </tr>
 </table>
@@ -373,14 +373,14 @@ If you have trouble typing the Python code in this and other activities of this 
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>In the left navigation pane, click <b class="menuref">Projects</b> and select <b class="menuref">All projects</b> in the projects combo box.
-Then type <code>my</code> in the filter by name field and click <b class="menuref">my-first-model</b> in the list of projects.</p>
+<p>In the left navigation pane, click <b class="menuref">Projects</b> and select <b class="menuref">All projects</b> in the <b class="menuref">Project</b> field.
+Then enter <code>my</code> in the <strong>Filter by name</strong> field and click <b class="menuref">my-first-model</b> in the list of projects.</p>
 </li>
 <li>
 <p>In the Projects page for <code>my-first-model</code>, select the <b class="menuref">Workbenches</b> tab and click <b class="menuref">Create workbench</b>.</p>
 </li>
 <li>
-<p>In the Create workbench page, type <code>test-mlflow</code> for the <strong>Name</strong> field and, in the <strong>Workbench image</strong> field, select <b class="menuref">Jupyter | Minimal | CPU</b>.</p>
+<p>In the Create workbench page, enter <code>test-mlflow</code> for the <strong>Name</strong> field and, in the <strong>Workbench image</strong> field, select <b class="menuref">Jupyter | Minimal | CPU</b>.</p>
 </li>
 <li>
 <p>Leave all other fields with their default values and click <b class="menuref">Create workbench</b>.</p>
@@ -392,7 +392,7 @@ Then type <code>my</code> in the filter by name field and click <b class="menure
 <p>Click the <b class="menuref">Python 3.12</b> Notebook icon to create an empty notebook.</p>
 </li>
 <li>
-<p>In the first cell, type:</p>
+<p>In the first cell, enter:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">! pip install mlflow[kubernetes]</code></pre>
@@ -400,13 +400,13 @@ Then type <code>my</code> in the filter by name field and click <b class="menure
 </div>
 </li>
 <li>
-<p>In the top toolbar from the notebook, click the <b class="menuref">play</b> icon, with the tooltip "Run this cell and advance".</p>
+<p>In the top toolbar from the notebook, click the <b class="menuref">play</b> icon, having the tooltip "Run this cell and advance".</p>
 </li>
 <li>
 <p>Wait until the MLflow SDK and all its dependencies are loaded from the RHOAI index into the workbench.</p>
 </li>
 <li>
-<p>After the <code>pip</code> command finishes, type the following on the second cell of your notebook:</p>
+<p>After the <code>pip</code> command finishes, enter the following on the second cell of your notebook:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">import os
@@ -421,11 +421,11 @@ print(mlflow.list_workspaces())</code></pre>
 </li>
 <li>
 <p>Switch to your RHOAI dashboard page, which should still be in the Experiments page.
-Notice, close to the top left, the <b class="menuref">Launch MLflow</b> link.
+Notice, near the top left, the <b class="menuref">Launch MLflow</b> link.
 Right-click it and copy its URL to your clipboard.</p>
 </li>
 <li>
-<p>Switch to your Jupyter Lab browser tab and replace, in the second notebook cell, the <code>CHANGE_ME</code> text with the URL on your clipboard.</p>
+<p>Switch to your Jupyter Lab browser tab and, in the second notebook cell, replace the <code>CHANGE_ME</code> text with the URL on your clipboard.</p>
 <div class="admonitionblock note">
 <table>
 <tr>
