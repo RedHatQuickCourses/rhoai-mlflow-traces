@@ -39,7 +39,7 @@ In the left navigation menu, select menu:Ecosystem[Software Catalog].
 Scroll down to find the *Type* heading and click menu:Helm charts[].
 
 .. Scroll up to the *All items* field and type `mcp`.
-Then click the entry menu:Red Hat OpenShift Mcp Server[] and, on its details pane, click menu:Create[].
+Then click the menu:Red Hat OpenShift MCP Server[] entry and, in its details pane, click menu:Create[].
 
 .. In the *Create Helm Release* page, click the menu:Project[] field, which probably displays the `default` project, and click menu:Create Project[]. 
 Type `mcp-servers` as the *Name* field and click menu:Create[].
@@ -68,9 +68,9 @@ Click the Helm icon to display its workload details page, to the right, and wait
 +
 In the left navigation pane, select menu:Workloads[ConfigMaps] and, in the menu:Project[] field at the top, select the `redhat-ods-applications` project.
 
-.. Click menu:Create ConfigMap[] and, in the *Create Configmap* page, type `gen-ai-aa-mcp-servers` in the *Name* field.
+.. Click menu:Create ConfigMap[] and, in the *Create Configmap* page, enter `gen-ai-aa-mcp-servers` in the *Name* field.
 
-.. Type the following as the *Value* field and click menu:Create[].
+.. Enter the following in the *Value* field and click menu:Create[].
 +
 [source,json,subs="verbatim,quotes"]
 ----
@@ -88,19 +88,19 @@ It should list the `OpenShift-MCP-Server`, as configured by the config map, with
 
 .. Test the MCP server tools using a playground.
 +
-In the left navigation pane, select menu:GenAI studio[Playground].
+In the left navigation pane, select menu:Gen AI studio[Playground].
 Then type `my` in the *Project* field and select menu:my-first-model[].
 Click menu:Create playground[].
-In the *Configure playground* form, let the model checked and click menu:Create[].
+In the *Configure playground* form, leave the model checked and click menu:Create[].
 
 .. Wait while the Gen AI studio deploys a llama stack server for your playground.
-It displays a confirmation pop-up when done and enters the *Playground* page, 
+It displays a confirmation pop-up when it is done and enters the *Playground* page. 
 
 .. In the *Configure* pane of the playground, select the menu:MCP[] tab and check the row with name `OpenShift-MCP-Server`.
 You should see a pop-up stating *Connection successful* and the number of tools provided by the MCP server.
 Click menu:Save[] to select all tools.
 
-.. In the right pane, click the `Send a message...`​ text and type a prompt which requires using the MCP server, for example:
+.. In the right pane, click menu:Send a message...[] and type a prompt which requires using the MCP server, for example:
 +
 [source,none,subs="verbatim,quotes"]
 ----
@@ -124,12 +124,12 @@ Click the menu:test-mlflow[] workbench, which you created in the xref:ch2-deploy
 
 .. In the *Clone a repo* popup, type `https://github.com/RedHatQuickCourses/rhoai-mlflow-samples.git` as the URI of the remote Git repository and click menu:Clone[].
 
-.. In the file browser of your Jupyter Lab, enter the `/rhoai-mlflow-samples/traces` directory and then open the `basic-agent.ipnyb` notebook.
+.. In the file browser of your Jupyter Lab, open the `/rhoai-mlflow-samples/traces` directory and then open the `basic-agent.ipnyb` notebook.
 
 4. Review the code for a simple agent.
 +
 NOTE: The explanations here are *not* intended to explain all code in the agentic application, but just its general structure, so you can later read its traces.
-The code snippets here enable learners to locate each section of code, if they wish to study and use it as a starting point for their agentic applications.
+The code snippets here enable you to locate each section of code, if you wish to study and use it as a starting point for your agentic applications.
 
 .. In its first cell, notice the use of `--extra-index-url` option for the `pip install` command.
 It is necessary because the RHOAI index does not include the `openai-agents` library.
@@ -140,7 +140,7 @@ That way, pip falls back to the community index for any module not present in it
 ! pip install --extra-index-url https://pypi.org/simple openai openai-agents mlflow[kubernetes]
 ----
 
-.. In the second cell, notice the variables which set the URLs and connection parameters for the model server, the MCP server, and the MLFlow server.
+.. In the second cell, notice the variables that set the URLs and connection parameters for the model server, the MCP server, and the MLflow server.
 They are all internal URLs, which refer to their respective Kubernetes services.
 +
 [source,python,subs="verbatim,quotes"]
@@ -167,7 +167,7 @@ You are designed to answer questions in a concise and professional manner.
 """
 ----
 
-.. So far, the code is very similar to previous examples but, after it gets the service account token and enables MLflow tracing, the code to connect to the model and submit a prompt is _very_ different from the previous chat example.
+.. So far, the code is similar to previous examples, but, after it gets the service account token and enables MLflow tracing, the code to connect to the model and submit a prompt is _very_ different from the previous chat example.
 +
 Differences start by creating an asynchronous client for the model server: 
 +
@@ -213,7 +213,7 @@ async def main():
 +
 The agent loops on the responses received from the model, invoking MCP tools, and sending the output of tool calls back to the model.
 +
-This loop, inside the agent object, continues until the agent gets a response from the model which does *not* request another tool call.
+This loop, inside the agent object, continues until the agent receives a response from the model that does *not* request another tool call.
 +
 [source,python,subs="verbatim,quotes"]
 ----
@@ -243,9 +243,9 @@ This loop, inside the agent object, continues until the agent gets a response fr
 
 5. Run the agent to produce a trace.
 
-.. In the top toolbar from the notebook, click the menu:fast forward[] icon, with the tooltip "Restart the kernel and run all cells".
+.. In the top toolbar from the notebook, click the menu:fast forward[] icon, which has the tooltip "Restart the kernel and run all cells".
 
-.. It may take a while to download all OpenAI and MLFlow libraries and their dependencies, in the first cell before it actually submits the prompt, in the second cell.
+.. It may take a while to download all OpenAI and MLflow libraries and their dependencies, in the first cell before it actually submits the prompt, in the second cell.
 +
 If all goes well, you will get a correct response, similar to the following example:
 +
@@ -302,7 +302,7 @@ It may be hard to read in the trace, but you can recognize similarities with the
 +
 The menu:Outputs[] should match the final response displayed by your notebook run.
 
-.. If you got more than two menu:AsyncCompletions[] items, it might be because the model was not able to recognize that the tool call contains the information it needs, and requested a another tool call, maybe with different parameters, maybe of a different tool.
+.. If you got more than two menu:AsyncCompletions[] items, it might be because the model was not able to recognize that the tool call contains the information it needs, and requested another tool call, maybe with different parameters, maybe of a different tool.
 +
 For more complex prompts, it might be necessary to use the output of a tool call as parameters of another tool call, and many such rounds might be necessary.
 But you may find that, even with simpler prompts, a model might requests tool calls which make no sense. 
@@ -321,7 +321,7 @@ Each run produces its own trace, and they may take different numbers of completi
 .. Because the demo environment only supports a small model, with a small context window, you can easily devise a prompt which produces an error, such as listing all pods in the cluster.
 But you can also find that there are a number of useful prompts this small model can answer correctly and frequently.
 
-.. You may also try subtle changes in the prompts, for example referring to "the my-first-model project" instead of to a "namespace", or trying to provide a better suited system prompt for an IT operations or a Kubernetes administrator persona.
+.. You may also try subtle changes in the prompts, for example, referring to "the my-first-model project" instead of to a "namespace", or trying to provide a better suited system prompt for an IT operations or a Kubernetes administrator persona.
 
 ////
 
@@ -340,13 +340,13 @@ But you can also find that there are a number of useful prompts this small model
 
 === Summary
 
-After completing these steps, you have executed a simple agentic application which produces traces on the MLflow server in RHOAI.
-You also interpreted those traces to identify when the model requested tool calls, the specific data returned by the MCP server for each call, and how the data was send back from the agent to the model.
-Finally, you verified that the non-deterministic nature of large language models (LLMs) impacts their ability of requesting tool calls and using the returned data to produce a response.
+After completing these steps, you have executed a simple agentic application that produces traces on the MLflow server in RHOAI.
+You also interpreted those traces to identify when the model requested tool calls, the specific data returned by the MCP server for each call, and how the data was sent back from the agent to the model.
+Finally, you verified that the nondeterministic nature of LLMs impacts their ability of requesting tool calls and using the returned data to produce a response.
 
 == What's next
 
-Congratulations! You've completed this course and learned how to deploy MLFlow, collect traces from agentic applications, and visualize trace data. You can now apply these skills to troubleshoot and improve your own agentic applications.
+Congratulations! You've completed this course and learned how to deploy MLflow, collect traces from agentic applications, and visualize trace data. You can now apply these skills to troubleshoot and improve your own agentic applications.
 
 ////
 Trace MCP tool calls from an agent

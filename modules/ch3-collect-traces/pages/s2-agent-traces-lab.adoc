@@ -8,7 +8,7 @@ WARNING: Pending review
 
 == Before you begin
 
-You need access to the predeployed Red Hat OpenShift AI (RHOAI) instance provided in your lab environment, which was already configured by the xref:ch2-deploy-mlflow:s2-deploy-lab.adoc[previous lab] with a development instance of the MLflow server and an RHOAI workbench.
+You need access to the predeployed Red Hat OpenShift AI (RHOAI) instance provided in your lab environment, which was already configured in the xref:ch2-deploy-mlflow:s2-deploy-lab.adoc[previous lab] with a development instance of the MLflow server and an RHOAI workbench.
 
 Ensure you have:
 
@@ -38,17 +38,17 @@ Once you open one of these tabs, keep it open because you may return to it later
 NOTE: You do not need administrator privileges to complete this lab, but the demo instance is not configured with any user other than `admin`.
 
 .. In the left navigation pane, select menu:Projects[] and, in the *Project* field, select menu:All projects[].
-Then type `my` and, in the list of projects, select menu:my-first-model[].
+Then enter `my` and, in the list of projects, select menu:my-first-model[].
 
 .. In the projects page for `my-first-model`, select the menu:Workbenches[] tab.
-Click the menu:test-mlflow[] workbench, which you created in the xref:ch2-deploy-mlflow:s2-deploy-lab.adoc[previous lab], to open its jupyter lab in a new browser tab.
+Click the menu:test-mlflow[] workbench, which you created in the xref:ch2-deploy-mlflow:s2-deploy-lab.adoc[previous lab], to open its Jupyter Lab in a new browser tab.
 
 .. In the Jupyter Lab, select the menu:Launcher[] tab and click the menu:Python 3.12[] icon to create a new Jupyter notebook.
 
-.. In the left navigation pane, right click the menu:Untitled.ipynb[] file, which is your new notebook, and select menu:Rename[].
-Then type `basic-chat` as its new file name.
+.. In the left navigation pane, right-click the menu:Untitled.ipynb[] file, which is your new notebook, and select menu:Rename[].
+Then, enter `basic-chat` as its new file name.
 
-.. Alternatively, you can open and reuse the `test.ipnyb`, which you created in the xref:ch2-deploy-mlflow:s2-deploy-lab.adoc[previous lab].
+.. Alternatively, you can open and reuse the `test.ipynb` which you created in the xref:ch2-deploy-mlflow:s2-deploy-lab.adoc[previous lab].
 
 2. Insert the code for a simple chat application into your notebook.
 
@@ -74,7 +74,7 @@ model_name = "llama-32-3b-instruct"
 .. Switch to the RHOAI dashboard and select, in the left navigation pane, menu:AI hub[Models], then select the menu:Deployments[] tab.
 In the row for the `llama-32-3b-instruct` model, click menu:Internal endpoint[] to display a pop-up with the access URL for its model server, and click the menu:Copy[] icon in the pop-up.
 
-.. Switch to your Jupyter notebook and replace the `CHANGE_ME` text with the URL on your clipboard and type `/v1` at the end of the URL to make it a valid OpenAI API endpoint.
+.. Switch to your Jupyter notebook and replace the `CHANGE_ME` text with the URL on your clipboard and enter `/v1` at the end of the URL to make it a valid OpenAI API endpoint.
 
 .. Continue editing the second cell and set a system and a user prompt.
 +
@@ -89,7 +89,7 @@ You are designed to answer questions in a concise and professional manner.
 """
 ----
 
-.. Add to the cell code to retrieve the authentication token from its Kubernetes service account and connect to the model server using the OpenAI API.
+.. Add code to the cell for retrieving the authentication token from its Kubernetes service account and connect to the model server using the OpenAI API.
 +
 [source,python,subs="verbatim,quotes"]
 ----
@@ -109,7 +109,7 @@ client = OpenAI(
 )
 ----
 
-.. Add code to submit the prompt to the model and display its response.
+.. Add code for submitting the prompt to the model and display its response.
 +
 [source,python,subs="verbatim,quotes"]
 ----
@@ -139,9 +139,9 @@ In the top toolbar of your notebook, click the menu:disk[] icon, having as toolt
 .. Now that your second notebook cell contains the entire code of the chat application, click the menu:play[] icon in the top toolbar of your notebook.
 
 .. Hopefully, your output is correct and useful.
-You do know what makes RHEL different than CentOS, right?
-If you get a hallucinated response, just continue with the activity.
-You will have a chance of seeing a good response later in this lab.
+You do know what makes RHEL different from CentOS, right?
+If you receive a hallucinated response, continue with the activity.
+You will have an opportunity to see a good response later in this lab.
 +
 Following is an example of a good response we got while testing these instructions:
 +
@@ -171,7 +171,7 @@ In summary, RHEL is a paid, enterprise-focused distribution, while CentOS is a f
 
 4. Instrument your chat application with MLflow tracing.
 
-.. Edit the first cell to also install the MLFlow SDK for Python.
+.. Edit the first cell to also install the MLflow SDK for Python.
 +
 [source,python,subs="verbatim,quotes"]
 ----
@@ -180,7 +180,7 @@ In summary, RHEL is a paid, enterprise-focused distribution, while CentOS is a f
 
 .. Click the menu:play[] icon in the toolbar and wait until the MLflow library and its dependencies are loaded from the RHOAI index into your workbench.
 
-.. Edit the second cell to add a few variables, which point to the MLFlow server from your RHOAI instance.
+.. Edit the second cell to add a few variables, which point to the MLflow server from your RHOAI instance.
 +
 [source,python,subs="verbatim,quotes"]
 ----
@@ -191,10 +191,10 @@ model_name = "llama-32-3b-instruct"
 *MLFLOW_EXPERIMENT = "basic-chat"*
 ----
 +
-NOTE: In this example, we are using the _internal_ URL of the MLflow server, which does *not* change for different RHOAI instances.
+NOTE: In this example, we are using the *internal* URL of the MLflow server, which does *not* change for different RHOAI instances.
 You can use this URL only with applications running on the same OpenShift cluster.
 
-.. Add code to configure the connection to the MLflow server, right before the code which gets your Kubernetes service account token.
+.. Add code to configure the connection to the MLflow server, immediately before the code which gets your Kubernetes service account token.
 +
 [source,python,subs="verbatim,quotes"]
 ----
@@ -214,7 +214,7 @@ except FileNotFoundError:
     AUTH_TOKEN = OCP_TOKEN
 ----
 
-.. Add code to start MLflow autologging, right before the code which connects to the model server.
+.. Add code to start MLflow autologging, immediately before the code which connects to the model server.
 +
 [source,python,subs="verbatim,quotes"]
 ----
@@ -225,15 +225,15 @@ client = OpenAI(
 )
 ----
 
-5. Run your chat application to verify it continue working after changes.
+5. Run your chat application to verify it continues working after changes.
 
 .. It is again a good time to save your code changes.
 In the top toolbar of your notebook, click the menu:disk[] icon, having as tooltip "Save and create checkpoint".
 
 .. Ensure the second cell is selected and click the menu:play[] icon in the top toolbar of your notebook.
 
-.. Hopefully, your output is again correct and useful, and probably have small differences in wording compared to your previous output.
-You can ignore warnings which suggest updating Jupyter and ipywidgets.
+.. Hopefully, your output is again correct and useful, and probably has small differences in wording compared to your previous output.
+You can ignore warnings that suggest updating `jupyter` and `ipywidgets`.
 More important, check that you see a message stating that a new experiment was created, similar to the following partial example output.
 +
 [source,none,subs="verbatim,quotes"]
@@ -254,16 +254,15 @@ RHEL (Red Hat Enterprise Linux) and CentOS are both Linux distributions, but the
 .. Click the menu:basic-chat[] experiment, which was created when you re-run your notebook after making changes.
 
 .. You will see a page displaying many statistics and graphics about the performance of your experiments.
-Each data point corresponds to one time you run your chat application.
+Each data point corresponds to one time you ran your chat application.
 
 .. In the left pane of the Experiments page, without leaving the `basic-chat` experiments page, click menu:Traces[].
 
 .. You will see a page containing one trace per row.
 Each row displays a trace ID, its request, response, and some performance metrics.
 
-.. Click on either the trace id or its prompt to see a summary of the trace.
-Click on the links menu:Show 1 more[] and similar on the input and output pane to 
-expand the details of the inputs sent to the model server and the outputs received from it.
+.. Click either the trace id or its prompt to see a summary of the trace.
+Click the menu:Show 1 more[] link and similar links in the input and output panes to expand the details of the inputs sent to the model server and the outputs received from it.
 +
 From the information in a trace, it is possible to reproduce the request and compare its outputs between different attempts.
 
@@ -273,7 +272,7 @@ From the information in a trace, it is possible to reproduce the request and com
 +
 We could repeat the same prompt multiple times, to verify variations in output and in performance metrics but, to make it more interesting, change the system prompt so you see a significant difference in the responses your application produces.
 
-.. Switch to your Jupyter notebook and append more instructions to its system prompt:
+.. Switch to your Jupyter notebook and add more instructions to its system prompt:
 +
 [source,python,subs="verbatim,quotes"]
 ----
@@ -307,7 +306,7 @@ The visual integration between MLflow and RHOAI workbenches is not yet working w
 .. Switch to your RHOAI dashboards, which should be still in the Traces list of the `basic-chat` experiment.
 You may need to refresh your browser window to view the second trace.
 
-.. Click the trace ID of the first item, which is the most recent trace, so it corresponds to the latest time you run your notebook.
+.. Click the trace ID of the first item, which is the most recent trace, so it corresponds to the latest time you ran your notebook.
 
 .. Verify that the trace summary shows the latest, longer system prompt on its inputs, and the latest, shorter response on its outputs.
 Do *not* close the trace summary page.
@@ -320,7 +319,7 @@ Do *not* close the trace summary page.
 
 .. Click menu:Add feedback[] and select menu:Human feedback[].
 
-.. Type `good response` as the Assessment Name.
+.. Enter `good response` as the Assessment Name.
 Leave the Data Type as `Boolean` and Value as `True` and click menu:Create[].
 
 .. Click the menu:x[] icon of the trace summary pane.
