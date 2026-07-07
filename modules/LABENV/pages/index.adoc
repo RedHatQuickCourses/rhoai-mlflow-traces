@@ -3,27 +3,27 @@
 == Instructions to Launch Your Lab on the Red Hat Demo Platform (RHDP)
 
 . Log in to the xref:#RHDP-Portal-Links[RHDP portal]
-. Search for the catalog entry: `Red Hat Openshift AI 3`
+. Search for the catalog entry: `Red Hat OpenShift AI 3`
 . Click the catalog entry in the search results.
 . On the catalog page, click menu:Order[].
-. Fill out the required details in the order form and accept the defaults for other fields.
+. Enter the required details in the order form and accept the defaults for other fields.
 You can use the smaller AWS instance type.
-. Review the warning at the bottom of the form and check: +
+. Review the warning at the bottom of the form and select: +
 menu:I confirm that I understand the above warnings[].
-. Await the email notification stating that your demo environment is ready and providing its access credentails and URLs.
+. Await the email notification stating that your demo environment is ready and providing its access credentials and URLs.
 
 === Important Notes:
-- This lab may take approximately *1:30* hours to become ready.
+- This lab may take approximately *90* minutes or more to become ready.
 - You can also retrieve access information directly from the RHDP portal.
 - This lab uses GPU-enabled instances on AWS, which are in short supply.
-It require multiple attempts to provision or restart. 
+It may require multiple attempts to provision or restart. 
 
 [WARNING]
 ====
-Do *not* follow the instructions/showroom from the demo catalog entry.
-This course reuses that demo but does not require that you perform any of its activities.
+Do *not* follow the instructions or showroom from the demo catalog entry.
+This course reuses that demo environment but does not require that you perform any of its original activities.
 
-You will use the preprovisioned instance of Red Hat OpenShift AI as-is, and deploy MLFlow and sample agentic applications as part of this course activities.
+You will use the preprovisioned instance of Red Hat OpenShift AI as-is, and deploy MLflow and sample agentic applications as part of this course activities.
 ====
 
 === How to Access Your Lab via the RHDP Portal:
@@ -32,6 +32,6 @@ You will use the preprovisioned instance of Red Hat OpenShift AI as-is, and depl
 
 [[RHDP-Portal-Links]]
 === RHDP Portal Links
-- RedHat associates: https://demo.redhat.com/[https://demo.redhat.com/,window=_blank]
-- RedHat partners: https://partner.demo.redhat.com/[https://partner.demo.redhat.com/,window=_blank]
+- Red Hat associates: https://demo.redhat.com/[https://demo.redhat.com/^]
+- Red Hat partners: https://partner.demo.redhat.com/[https://partner.demo.redhat.com/^]
 
