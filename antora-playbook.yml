@@ -1,5 +1,5 @@
 site:
-  title: Agent Traces with MLFLow and Red Hat OpenShift AI
+  title: Agent Traces with MLfLow and Red Hat OpenShift AI
   start_page: rhoai-mlflow-traces::index.adoc
 
 content:

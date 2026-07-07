@@ -3,29 +3,27 @@
 
 == Goal
 
-This course teaches you how to deploy MLflow, as included with Red Hat OpenShift AI 3.4.
+This course covers how to deploy MLflow, as included with Red Hat OpenShift AI 3.4.
 You will learn how to collect traces of an agentic application using the MLflow SDK with Python.
 You will also learn how to visualize those traces using the Red Hat OpenShift AI web interface.
 
-Learners should reserve a full working day to complete this course.
-
-WARNING: Pending review
+You should reserve a full working day to complete this course.
 
 == Objectives
 
 On completing this course, you should be able to:
 
-* Understand how MLflow relates to agentic applications and to Red Hat OpenShift AI.
+* Understand how MLflow relates to agentic applications and Red Hat OpenShift AI.
 
-* Deploy a development environment with MLflow
+* Deploy a development environment with MLflow.
 
-* Collect traces from an agentic application using MLflow
+* Collect and visualize traces from agentic applications using MLflow.
 
 == Audience
 
 * Software developers working on agentic applications and agentic harnesses.
 
-* Red Hat and Partner roles that perform demonstrations, PoC and PoV of MLflow with Red Hat OpenShift AI, such as Solutions Architects.
+* Red Hat and Partner roles that perform demonstrations, proof of concept (PoC) and proof of value (PoV) of MLflow with Red Hat OpenShift AI, such as Solution Architects.
 
 * Red Hat and Partner roles that implement and support MLflow with Red Hat OpenShift AI, such as Services Consultants, Technical Account Managers, and Customer Support Engineers.
 
@@ -37,7 +35,7 @@ This course assumes that you have the following experience:
 
 * Familiarity with the basic operation of Red Hat OpenShift AI.
 
-* Python programming skills are recommended but not required, because this training provides sample code which is ready to run.
+* Python programming skills are recommended but not required because this training provides ready-to-run sample code.
 
 == Classroom environment
 
@@ -59,4 +57,4 @@ For upstream MLflow documentation, see the https://mlflow.org/docs/latest/index.
 Training Content Architect +
 Red Hat - Product Portfolio Marketing & Learning
 
-Thanks to Adel Zaalouk, Andy Stoneberg, Calum Murray, Cansu Kavili Oernek, Francisco Arceo, Harshad Reddy Nalla, Jaideep Rao, Lazaro Coronado Torres, Matt Prahl, Peter Double, and Waldirio Pinheiro for their support creating this course and its hands-on activities.
+_Thanks to Adel Zaalouk, Andy Stoneberg, Calum Murray, Cansu Kavili Oernek, Francisco Arceo, Harshad Reddy Nalla, Jaideep Rao, Lazaro Coronado Torres, Matt Prahl, Peter Double, and Waldirio Pinheiro for their support creating this course and its hands-on activities_.
