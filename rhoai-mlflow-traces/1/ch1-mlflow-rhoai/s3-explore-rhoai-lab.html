@@ -152,7 +152,7 @@
 <dl>
 <dt class="hdlist1">Objective</dt>
 <dd>
-<p>Explore the predeployed Red Hat OpenShift AI instance to familiarize yourself with its configuration and with the new Gen AI Studio feature from 3.x releases.</p>
+<p>Explore the predeployed Red Hat OpenShift AI instance to familiarize yourself with its configuration and with the new Gen AI studio feature from 3.x releases.</p>
 </dd>
 </dl>
 </div>
@@ -225,7 +225,7 @@ Pending review
 <p>In the left pane, select <span class="menuseq"><b class="menu">AI hub</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Models</b></span> and then select the <b class="menuref">Deployments</b> tab.</p>
 </li>
 <li>
-<p>In the <b class="menuref">Project</b> field, type <code>my</code> and select the <b class="menuref">my-first-model</b> project.</p>
+<p>In the <b class="menuref">Project</b> field, enter <code>my</code> and select the <b class="menuref">my-first-model</b> project.</p>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -250,14 +250,14 @@ This means the model cannot be accessed from outside of its OpenShift cluster, u
 </div>
 </li>
 <li>
-<p>Try the model with a Gen AI Studio Playground.</p>
+<p>Try the model with a Gen AI studio playground.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
 <p>In the left pane, select <span class="menuseq"><b class="menu">Gen AI studio</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Playground</b></span>.</p>
 </li>
 <li>
-<p>In the <b class="menuref">Project</b> field, type <code>my</code> and select the <b class="menuref">my-first-model</b> project.</p>
+<p>In the <b class="menuref">Project</b> field, enter <code>my</code> and select the <b class="menuref">my-first-model</b> project.</p>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -277,7 +277,7 @@ In the <strong>Configure</strong> pane, select the <b class="menuref">Model</b> 
 Ignore the prefix on the model name.</p>
 </li>
 <li>
-<p>In the right pane, click the <code>Send a message&#8230;&#8203;</code> text and type a prompt, for example:</p>
+<p>In the right pane, click <b class="menuref">Send a message&#8230;&#8203;</b> and type a prompt, for example:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">What is RHEL?</code></pre>
@@ -286,7 +286,7 @@ Ignore the prefix on the model name.</p>
 </li>
 <li>
 <p>Type <kbd>Enter</kbd> to submit the prompt and see the response from the model.
-The model may return different answers if you attempt the same prompt again, but they all would, hopefully, be correct and reasonable.</p>
+The model may return different answers if you attempt the same prompt again, but they all should be correct and reasonable.</p>
 </li>
 </ol>
 </div>
@@ -295,7 +295,7 @@ The model may return different answers if you attempt the same prompt again, but
 </div>
 </div>
 <div class="sect2">
-<h3 id="_confirm_that_mlflow_is_not_deployed_yet_in_rhoai"><a class="anchor" href="#_confirm_that_mlflow_is_not_deployed_yet_in_rhoai"></a>Confirm that MLflow is not deployed yet in RHOAI.</h3>
+<h3 id="_confirm_that_mlflow_is_not_deployed_in_rhoai"><a class="anchor" href="#_confirm_that_mlflow_is_not_deployed_in_rhoai"></a>Confirm that MLflow is not deployed in RHOAI</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -305,7 +305,7 @@ The model may return different answers if you attempt the same prompt again, but
 <li>
 <p>In the left pane, expand the <b class="menuref">Gen AI studio</b> category, which contains entries named <b class="menuref">Playground</b> and <b class="menuref">AI asset endpoints</b>.</p>
 <div class="paragraph">
-<p>After you enable MLflow, there will be additional entries here.</p>
+<p>Enabling MLflow will add additional entries here.</p>
 </div>
 </li>
 <li>
@@ -318,7 +318,7 @@ The model may return different answers if you attempt the same prompt again, but
 <p>In the left pane, expand the <b class="menuref">Develop &amp; train</b> category, which contains entries named <b class="menuref">Feature store</b>, <b class="menuref">Pipelines</b>, <b class="menuref">Jobs</b>, and <b class="menuref">Evaluations</b>.</p>
 </li>
 <li>
-<p>In the toolbar, to the top right, click the <b class="menuref">Applications</b> icon, which is close to the <b class="menuref">Question</b> icon, and verify that there is <strong>not</strong> an entry named <b class="menuref">MLflow</b>.</p>
+<p>In the toolbar, to the top right, click the <b class="menuref">Applications</b> icon, which is next to the <b class="menuref">Question</b> icon, and verify that there is <strong>not</strong> an entry named <b class="menuref">MLflow</b>.</p>
 </li>
 </ol>
 </div>
@@ -329,7 +329,7 @@ The model may return different answers if you attempt the same prompt again, but
 <div class="sect2">
 <h3 id="_summary"><a class="anchor" href="#_summary"></a>Summary</h3>
 <div class="paragraph">
-<p>After completing these steps, you have verified that you have a functional RHOAI instance with a pre-deployed model, which is available only for internal access, and that you can submit prompts to the model using an RHOAI playground.</p>
+<p>After completing these steps, you verified that you have a functional RHOAI instance with a pre-deployed model, which is available only for internal access, and that you can submit prompts to the model using an RHOAI playground.</p>
 </div>
 <div class="paragraph">
 <p>In addition, you have also verified that MLflow is not installed on your RHOAI instance, and that there are no MCP servers deployed.</p>

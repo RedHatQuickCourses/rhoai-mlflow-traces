@@ -156,25 +156,13 @@
 </dd>
 </dl>
 </div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-Pending review
-</td>
-</tr>
-</table>
-</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_introduction_to_mlflow"><a class="anchor" href="#_introduction_to_mlflow"></a>Introduction to MLflow</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>According to their own <a href="https://mlflow.org/" target="_blank" rel="noopener">web site</a>:</p>
+<p>According to its own <a href="https://mlflow.org/" target="_blank" rel="noopener">website</a>:</p>
 </div>
 <div class="quoteblock">
 <blockquote>
@@ -185,14 +173,14 @@ MLflow enables teams of all sizes to debug, evaluate, monitor, and optimize prod
 </blockquote>
 </div>
 <div class="paragraph">
-<p>MLflow provides fundamental observability and experiment tracking capabilities which enable developers and data scientists to ensure their applications work beyond a demonstration and perform as expected in production.</p>
+<p>MLflow provides fundamental observability and experiment-tracking capabilities that enable developers and data scientists to ensure their applications work beyond a demonstration and perform as expected in production.</p>
 </div>
 <div class="paragraph">
-<p>MLflow capabilities support developers and data scientists optimizing their applications for cost and accuracy, for example as they select smaller models or tuning their prompts, so they are confident they did not introduce unacceptable performance degradation.</p>
+<p>MLflow capabilities support developers and data scientists optimizing their applications for cost and accuracy, for example, as they select smaller models or tune their prompts, so they are confident they did not introduce unacceptable performance degradation.</p>
 </div>
 <div class="paragraph">
-<p>It is a known fact that AI-enabled applications usually degrade over time, because user behavior and input data changes.
-MLflow enables continuous evaluation of runtime performance of applications, so improvements can be made before users start complaining.</p>
+<p>AI-enabled applications usually degrade over time, because user behavior and input data changes.
+MLflow enables continuous evaluation of runtime performance of applications, so improvements can be made before users report problems.</p>
 </div>
 </div>
 </div>
@@ -210,18 +198,18 @@ A client application, which is instrumented by using either the MLflow SDK or Op
 <div class="title">Figure 1. Architecture of MLflow</div>
 </div>
 <div class="paragraph">
-<p>The application is responsible for interacting with ML models or, in the case of GenAI applications, with LLMs.
-The GenAI application is also responsible for interacting with MCP servers, providing local tools, or connecting to RAG data sources.</p>
+<p>The application is responsible for interacting with machine learning (ML) models or, in the case of generative AI (gen AI) applications, with large language models (LLMs).
+The gen AI application is also responsible for interacting with MCP servers, providing local tools, or connecting to retrieval-augmented generation (RAG) data sources.</p>
 </div>
 <div class="paragraph">
 <p>It does not matter whether the "application" is a user-facing application, an autonomous agent, or a training or evaluation pipeline.
 It just needs to send observability data to an MLflow server.</p>
 </div>
 <div class="paragraph">
-<p>Client applications can also consume data from MLflow servers, for example to compare metrics from different training sessions and determine which one provided better outputs, or to track performance degradation, over time, for a production application.</p>
+<p>Client applications can also consume data from MLflow servers, for example, to compare metrics from different training sessions and determine which one provided better outputs, or to track performance degradation, over time, for a production application.</p>
 </div>
 <div class="paragraph">
-<p>The MLflow server makes use of a relational database and an artifact store to record artifacts such as model weights (in case of training ML models) or prompts (in case of GenAI applications).
+<p>The MLflow server makes use of a relational database and an artifact store to record artifacts such as model weights (in the case of training ML models) or prompts (in the case of gen AI applications).
 It is recommended that the artifact store be an S3 service, for scalability.</p>
 </div>
 <div class="paragraph">
@@ -234,11 +222,11 @@ A PostgreSQL database is a popular option for the MLflow database.</p>
 <h2 id="_mlflow_for_generative_ai_applications"><a class="anchor" href="#_mlflow_for_generative_ai_applications"></a>MLflow for Generative AI Applications</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>MLflow started by supporting Machine Learning (ML) applications and data scientists, offering features to support model training and tuning.
+<p>MLflow started by supporting ML applications and data scientists, offering features to support model training and tuning.
 Like many tools focused on ML, MLflow was initially very Python-centric.</p>
 </div>
 <div class="paragraph">
-<p>More recently, MLflow added features for supporting Generative AI (GenAI) applications and agents.
+<p>More recently, MLflow added features for supporting generative AI (gen AI) applications and agents.
 By that time, MLflow was also offering native SDKs for other programming languages, such as TypeScript and Java.</p>
 </div>
 <div class="paragraph">
@@ -251,17 +239,17 @@ By that time, MLflow was also offering native SDKs for other programming languag
 <div class="sectionbody">
 <div class="paragraph">
 <p>Experiments are a key concept in MLflow.
-An <em>experiment</em> is a grouping of observability data, from multiple runs.
+An <em>experiment</em> is a grouping of observability data from multiple runs.
 Each run collects all data obtained while running an AI application once.
-Runs may take multiple forms, and the ones we are interested in for this course are <em>traces</em>, which record the interactions between an agent and a model.</p>
+Runs can take multiple forms, the ones that pertain to this course are <em>traces</em>, which record the interactions between an agent and a model.</p>
 </div>
 <div class="paragraph">
-<p>A workspace is a grouping of experiments.
+<p>A <em>workspace</em> is a grouping of experiments.
 Typically, a workspace corresponds to an application, and experiments correspond to running the application with different configuration parameters, such as different models, or different system prompts.</p>
 </div>
 <div class="paragraph">
 <p>Then, inside an experiment, each run connects an input to its output, and provides metrics and other observability data from that run.
-Frequently there are multiple runs, such as multiple traces, which started from exactly the same input data because LLMs are inherently non-deterministic.</p>
+Frequently, there are multiple runs, such as multiple traces, which start from exactly the same input data because LLMs are inherently nondeterministic.</p>
 </div>
 </div>
 </div>
@@ -269,18 +257,18 @@ Frequently there are multiple runs, such as multiple traces, which started from 
 <h2 id="_mlflow_features_in_red_hat_openshift_ai"><a class="anchor" href="#_mlflow_features_in_red_hat_openshift_ai"></a>MLflow Features in Red Hat OpenShift AI</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>MLflow is a comprehensive platform for managing AI applications (AIOps) but it does not provide <em>everything</em> data scientists, software developers, and AI engineers need to develop and manage their ML or GenAI applications.
+<p>MLflow is a comprehensive platform for managing AI applications; however, it does not provide <em>everything</em> data scientists, software developers, and AI engineers need to develop and manage their ML or gen AI applications.
 Providing "everything" is the stated goal of Red Hat OpenShift AI (RHOAI).
-While MLflow provides many features which are useful by themselves, others work better when paired with tools outside of MLflow.</p>
+While MLflow provides many features that are useful by themselves, others work better when paired with tools outside of MLflow.</p>
 </div>
 <div class="paragraph">
-<p>Sometimes, there&#8217;s overlap between a feature from MLflow and a feature from another component of RHOAI, for example the Model Registry which in RHOAI comes from KubeFlow.
-All features from MLflow are available from RHOAI but not all of them may be integrated with the RHOAI dashboard and with other features of RHOAI.</p>
+<p>Sometimes, there is overlap between a feature from MLflow and a feature from another component of RHOAI, for example, the Model Registry, which in RHOAI comes from Kubeflow.
+All features from MLflow are available from RHOAI, but not all of them may be integrated with the RHOAI dashboard and with other features of RHOAI.</p>
 </div>
 <div class="paragraph">
-<p>The upstream web interface from MLflow is available unchanged, as a stand-alone application, from RHOAI.
+<p>The upstream web interface from MLflow is available unchanged, as a standalone application, from RHOAI.
 Users are free to continue using this interface.
-But you may find it is easier and more convenient to use the subset of features made available from RHOAI dashboard, because it facilitates using these features integrated with other components and features from RHOAI.</p>
+However, you may find it easier and more convenient to use the subset of features made available from the RHOAI dashboard, because it facilitates using these features integrated with other components and features from RHOAI.</p>
 </div>
 </div>
 </div>
