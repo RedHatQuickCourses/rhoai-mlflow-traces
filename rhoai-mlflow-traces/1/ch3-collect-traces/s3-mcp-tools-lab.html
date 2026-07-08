@@ -235,7 +235,7 @@ Scroll down to find the <strong>Type</strong> heading and click <b class="menure
 </li>
 <li>
 <p>Scroll up to the <strong>All items</strong> field and type <code>mcp</code>.
-Then click the entry <b class="menuref">Red Hat OpenShift Mcp Server</b> and, on its details pane, click <b class="menuref">Create</b>.</p>
+Then click the <b class="menuref">Red Hat OpenShift MCP Server</b> entry and, in its details pane, click <b class="menuref">Create</b>.</p>
 </li>
 <li>
 <p>In the <strong>Create Helm Release</strong> page, click the <b class="menuref">Project</b> field, which probably displays the <code>default</code> project, and click <b class="menuref">Create Project</b>.
@@ -275,10 +275,10 @@ Click the Helm icon to display its workload details page, to the right, and wait
 </div>
 </li>
 <li>
-<p>Click <b class="menuref">Create ConfigMap</b> and, in the <strong>Create Configmap</strong> page, type <code>gen-ai-aa-mcp-servers</code> in the <strong>Name</strong> field.</p>
+<p>Click <b class="menuref">Create ConfigMap</b> and, in the <strong>Create Configmap</strong> page, enter <code>gen-ai-aa-mcp-servers</code> in the <strong>Name</strong> field.</p>
 </li>
 <li>
-<p>Type the following as the <strong>Value</strong> field and click <b class="menuref">Create</b>.</p>
+<p>Enter the following in the <strong>Value</strong> field and click <b class="menuref">Create</b>.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
@@ -299,15 +299,15 @@ It should list the <code>OpenShift-MCP-Server</code>, as configured by the confi
 <li>
 <p>Test the MCP server tools using a playground.</p>
 <div class="paragraph">
-<p>In the left navigation pane, select <span class="menuseq"><b class="menu">GenAI studio</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Playground</b></span>.
+<p>In the left navigation pane, select <span class="menuseq"><b class="menu">Gen AI studio</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Playground</b></span>.
 Then type <code>my</code> in the <strong>Project</strong> field and select <b class="menuref">my-first-model</b>.
 Click <b class="menuref">Create playground</b>.
-In the <strong>Configure playground</strong> form, let the model checked and click <b class="menuref">Create</b>.</p>
+In the <strong>Configure playground</strong> form, leave the model checked and click <b class="menuref">Create</b>.</p>
 </div>
 </li>
 <li>
 <p>Wait while the Gen AI studio deploys a llama stack server for your playground.
-It displays a confirmation pop-up when done and enters the <strong>Playground</strong> page,</p>
+It displays a confirmation pop-up when it is done and enters the <strong>Playground</strong> page.</p>
 </li>
 <li>
 <p>In the <strong>Configure</strong> pane of the playground, select the <b class="menuref">MCP</b> tab and check the row with name <code>OpenShift-MCP-Server</code>.
@@ -315,7 +315,7 @@ You should see a pop-up stating <strong>Connection successful</strong> and the n
 Click <b class="menuref">Save</b> to select all tools.</p>
 </li>
 <li>
-<p>In the right pane, click the <code>Send a message&#8230;&#8203;</code>​ text and type a prompt which requires using the MCP server, for example:</p>
+<p>In the right pane, click <b class="menuref">Send a message&#8230;&#8203;</b> and type a prompt which requires using the MCP server, for example:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-none hljs" data-lang="none">Which pods are in my-first-model?</code></pre>
@@ -355,7 +355,7 @@ Click the <b class="menuref">test-mlflow</b> workbench, which you created in the
 <p>In the <strong>Clone a repo</strong> popup, type <code><a href="https://github.com/RedHatQuickCourses/rhoai-mlflow-samples.git" class="bare">https://github.com/RedHatQuickCourses/rhoai-mlflow-samples.git</a></code> as the URI of the remote Git repository and click <b class="menuref">Clone</b>.</p>
 </li>
 <li>
-<p>In the file browser of your Jupyter Lab, enter the <code>/rhoai-mlflow-samples/traces</code> directory and then open the <code>basic-agent.ipnyb</code> notebook.</p>
+<p>In the file browser of your Jupyter Lab, open the <code>/rhoai-mlflow-samples/traces</code> directory and then open the <code>basic-agent.ipnyb</code> notebook.</p>
 </li>
 </ol>
 </div>
@@ -370,7 +370,7 @@ Click the <b class="menuref">test-mlflow</b> workbench, which you created in the
 </td>
 <td class="content">
 The explanations here are <strong>not</strong> intended to explain all code in the agentic application, but just its general structure, so you can later read its traces.
-The code snippets here enable learners to locate each section of code, if they wish to study and use it as a starting point for their agentic applications.
+The code snippets here enable you to locate each section of code, if you wish to study and use it as a starting point for your agentic applications.
 </td>
 </tr>
 </table>
@@ -388,7 +388,7 @@ That way, pip falls back to the community index for any module not present in it
 </div>
 </li>
 <li>
-<p>In the second cell, notice the variables which set the URLs and connection parameters for the model server, the MCP server, and the MLFlow server.
+<p>In the second cell, notice the variables that set the URLs and connection parameters for the model server, the MCP server, and the MLflow server.
 They are all internal URLs, which refer to their respective Kubernetes services.</p>
 <div class="listingblock">
 <div class="content">
@@ -417,7 +417,7 @@ You are designed to answer questions in a concise and professional manner.
 </div>
 </li>
 <li>
-<p>So far, the code is very similar to previous examples but, after it gets the service account token and enables MLflow tracing, the code to connect to the model and submit a prompt is <em>very</em> different from the previous chat example.</p>
+<p>So far, the code is similar to previous examples, but, after it gets the service account token and enables MLflow tracing, the code to connect to the model and submit a prompt is <em>very</em> different from the previous chat example.</p>
 <div class="paragraph">
 <p>Differences start by creating an asynchronous client for the model server:</p>
 </div>
@@ -468,7 +468,7 @@ You are designed to answer questions in a concise and professional manner.
 <p>The agent loops on the responses received from the model, invoking MCP tools, and sending the output of tool calls back to the model.</p>
 </div>
 <div class="paragraph">
-<p>This loop, inside the agent object, continues until the agent gets a response from the model which does <strong>not</strong> request another tool call.</p>
+<p>This loop, inside the agent object, continues until the agent receives a response from the model that does <strong>not</strong> request another tool call.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -511,10 +511,10 @@ You are designed to answer questions in a concise and professional manner.
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>In the top toolbar from the notebook, click the <b class="menuref">fast forward</b> icon, with the tooltip "Restart the kernel and run all cells".</p>
+<p>In the top toolbar from the notebook, click the <b class="menuref">fast forward</b> icon, which has the tooltip "Restart the kernel and run all cells".</p>
 </li>
 <li>
-<p>It may take a while to download all OpenAI and MLFlow libraries and their dependencies, in the first cell before it actually submits the prompt, in the second cell.</p>
+<p>It may take a while to download all OpenAI and MLflow libraries and their dependencies, in the first cell before it actually submits the prompt, in the second cell.</p>
 <div class="paragraph">
 <p>If all goes well, you will get a correct response, similar to the following example:</p>
 </div>
@@ -599,7 +599,7 @@ You will see it contains <b class="menuref">Inputs</b> and <b class="menuref">Ou
 </div>
 </li>
 <li>
-<p>If you got more than two <b class="menuref">AsyncCompletions</b> items, it might be because the model was not able to recognize that the tool call contains the information it needs, and requested a another tool call, maybe with different parameters, maybe of a different tool.</p>
+<p>If you got more than two <b class="menuref">AsyncCompletions</b> items, it might be because the model was not able to recognize that the tool call contains the information it needs, and requested another tool call, maybe with different parameters, maybe of a different tool.</p>
 <div class="paragraph">
 <p>For more complex prompts, it might be necessary to use the output of a tool call as parameters of another tool call, and many such rounds might be necessary.
 But you may find that, even with simpler prompts, a model might requests tool calls which make no sense.</p>
@@ -630,7 +630,7 @@ Each run produces its own trace, and they may take different numbers of completi
 But you can also find that there are a number of useful prompts this small model can answer correctly and frequently.</p>
 </li>
 <li>
-<p>You may also try subtle changes in the prompts, for example referring to "the my-first-model project" instead of to a "namespace", or trying to provide a better suited system prompt for an IT operations or a Kubernetes administrator persona.</p>
+<p>You may also try subtle changes in the prompts, for example, referring to "the my-first-model project" instead of to a "namespace", or trying to provide a better suited system prompt for an IT operations or a Kubernetes administrator persona.</p>
 </li>
 </ol>
 </div>
@@ -641,9 +641,9 @@ But you can also find that there are a number of useful prompts this small model
 <div class="sect2">
 <h3 id="_summary"><a class="anchor" href="#_summary"></a>Summary</h3>
 <div class="paragraph">
-<p>After completing these steps, you have executed a simple agentic application which produces traces on the MLflow server in RHOAI.
-You also interpreted those traces to identify when the model requested tool calls, the specific data returned by the MCP server for each call, and how the data was send back from the agent to the model.
-Finally, you verified that the non-deterministic nature of large language models (LLMs) impacts their ability of requesting tool calls and using the returned data to produce a response.</p>
+<p>After completing these steps, you have executed a simple agentic application that produces traces on the MLflow server in RHOAI.
+You also interpreted those traces to identify when the model requested tool calls, the specific data returned by the MCP server for each call, and how the data was sent back from the agent to the model.
+Finally, you verified that the nondeterministic nature of LLMs impacts their ability of requesting tool calls and using the returned data to produce a response.</p>
 </div>
 </div>
 </div>
@@ -652,7 +652,7 @@ Finally, you verified that the non-deterministic nature of large language models
 <h2 id="_whats_next"><a class="anchor" href="#_whats_next"></a>What&#8217;s next</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Congratulations! You&#8217;ve completed this course and learned how to deploy MLFlow, collect traces from agentic applications, and visualize trace data. You can now apply these skills to troubleshoot and improve your own agentic applications.</p>
+<p>Congratulations! You&#8217;ve completed this course and learned how to deploy MLflow, collect traces from agentic applications, and visualize trace data. You can now apply these skills to troubleshoot and improve your own agentic applications.</p>
 </div>
 </div>
 </div>

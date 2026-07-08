@@ -174,7 +174,7 @@ Pending review
 <h2 id="_before_you_begin"><a class="anchor" href="#_before_you_begin"></a>Before you begin</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You need access to the predeployed Red Hat OpenShift AI (RHOAI) instance provided in your lab environment, which was already configured by the <a href="../ch2-deploy-mlflow/s2-deploy-lab.html" class="xref page">previous lab</a> with a development instance of the MLflow server and an RHOAI workbench.</p>
+<p>You need access to the predeployed Red Hat OpenShift AI (RHOAI) instance provided in your lab environment, which was already configured in the <a href="../ch2-deploy-mlflow/s2-deploy-lab.html" class="xref page">previous lab</a> with a development instance of the MLflow server and an RHOAI workbench.</p>
 </div>
 <div class="paragraph">
 <p>Ensure you have:</p>
@@ -245,21 +245,21 @@ You do not need administrator privileges to complete this lab, but the demo inst
 </li>
 <li>
 <p>In the left navigation pane, select <b class="menuref">Projects</b> and, in the <strong>Project</strong> field, select <b class="menuref">All projects</b>.
-Then type <code>my</code> and, in the list of projects, select <b class="menuref">my-first-model</b>.</p>
+Then enter <code>my</code> and, in the list of projects, select <b class="menuref">my-first-model</b>.</p>
 </li>
 <li>
 <p>In the projects page for <code>my-first-model</code>, select the <b class="menuref">Workbenches</b> tab.
-Click the <b class="menuref">test-mlflow</b> workbench, which you created in the <a href="../ch2-deploy-mlflow/s2-deploy-lab.html" class="xref page">previous lab</a>, to open its jupyter lab in a new browser tab.</p>
+Click the <b class="menuref">test-mlflow</b> workbench, which you created in the <a href="../ch2-deploy-mlflow/s2-deploy-lab.html" class="xref page">previous lab</a>, to open its Jupyter Lab in a new browser tab.</p>
 </li>
 <li>
 <p>In the Jupyter Lab, select the <b class="menuref">Launcher</b> tab and click the <b class="menuref">Python 3.12</b> icon to create a new Jupyter notebook.</p>
 </li>
 <li>
-<p>In the left navigation pane, right click the <b class="menuref">Untitled.ipynb</b> file, which is your new notebook, and select <b class="menuref">Rename</b>.
-Then type <code>basic-chat</code> as its new file name.</p>
+<p>In the left navigation pane, right-click the <b class="menuref">Untitled.ipynb</b> file, which is your new notebook, and select <b class="menuref">Rename</b>.
+Then, enter <code>basic-chat</code> as its new file name.</p>
 </li>
 <li>
-<p>Alternatively, you can open and reuse the <code>test.ipnyb</code>, which you created in the <a href="../ch2-deploy-mlflow/s2-deploy-lab.html" class="xref page">previous lab</a>.</p>
+<p>Alternatively, you can open and reuse the <code>test.ipynb</code> which you created in the <a href="../ch2-deploy-mlflow/s2-deploy-lab.html" class="xref page">previous lab</a>.</p>
 </li>
 </ol>
 </div>
@@ -296,7 +296,7 @@ model_name = "llama-32-3b-instruct"</code></pre>
 In the row for the <code>llama-32-3b-instruct</code> model, click <b class="menuref">Internal endpoint</b> to display a pop-up with the access URL for its model server, and click the <b class="menuref">Copy</b> icon in the pop-up.</p>
 </li>
 <li>
-<p>Switch to your Jupyter notebook and replace the <code>CHANGE_ME</code> text with the URL on your clipboard and type <code>/v1</code> at the end of the URL to make it a valid OpenAI API endpoint.</p>
+<p>Switch to your Jupyter notebook and replace the <code>CHANGE_ME</code> text with the URL on your clipboard and enter <code>/v1</code> at the end of the URL to make it a valid OpenAI API endpoint.</p>
 </li>
 <li>
 <p>Continue editing the second cell and set a system and a user prompt.</p>
@@ -313,7 +313,7 @@ You are designed to answer questions in a concise and professional manner.
 </div>
 </li>
 <li>
-<p>Add to the cell code to retrieve the authentication token from its Kubernetes service account and connect to the model server using the OpenAI API.</p>
+<p>Add code to the cell for retrieving the authentication token from its Kubernetes service account and connect to the model server using the OpenAI API.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">import os
@@ -334,7 +334,7 @@ client = OpenAI(
 </div>
 </li>
 <li>
-<p>Add code to submit the prompt to the model and display its response.</p>
+<p>Add code for submitting the prompt to the model and display its response.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">try:
@@ -372,9 +372,9 @@ In the top toolbar of your notebook, click the <b class="menuref">disk</b> icon,
 </li>
 <li>
 <p>Hopefully, your output is correct and useful.
-You do know what makes RHEL different than CentOS, right?
-If you get a hallucinated response, just continue with the activity.
-You will have a chance of seeing a good response later in this lab.</p>
+You do know what makes RHEL different from CentOS, right?
+If you receive a hallucinated response, continue with the activity.
+You will have an opportunity to see a good response later in this lab.</p>
 <div class="paragraph">
 <p>Following is an example of a good response we got while testing these instructions:</p>
 </div>
@@ -416,7 +416,7 @@ In summary, RHEL is a paid, enterprise-focused distribution, while CentOS is a f
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Edit the first cell to also install the MLFlow SDK for Python.</p>
+<p>Edit the first cell to also install the MLflow SDK for Python.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">! pip install openai <strong>mlflow[kubernetes]</strong></code></pre>
@@ -427,7 +427,7 @@ In summary, RHEL is a paid, enterprise-focused distribution, while CentOS is a f
 <p>Click the <b class="menuref">play</b> icon in the toolbar and wait until the MLflow library and its dependencies are loaded from the RHOAI index into your workbench.</p>
 </li>
 <li>
-<p>Edit the second cell to add a few variables, which point to the MLFlow server from your RHOAI instance.</p>
+<p>Edit the second cell to add a few variables, which point to the MLflow server from your RHOAI instance.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">BASE_URL = "http://llama-32-3b-instruct-predictor.my-first-model.svc.cluster.local:8080/v1"
@@ -444,7 +444,7 @@ model_name = "llama-32-3b-instruct"
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-In this example, we are using the <em>internal</em> URL of the MLflow server, which does <strong>not</strong> change for different RHOAI instances.
+In this example, we are using the <strong>internal</strong> URL of the MLflow server, which does <strong>not</strong> change for different RHOAI instances.
 You can use this URL only with applications running on the same OpenShift cluster.
 </td>
 </tr>
@@ -452,7 +452,7 @@ You can use this URL only with applications running on the same OpenShift cluste
 </div>
 </li>
 <li>
-<p>Add code to configure the connection to the MLflow server, right before the code which gets your Kubernetes service account token.</p>
+<p>Add code to configure the connection to the MLflow server, immediately before the code which gets your Kubernetes service account token.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">import os
@@ -473,7 +473,7 @@ except FileNotFoundError:
 </div>
 </li>
 <li>
-<p>Add code to start MLflow autologging, right before the code which connects to the model server.</p>
+<p>Add code to start MLflow autologging, immediately before the code which connects to the model server.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python"><strong>mlflow.openai.autolog()</strong>
@@ -488,7 +488,7 @@ client = OpenAI(
 </div>
 </li>
 <li>
-<p>Run your chat application to verify it continue working after changes.</p>
+<p>Run your chat application to verify it continues working after changes.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -499,8 +499,8 @@ In the top toolbar of your notebook, click the <b class="menuref">disk</b> icon,
 <p>Ensure the second cell is selected and click the <b class="menuref">play</b> icon in the top toolbar of your notebook.</p>
 </li>
 <li>
-<p>Hopefully, your output is again correct and useful, and probably have small differences in wording compared to your previous output.
-You can ignore warnings which suggest updating Jupyter and ipywidgets.
+<p>Hopefully, your output is again correct and useful, and probably has small differences in wording compared to your previous output.
+You can ignore warnings that suggest updating <code>jupyter</code> and <code>ipywidgets</code>.
 More important, check that you see a message stating that a new experiment was created, similar to the following partial example output.</p>
 <div class="listingblock">
 <div class="content">
@@ -534,7 +534,7 @@ RHEL (Red Hat Enterprise Linux) and CentOS are both Linux distributions, but the
 </li>
 <li>
 <p>You will see a page displaying many statistics and graphics about the performance of your experiments.
-Each data point corresponds to one time you run your chat application.</p>
+Each data point corresponds to one time you ran your chat application.</p>
 </li>
 <li>
 <p>In the left pane of the Experiments page, without leaving the <code>basic-chat</code> experiments page, click <b class="menuref">Traces</b>.</p>
@@ -544,9 +544,8 @@ Each data point corresponds to one time you run your chat application.</p>
 Each row displays a trace ID, its request, response, and some performance metrics.</p>
 </li>
 <li>
-<p>Click on either the trace id or its prompt to see a summary of the trace.
-Click on the links <b class="menuref">Show 1 more</b> and similar on the input and output pane to
-expand the details of the inputs sent to the model server and the outputs received from it.</p>
+<p>Click either the trace id or its prompt to see a summary of the trace.
+Click the <b class="menuref">Show 1 more</b> link and similar links in the input and output panes to expand the details of the inputs sent to the model server and the outputs received from it.</p>
 <div class="paragraph">
 <p>From the information in a trace, it is possible to reproduce the request and compare its outputs between different attempts.</p>
 </div>
@@ -565,7 +564,7 @@ expand the details of the inputs sent to the model server and the outputs receiv
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Switch to your Jupyter notebook and append more instructions to its system prompt:</p>
+<p>Switch to your Jupyter notebook and add more instructions to its system prompt:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">input_text = """
@@ -609,7 +608,7 @@ The visual integration between MLflow and RHOAI workbenches is not yet working w
 You may need to refresh your browser window to view the second trace.</p>
 </li>
 <li>
-<p>Click the trace ID of the first item, which is the most recent trace, so it corresponds to the latest time you run your notebook.</p>
+<p>Click the trace ID of the first item, which is the most recent trace, so it corresponds to the latest time you ran your notebook.</p>
 </li>
 <li>
 <p>Verify that the trace summary shows the latest, longer system prompt on its inputs, and the latest, shorter response on its outputs.
@@ -636,7 +635,7 @@ Do <strong>not</strong> close the trace summary page.</p>
 <p>Click <b class="menuref">Add feedback</b> and select <b class="menuref">Human feedback</b>.</p>
 </li>
 <li>
-<p>Type <code>good response</code> as the Assessment Name.
+<p>Enter <code>good response</code> as the Assessment Name.
 Leave the Data Type as <code>Boolean</code> and Value as <code>True</code> and click <b class="menuref">Create</b>.</p>
 </li>
 <li>

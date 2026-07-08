@@ -1,5 +1,5 @@
 {
-  "totalSeconds": 1954,
+  "totalSeconds": 1958,
   "pageCount": 12,
   "pages": [
     {
@@ -45,17 +45,17 @@
     {
       "module": "ch3-collect-traces",
       "page": "index.adoc",
-      "seconds": 16
+      "seconds": 18
     },
     {
       "module": "ch3-collect-traces",
       "page": "s1-tracing-concepts.adoc",
-      "seconds": 339
+      "seconds": 340
     },
     {
       "module": "ch3-collect-traces",
       "page": "s2-agent-traces-lab.adoc",
-      "seconds": 277
+      "seconds": 278
     },
     {
       "module": "ch3-collect-traces",
