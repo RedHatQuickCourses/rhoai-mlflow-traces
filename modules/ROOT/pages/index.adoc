@@ -39,9 +39,13 @@ This course assumes that you have the following experience:
 
 == Classroom environment
 
-The demo catalog entry https://catalog.demo.redhat.com/catalog/babylon-catalog-prod?item=babylon-catalog-prod/published.openshift-ai-v3.prod[Red Hat OpenShift AI 3.4^] provides a single-node OpenShift cluster (SNO), backed by an AWS instance with a single GPU, with a predeployed `llama-32-3b-instruct` model which is capable of making tool calls.
+The demo catalog entry https://catalog.demo.redhat.com/catalog/babylon-catalog-prod?item=babylon-catalog-prod/published.openshift-ai-v3.prod[Red Hat OpenShift AI 3^] provides a single-node OpenShift cluster (SNO), backed by an AWS instance with a single GPU, with a predeployed `llama-32-3b-instruct` model which is capable of making tool calls.
 
-This course uses that demo entry as-is.
+This course uses that demo entry as-is and, at the time of testing, it provided the following product releases:
+
+* Red Hat OpenShift AI 3.4.2
+* Red Hat OpenShift Container Platform 4.20.27
+
 Learners will configure any additional components required by either MLflow itself or any of the course activities, as part of course activities.
 A public Git repository contains all sample Python code and Kubernetes manifests required to complete hands-on activities.
 
