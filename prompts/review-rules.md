@@ -31,6 +31,8 @@ If the field is clickable, such as a combo box or check box, tag with the `menu:
 
 - The OpenShift web console uses either title case or camel case for menu and navitgation items, ex: "Installed Operators" and "StatefulSets"
 
+- Use "enter" instead of "type" when describing text a user type in an edit box.
+
 == The following rules apply to prose, anywhere
 
 - "MLflow" must be capitalized with uppercase ML and lowercase flow, except in links and code blocks.
@@ -39,16 +41,17 @@ If the field is clickable, such as a combo box or check box, tag with the `menu:
 
 - Use short sentences, and avoid long paragraphs (containing more than five sentences).
 
-- Format paragraphs using a single sentence per line.
+- Format paragraphs using a single sentence per line. Do not have multiple sentences on a single text line.
 
 - Use sentence case for headings.
 
 - Do not use contractions such as don't and can't.
 
-- Expand acronyms on first usage, except if first usage is in a heading or code block. For example: "Red Hat OpenShift AI (RHOAI)"
+- Expand acronyms on first usage, except if first usage is in a heading or code block. For example: "Red Hat OpenShift AI (RHOAI)".
 
-- Use "GenAI" instead of "genAI" or "gen AI" for "generative AI"
+- Use "gen AI" instead of "GenAI" or "genAI" meaning "generative AI". Using the long form "generative AI" is also fine.
 
 - Images must provide a caption, using the attribute, ex: `::image:file.svg]title="this iamge caption"]`
 
 - Links to external web sites use "^" to open an external browser tab, ex: `http://www.example.com[example web site^]`
+

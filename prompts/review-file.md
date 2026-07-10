@@ -1,3 +1,3 @@
 Review the current document using rules from @template/review-rules.md. Also review for grammar and typos. Show a report of issues found and propose fixes for each issue.
-Pause so the user can review the reports, then make edits to fix each issue. If the user refuses an edit or asks to make a different edit, proceed to the next edit.
+Pause so the user can review the report, then make edits to fix each issue. If the user refuses an edit or asks to make a different edit, continue with the remaining edits.
 Do not make edits to asciidoc single-line comments and comment blocks.
