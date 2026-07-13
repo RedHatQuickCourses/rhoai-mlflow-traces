@@ -1,5 +1,5 @@
 {
-  "totalSeconds": 1976,
+  "totalSeconds": 1970,
   "pageCount": 12,
   "pages": [
     {
@@ -25,7 +25,7 @@
     {
       "module": "ch1-mlflow-rhoai",
       "page": "s3-explore-rhoai-lab.adoc",
-      "seconds": 119
+      "seconds": 118
     },
     {
       "module": "ch2-deploy-mlflow",
@@ -35,12 +35,12 @@
     {
       "module": "ch2-deploy-mlflow",
       "page": "s1-architecture.adoc",
-      "seconds": 219
+      "seconds": 218
     },
     {
       "module": "ch2-deploy-mlflow",
       "page": "s2-deploy-lab.adoc",
-      "seconds": 183
+      "seconds": 182
     },
     {
       "module": "ch3-collect-traces",
@@ -50,17 +50,17 @@
     {
       "module": "ch3-collect-traces",
       "page": "s1-tracing-concepts.adoc",
-      "seconds": 340
+      "seconds": 339
     },
     {
       "module": "ch3-collect-traces",
       "page": "s2-agent-traces-lab.adoc",
-      "seconds": 278
+      "seconds": 277
     },
     {
       "module": "ch3-collect-traces",
       "page": "s3-mcp-tools-lab.adoc",
-      "seconds": 344
+      "seconds": 343
     }
   ]
 }
