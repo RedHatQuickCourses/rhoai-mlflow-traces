@@ -4,8 +4,6 @@ Objective::
 
 Understand why tracing is essential for agentic applications and how MLflow organizes trace data.
 
-WARNING: Pending Review
-
 == Why developers need traces
 
 If you provide exactly the same data to an LLM, in multiple attempts, each one returns a different response.

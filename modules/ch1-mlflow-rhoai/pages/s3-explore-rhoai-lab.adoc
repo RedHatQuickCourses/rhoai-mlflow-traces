@@ -4,8 +4,6 @@ Objective::
 
 Explore the predeployed Red Hat OpenShift AI instance to familiarize yourself with its configuration and with the new Gen AI studio feature from 3.x releases.
 
-WARNING: Pending review
-
 == Before you begin
 
 You need access to the predeployed Red Hat OpenShift AI (RHOAI) instance provided in your lab environment. Ensure you have:

@@ -4,8 +4,6 @@ Objective::
 
 Deploy an MCP server and capture its tool invocations in MLflow traces.
 
-WARNING: Pending review.
-
 == Before you begin
 
 You need access to the predeployed Red Hat OpenShift AI (RHOAI) instance provided in your lab environment, which the xref:ch2-deploy-mlflow:s2-deploy-lab.adoc[second lab] already configured with a development instance of the MLflow server and an RHOAI workbench.

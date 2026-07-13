@@ -4,8 +4,6 @@ Objective::
 
 Deploy and verify a development instance of MLflow in Red Hat OpenShift AI.
 
-WARNING: Pending review
-
 == Before you begin
 
 You need access to the predeployed Red Hat OpenShift AI (RHOAI) instance provided in your lab environment. Ensure you have:

@@ -4,8 +4,6 @@ Objective::
 
 Understand how MLflow integrates with Red Hat OpenShift AI.
 
-WARNING: Pending review
-
 == The MLflow Operator and RHOAI
 
 There is an MLflow operator included with Red Hat OpenShift AI (RHOAI), but this operator will not appear in the software catalog or in the list of installed operators managed by the Operator Lifecycle Manager (OLM).
