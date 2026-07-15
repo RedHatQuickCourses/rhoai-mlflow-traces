@@ -33,14 +33,16 @@ Once you open one of these tabs, keep it open because you may return to it later
 1. Deploy the https://catalog.redhat.com/en/software/container-stacks/detail/69a94fac9956d5da803edd1a#resources[MCP Server for Red Hat OpenShift^] with restricted privileges, by using its https://github.com/openshift/openshift-mcp-server/blob/main/charts/kubernetes-mcp-server/README.md[helm chart^] and the OpenShift Ecosystem Catalog.
 
 .. Open the OpenShift web console and log in using the `admin` user.
-In the left navigation menu, select menu:Ecosystem[Software Catalog].
+In the left navigation menu, select menu:Home[Projects] and click menu:Create Project[].
++
+In the *Create  Project* form, enter `mcp-servers` in the *Name* field and click menu:Create[].
+
+.. In the left navigation menu, select menu:Ecosystem[Software Catalog].
+In the top of the page, select menu:mcp-servers[] in the *Project* field.
 Scroll down to find the *Type* heading and click menu:Helm charts[].
 
 .. Scroll up to the *All items* field and type `mcp`.
-Then click the menu:Red Hat OpenShift MCP Server[] entry and, in its details pane, click menu:Create[].
-
-.. In the *Create Helm Release* page, click the menu:Project[] field, which probably displays the `default` project, and click menu:Create Project[]. 
-Type `mcp-servers` as the *Name* field and click menu:Create[].
+Then click the menu:Red Hat OpenShift Mcp Server[] entry and, in its details pane, click menu:Create[].
 
 .. In the *Create Helm Release* page, delete all contents from its text editor and paste the following configuration, which gives the MCP server read-only access to all resources in the cluster, but disables external access.
 +
@@ -68,7 +70,7 @@ In the left navigation pane, select menu:Workloads[ConfigMaps] and, in the menu:
 
 .. Click menu:Create ConfigMap[] and, in the *Create Configmap* page, enter `gen-ai-aa-mcp-servers` in the *Name* field.
 
-.. Enter the following in the *Value* field and click menu:Create[].
+.. Enter `OpenShift-MCP-Server` in the *Key* field and enter the following in the *Value* field, then click menu:Create[].
 +
 [source,json,subs="verbatim,quotes"]
 ----
@@ -81,7 +83,7 @@ In the left navigation pane, select menu:Workloads[ConfigMaps] and, in the menu:
 .. Verify that the Gen AI studio can connect to the MCP server.
 +
 Open the RHOAI dashboard and login as the `admin` user.
-In the left navigation pane, select menu:Gen AI studio[AI assets endpoints] and select the menu:MCP servers[] tab.
+In the left navigation pane, select menu:Gen AI studio[AI asset endpoints] and select the menu:MCP servers[] tab.
 It should list the `OpenShift-MCP-Server`, as configured by the config map, with the `Active` status, which means the Gen AI studio was able to retrieve the tools list from the MCP server.
 
 .. Test the MCP server tools using a playground.
@@ -122,7 +124,7 @@ Click the menu:test-mlflow[] workbench, which you created in the xref:ch2-deploy
 
 .. In the *Clone a repo* popup, type `https://github.com/RedHatQuickCourses/rhoai-mlflow-samples.git` as the URI of the remote Git repository and click menu:Clone[].
 
-.. In the file browser of your Jupyter Lab, open the `/rhoai-mlflow-samples/traces` directory and then open the `basic-agent.ipnyb` notebook.
+.. In the file browser of your Jupyter Lab, open the `/rhoai-mlflow-samples/traces` directory and then open the `basic-agent.ipynb` notebook.
 
 4. Review the code for a simple agent.
 +

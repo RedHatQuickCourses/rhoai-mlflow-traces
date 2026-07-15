@@ -140,8 +140,10 @@ Then enter `my` in the *Filter by name* field and click menu:my-first-model[] in
 .. In the Workbenches list, wait until the row for the `test-mlflow` workbench displays a `Ready` state and then click menu:test-mlflow[] to open its Jupyter Lab in a new browser tab.
 
 .. Click the menu:Python 3.12[] Notebook icon to create an empty notebook.
+In the left navigation pane of the Jupyter Lab, right-click the menu:Untitled.ipynb[] file, which is your new notebook, and select menu:Rename[].
+Then, enter `test-mlflow.ipynb` as its new file name.
 
-.. In the first cell, enter:
+.. In the first cell of your notebook, enter:
 +
 [source,python,subs="verbatim,quotes"]
 ----
@@ -185,8 +187,7 @@ The results should be an array containing a single `Workspace` object named `my-
 This notebook takes advantage of the integration between the RHOAI dashboard and its managed instance of the MLflow server.
 It connects using the service account of the `test-mlflow` workbench, which is authorized to access the MLflow workspace corresponding to its `my-first-model` project.
 
-.. If you wish, you can remove the unnamed notebook, or if you prefer you can save it, rename it to `test.ipynb`, and reuse it for the next activity.
-Whatever your preference, do NOT delete the `test-mlflow` workbench because you will keep using it in the next activity.
+.. You will not use the `test-mlflow.ipynb` notebook anymore, but do NOT delete the `test-mlflow` workbench because you will keep using it in the remaining activities of this course.
 
 === Summary
 

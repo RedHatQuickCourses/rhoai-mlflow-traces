@@ -44,7 +44,7 @@ Click the menu:test-mlflow[] workbench, which you created in the xref:ch2-deploy
 .. In the Jupyter Lab, select the menu:Launcher[] tab and click the menu:Python 3.12[] icon to create a new Jupyter notebook.
 
 .. In the left navigation pane, right-click the menu:Untitled.ipynb[] file, which is your new notebook, and select menu:Rename[].
-Then, enter `basic-chat` as its new file name.
+Then, enter `basic-chat.ipynb` as its new file name.
 
 .. Alternatively, you can open and reuse the `test.ipynb` which you created in the xref:ch2-deploy-mlflow:s2-deploy-lab.adoc[previous lab].
 
