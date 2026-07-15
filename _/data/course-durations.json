@@ -1,5 +1,5 @@
 {
-  "totalSeconds": 1969,
+  "totalSeconds": 1979,
   "pageCount": 12,
   "pages": [
     {
@@ -40,7 +40,7 @@
     {
       "module": "ch2-deploy-mlflow",
       "page": "s2-deploy-lab.adoc",
-      "seconds": 182
+      "seconds": 186
     },
     {
       "module": "ch3-collect-traces",
@@ -60,7 +60,7 @@
     {
       "module": "ch3-collect-traces",
       "page": "s3-mcp-tools-lab.adoc",
-      "seconds": 343
+      "seconds": 349
     }
   ]
 }

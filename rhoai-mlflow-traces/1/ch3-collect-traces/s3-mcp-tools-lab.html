@@ -218,16 +218,19 @@ Finally, you will interpret traces from the agent to assess if it is able to mak
 <ol class="loweralpha" type="a">
 <li>
 <p>Open the OpenShift web console and log in using the <code>admin</code> user.
-In the left navigation menu, select <span class="menuseq"><b class="menu">Ecosystem</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Software Catalog</b></span>.
+In the left navigation menu, select <span class="menuseq"><b class="menu">Home</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Projects</b></span> and click <b class="menuref">Create Project</b>.</p>
+<div class="paragraph">
+<p>In the <strong>Create  Project</strong> form, enter <code>mcp-servers</code> in the <strong>Name</strong> field and click <b class="menuref">Create</b>.</p>
+</div>
+</li>
+<li>
+<p>In the left navigation menu, select <span class="menuseq"><b class="menu">Ecosystem</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Software Catalog</b></span>.
+In the top of the page, select <b class="menuref">mcp-servers</b> in the <strong>Project</strong> field.
 Scroll down to find the <strong>Type</strong> heading and click <b class="menuref">Helm charts</b>.</p>
 </li>
 <li>
 <p>Scroll up to the <strong>All items</strong> field and type <code>mcp</code>.
-Then click the <b class="menuref">Red Hat OpenShift MCP Server</b> entry and, in its details pane, click <b class="menuref">Create</b>.</p>
-</li>
-<li>
-<p>In the <strong>Create Helm Release</strong> page, click the <b class="menuref">Project</b> field, which probably displays the <code>default</code> project, and click <b class="menuref">Create Project</b>.
-Type <code>mcp-servers</code> as the <strong>Name</strong> field and click <b class="menuref">Create</b>.</p>
+Then click the <b class="menuref">Red Hat OpenShift Mcp Server</b> entry and, in its details pane, click <b class="menuref">Create</b>.</p>
 </li>
 <li>
 <p>In the <strong>Create Helm Release</strong> page, delete all contents from its text editor and paste the following configuration, which gives the MCP server read-only access to all resources in the cluster, but disables external access.</p>
@@ -266,7 +269,7 @@ Click the Helm icon to display its workload details page, to the right, and wait
 <p>Click <b class="menuref">Create ConfigMap</b> and, in the <strong>Create Configmap</strong> page, enter <code>gen-ai-aa-mcp-servers</code> in the <strong>Name</strong> field.</p>
 </li>
 <li>
-<p>Enter the following in the <strong>Value</strong> field and click <b class="menuref">Create</b>.</p>
+<p>Enter <code>OpenShift-MCP-Server</code> in the <strong>Key</strong> field and enter the following in the <strong>Value</strong> field, then click <b class="menuref">Create</b>.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
@@ -280,7 +283,7 @@ Click the Helm icon to display its workload details page, to the right, and wait
 <p>Verify that the Gen AI studio can connect to the MCP server.</p>
 <div class="paragraph">
 <p>Open the RHOAI dashboard and login as the <code>admin</code> user.
-In the left navigation pane, select <span class="menuseq"><b class="menu">Gen AI studio</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">AI assets endpoints</b></span> and select the <b class="menuref">MCP servers</b> tab.
+In the left navigation pane, select <span class="menuseq"><b class="menu">Gen AI studio</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">AI asset endpoints</b></span> and select the <b class="menuref">MCP servers</b> tab.
 It should list the <code>OpenShift-MCP-Server</code>, as configured by the config map, with the <code>Active</code> status, which means the Gen AI studio was able to retrieve the tools list from the MCP server.</p>
 </div>
 </li>
@@ -343,7 +346,7 @@ Click the <b class="menuref">test-mlflow</b> workbench, which you created in the
 <p>In the <strong>Clone a repo</strong> popup, type <code><a href="https://github.com/RedHatQuickCourses/rhoai-mlflow-samples.git" class="bare">https://github.com/RedHatQuickCourses/rhoai-mlflow-samples.git</a></code> as the URI of the remote Git repository and click <b class="menuref">Clone</b>.</p>
 </li>
 <li>
-<p>In the file browser of your Jupyter Lab, open the <code>/rhoai-mlflow-samples/traces</code> directory and then open the <code>basic-agent.ipnyb</code> notebook.</p>
+<p>In the file browser of your Jupyter Lab, open the <code>/rhoai-mlflow-samples/traces</code> directory and then open the <code>basic-agent.ipynb</code> notebook.</p>
 </li>
 </ol>
 </div>

@@ -377,10 +377,12 @@ Then enter <code>my</code> in the <strong>Filter by name</strong> field and clic
 <p>In the Workbenches list, wait until the row for the <code>test-mlflow</code> workbench displays a <code>Ready</code> state and then click <b class="menuref">test-mlflow</b> to open its Jupyter Lab in a new browser tab.</p>
 </li>
 <li>
-<p>Click the <b class="menuref">Python 3.12</b> Notebook icon to create an empty notebook.</p>
+<p>Click the <b class="menuref">Python 3.12</b> Notebook icon to create an empty notebook.
+In the left navigation pane of the Jupyter Lab, right-click the <b class="menuref">Untitled.ipynb</b> file, which is your new notebook, and select <b class="menuref">Rename</b>.
+Then, enter <code>test-mlflow.ipynb</code> as its new file name.</p>
 </li>
 <li>
-<p>In the first cell, enter:</p>
+<p>In the first cell of your notebook, enter:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">! pip install mlflow[kubernetes]</code></pre>
@@ -442,8 +444,7 @@ It connects using the service account of the <code>test-mlflow</code> workbench,
 </div>
 </li>
 <li>
-<p>If you wish, you can remove the unnamed notebook, or if you prefer you can save it, rename it to <code>test.ipynb</code>, and reuse it for the next activity.
-Whatever your preference, do NOT delete the <code>test-mlflow</code> workbench because you will keep using it in the next activity.</p>
+<p>You will not use the <code>test-mlflow.ipynb</code> notebook anymore, but do NOT delete the <code>test-mlflow</code> workbench because you will keep using it in the remaining activities of this course.</p>
 </li>
 </ol>
 </div>
