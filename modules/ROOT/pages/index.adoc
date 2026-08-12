@@ -9,6 +9,12 @@ You will also learn how to visualize those traces using the Red Hat OpenShift AI
 
 You should reserve a full working day to complete this course.
 
+This is the first in a series of quick courses covering MLflow, which consists of two courses:
+
+. *Agent Traces with MLflow and Red Hat OpenShift AI* (this course)
+
+. https://redhatquickcourses.github.io/rhoai-mlflow-evals/[Agent Evaluation with MLFLow and EvalHub on Red Hat OpenShift AI^] (follow-up course)
+
 IMPORTANT: Red Hat associates must enroll using the https://training-lms.redhat.com/sso/saml/auth/rhlpint?RelayState=deeplinkoffering%3D92545261[Red Hat Learning Portal^], and Red Hat Partners must enroll using https://training-lms.redhat.com/sso/saml/auth/rhopen?RelayState=deeplinkoffering%3D92545334[Red Hat Partner Connect^] to register this course in their learning history.
 
 
